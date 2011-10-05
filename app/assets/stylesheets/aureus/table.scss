@@ -1,0 +1,151 @@
+.datatable, .datatable-no-toolbar, .simple-table {
+  width: 100%;
+  thead {
+    tr {
+      border-top: 1px solid #333;
+      @include gradient(#444,#222);
+      th {
+        padding: 10px 12px;
+        text-align: left;
+        font-weight: normal;
+        font-size: 14px;
+        color: white;
+        text-shadow: -1px -1px 0 black;
+        border-left: 1px solid #444;
+      }
+      .sorting {
+        background-image: url($asset_icon_sort);
+        background-repeat: no-repeat;
+        background-position: center right;
+      }
+      .sorting_asc {
+        background-image: url($asset_icon_sort_abc_asc);
+        background-repeat: no-repeat;
+        background-position: center right;
+      }
+      .sorting_desc {
+        background-image: url($asset_icon_sort_abc_desc);
+        background-repeat: no-repeat;
+        background-position: center right;
+      }
+      .center {
+        text-align: center;
+      }
+    }
+  }
+  tbody {
+    td, th {
+      text-align: left;
+      border-top: 1px solid #ddd;
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.2;
+      border-left: 1px solid #eee;
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      a:hover {
+        color: $color_main;
+      }
+    }
+    td:first-child, th:first-child {
+      border-left: 0;
+    }
+    .center {
+      text-align: center;
+    }
+    th {
+      border-right: 1px solid #eee;
+      font-size: 12px;
+      color: #444;
+     }
+    .buttons {
+      text-align: right;
+      a {
+        cursor: pointer;
+        display: inline;
+        color: #555;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 12px;
+        padding: 3px 10px;
+        @include border-radius(30px);
+        @include gradient(#eee,#ccc);
+        text-shadow: 1px 1px 0 #eee;
+        border: 1px solid #999;
+        margin-left: 2px;
+      }
+    }
+  }
+}
+  
+.datatable-wrapper {
+  .toolbar {
+    padding: 5px 12px;
+    padding-bottom: 2px;
+    @include gradient(#ddd,#bbb);
+    color: #333;
+    font-size: 12px;
+    overflow: hidden;
+    .datatable-length {
+      float: right;
+    }
+    .datatable-filter {
+      float: left;
+      input {
+        width: 200px;
+        border: 1px solid #666;
+        padding: 2px 10px;
+        @include border-radius(20px);
+        @include gradient(#777,#999);
+        color: white;
+      }
+    }
+    .datatable-info {
+      float: right;
+      padding: 6px 0px;
+      margin-left: 15px;
+    }
+    /*
+    .datatable-paginate {
+      float: right;
+      margin-right: 20px;
+    }
+    .datatable-pagingtwo_button {
+      display: inline;
+      div {
+        margin-top: 1px;
+        width: 50px;
+        padding: 3px 12px;
+        padding-top: 4px;
+        float: left;
+        @include gradient(#ddd,#ccc);
+        border: 1px solid #666;
+        color: black;
+        text-shadow: 1px 1px 0 #eee;
+        cursor: pointer;
+        text-align: center;
+      }
+      .paginate_disabled_previous, .paginate_enabled_previous {
+        @include border-radius-separate(0,0,20px,20px);
+        border-right: 0;
+        margin-left: 10px;
+        :before {
+          content: "Vorherige";
+        }
+      }
+      .paginate_disabled_next, .paginate_enabled_next {
+        @include border-radius-separate(20px,20px,0,0);
+        :before {
+          content: "Nächste";
+        }
+      }
+      .paginate_disabled_next, .paginate_disabled_previous {
+        cursor: default;
+        color: #666;
+      }
+    }
+    */
+  }
+}

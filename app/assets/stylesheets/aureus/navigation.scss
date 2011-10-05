@@ -1,0 +1,44 @@
+#navigation {
+  border-bottom: 1px solid #bbb;
+  padding: 10px 40px;
+  overflow: hidden;
+  @include gradient(#eee,#ddd);
+  h2 {
+    span {
+      padding: 10px 0;
+      color: #222;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 1px 1px 0 white;
+      display: block;
+      overflow: hidden;
+    }
+  }
+  ul {
+    margin-top: 20px;
+    float: right;
+    li {
+      display: inline;
+      position: relative;
+      padding-left: 15px;
+      a {
+        cursor: pointer;
+        display: inline;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 8px 20px;
+        @include border-radius(30px);
+        @include gradient(#fff,#ddd);
+        text-shadow: 1px 1px 0 white;
+        @include box-shadow(0,1px,4px,#777);
+      }
+    }
+    li:hover {
+      a {
+        color: $color_main;
+      }
+    }
+  }
+}

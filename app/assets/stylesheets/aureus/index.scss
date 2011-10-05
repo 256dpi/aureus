@@ -1,0 +1,27 @@
+//= depend_on reset
+//= depend_on mixins
+//= depend_on base
+//= depend_on topbar
+//= depend_on navigation
+//= depend_on content
+//= depend_on table
+//= depend_on form
+//= depend_on ui
+
+$asset_app_background: image-path('aureus/background.png');
+$asset_topbar_background: image-path('aureus/topbar.png');
+$asset_icon_sort: image-path('aureus/icon-sort.png');
+$asset_icon_sort_abc_asc: image-path('aureus/icon-sort-abc-asc.png');
+$asset_icon_sort_abc_desc: image-path('aureus/icon-sort-abc-desc.png');
+
+$color_main_dark: darken($color_main,15);
+
+@import "reset";
+@import "mixins";
+@import "base";
+@import "topbar";
+@import "navigation";
+@import "content";
+@import "table";
+@import "form";
+@import "ui";

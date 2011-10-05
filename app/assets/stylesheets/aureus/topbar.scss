@@ -1,0 +1,43 @@
+#topbar {
+  padding: 11px 30px;
+  overflow: hidden;
+  @include gradient(#333,#222);
+  background-image: url($asset_topbar_background);
+  h1 {
+    color: $color_main;
+    margin: 2px 0px;
+    font-size: 14px;
+    float: left;
+    text-shadow: -1px -1px 0 black;
+  }
+  ul.left {
+    float: left;
+    margin-left: 20px;
+  }
+  ul.right {
+    float: right;
+  }
+  ul {
+    li {
+      display: inline;
+      position: relative;
+      a, span {
+        font-size: 14px ;
+        color: #ddd;
+        text-decoration: none;
+        padding: 4px 10px;
+        @include border-radius(15px);
+        text-shadow: -1px -1px 0 black;
+      }
+      span {
+        color: #777;
+      }
+    }
+    li:hover {  
+      a {
+        color: white;
+        @include gradient(#000,#333);
+      }
+    }
+  }
+}
