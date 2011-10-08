@@ -35,7 +35,7 @@ $(document).ready(function(){
     $(this).dataTable({
       sDom: 't',
       oLanguage: datatablesLanguageConfig,
-      aoColumns: columnConf($(this))
+      aoColumns: datatablesColumnConf($(this))
     });
   });
   
