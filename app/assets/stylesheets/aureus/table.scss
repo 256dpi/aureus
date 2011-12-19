@@ -13,23 +13,35 @@
         text-shadow: -1px -1px 0 black;
         border-left: 1px solid #444;
       }
-      .sorting {
+      th.sorting {
         background-image: url($asset_icon_sort);
         background-repeat: no-repeat;
         background-position: center right;
       }
-      .sorting_asc {
+      th.sorting_asc {
         background-image: url($asset_icon_sort_abc_asc);
         background-repeat: no-repeat;
         background-position: center right;
       }
-      .sorting_desc {
+      th.sorting_desc {
         background-image: url($asset_icon_sort_abc_desc);
         background-repeat: no-repeat;
         background-position: center right;
       }
-      .center {
+      th.center {
         text-align: center;
+      }
+      th.b1 {
+        width: 1px;
+      }
+      th.b2 {
+        width: 80px;
+      }
+      th.b3 {
+        width: 120px;
+      }
+      th.b4 {
+        width: 160px;
       }
     }
   }
@@ -55,7 +67,7 @@
     td:first-child, th:first-child {
       border-left: 0;
     }
-    .center {
+    td.center {
       text-align: center;
     }
     th {
@@ -63,21 +75,56 @@
       font-size: 12px;
       color: #444;
      }
-    .buttons {
+    td.buttons {
       text-align: right;
+      padding: 7px !important;
+      vertical-align: middle;
       a {
         cursor: pointer;
         display: inline;
-        color: #555;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 12px;
         padding: 3px 10px;
         @include border-radius(30px);
         @include gradient(#eee,#ccc);
-        text-shadow: 1px 1px 0 #eee;
         border: 1px solid #999;
-        margin-left: 2px;
+        margin: 0 1px;
+        span {
+          color: #555;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 12px;
+          text-shadow: 1px 1px 0 #eee;
+        }
+      }
+      a.edit, a.delete, a.show, a.recover, a.print {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        padding: 3px 9px;
+        span {
+          display: block;
+           text-indent: 3000px;
+           width: 16px;
+           height: 16px;
+           opacity: 0.5;
+        }
+        span:hover {
+          opacity: 1;
+        }
+      }
+      a.edit span {
+        background: url($asset_icon_pencil);
+      }
+      a.delete span {
+        background: url($asset_icon_cross);
+      }
+      a.show span {
+        background: url($asset_icon_eye);
+      }
+      a.recover span {
+        background: url($asset_icon_refresh);
+      }
+      a.print span {
+        background: url($asset_icon_print);
       }
     }
   }
@@ -110,45 +157,5 @@
       padding: 6px 0px;
       margin-left: 15px;
     }
-    /*
-    .datatable-paginate {
-      float: right;
-      margin-right: 20px;
-    }
-    .datatable-pagingtwo_button {
-      display: inline;
-      div {
-        margin-top: 1px;
-        width: 50px;
-        padding: 3px 12px;
-        padding-top: 4px;
-        float: left;
-        @include gradient(#ddd,#ccc);
-        border: 1px solid #666;
-        color: black;
-        text-shadow: 1px 1px 0 #eee;
-        cursor: pointer;
-        text-align: center;
-      }
-      .paginate_disabled_previous, .paginate_enabled_previous {
-        @include border-radius-separate(0,0,20px,20px);
-        border-right: 0;
-        margin-left: 10px;
-        :before {
-          content: "Vorherige";
-        }
-      }
-      .paginate_disabled_next, .paginate_enabled_next {
-        @include border-radius-separate(20px,20px,0,0);
-        :before {
-          content: "Nächste";
-        }
-      }
-      .paginate_disabled_next, .paginate_disabled_previous {
-        cursor: default;
-        color: #666;
-      }
-    }
-    */
   }
 }
