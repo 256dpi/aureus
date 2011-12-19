@@ -16,6 +16,8 @@ var datatablesLanguageConfig = {
 
 $(document).ready(function(){
   
+  $("td.buttons a").wrapInner("<span/>");
+  
   $.fn.dataTableExt.oStdClasses.sWrapper = "datatable-wrapper";
   $.fn.dataTableExt.oStdClasses.sLength = "datatable-length";
   $.fn.dataTableExt.oStdClasses.sFilter = "datatable-filter";
