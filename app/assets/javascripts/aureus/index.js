@@ -16,11 +16,11 @@ var datatablesLanguageConfig = {
 
 $(document).ready(function(){
   
-  $.fn.dataTableExt.oStdClasses.sWrapper = "datatable-wrapper"
-  $.fn.dataTableExt.oStdClasses.sLength = "datatable-length"
-  $.fn.dataTableExt.oStdClasses.sFilter = "datatable-filter"
-  $.fn.dataTableExt.oStdClasses.sInfo = "datatable-info"
-  $.fn.dataTableExt.oStdClasses.sPaging = "datatable-paging"
+  $.fn.dataTableExt.oStdClasses.sWrapper = "datatable-wrapper";
+  $.fn.dataTableExt.oStdClasses.sLength = "datatable-length";
+  $.fn.dataTableExt.oStdClasses.sFilter = "datatable-filter";
+  $.fn.dataTableExt.oStdClasses.sInfo = "datatable-info";
+  $.fn.dataTableExt.oStdClasses.sPaging = "datatable-paging";
   
   $('.datatable').each(function(){
     $(this).dataTable({
@@ -46,6 +46,6 @@ $(document).ready(function(){
   
   $(".timepicker").calendricalTime(timepickerConfiguration);
   
-  $.fn.qtip.styles.single = tooltipConfiguration
+  $.fn.qtip.styles.single = tooltipConfiguration;
   
 });
