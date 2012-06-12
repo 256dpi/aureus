@@ -61,6 +61,9 @@
         color: $color_main;
       }
     }
+    tr.shaded {
+      color: #666 !important;
+    }
     tr:first-child td, tr:first-child th {
       border-top: 0;
     }
