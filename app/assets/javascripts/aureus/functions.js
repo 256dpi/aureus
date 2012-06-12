@@ -5,7 +5,6 @@ function datatablesColumnConf(table) {
     if($(this).hasClass("no-sorting")) {
       ret.push({ bSortable: false });
     } else if($(this).hasClass("date-sorting")) {
-      console.log("set date sorring");
       ret.push({ sType: "date-eu" });
     } else {
       ret.push(null);
