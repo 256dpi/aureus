@@ -10,9 +10,6 @@ Gem::Specification.new do |s|
   s.homepage    = "http://www.256dpi.ch"
   s.summary     = "Aureus Admin Template"
   s.description = "Aureus Admin Template"
-
-  #s.rubyforge_project = "Aureus"
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

@@ -3,6 +3,7 @@
 //= require jquery-ui
 //= require_directory ./plugins
 //= require ./functions
+//= require ./extensions
 //= require_self
 
 var datatablesLanguageConfig = {
