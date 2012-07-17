@@ -1,5 +1,7 @@
 module Aureus
   class Engine < Rails::Engine
-    # auto wire
+    ActiveSupport.on_load :action_view do
+        include Aureus::Helper
+      end
   end
 end
