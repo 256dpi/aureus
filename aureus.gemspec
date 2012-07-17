@@ -3,15 +3,21 @@ $:.push File.expand_path("../lib", __FILE__)
 require "aureus/version"
 
 Gem::Specification.new do |s|
-  s.name        = "aureus"
-  s.version     = Aureus::VERSION
-  s.authors     = ["Joël Gähhwiler"]
-  s.email       = ["joel.gaehwiler@bluewin.ch"]
-  s.homepage    = "http://www.256dpi.ch"
-  s.summary     = "Aureus Admin Template"
+
+  # Main Info
+  s.name = "aureus"
+  s.version = Aureus::VERSION
+  s.summary = "Aureus Admin Template"
   s.description = "Aureus Admin Template"
+  s.license = "MIT"
+
+  # Additional Info
+  s.author = "Joël Gähhwiler"
+  s.email = "joel.gaehwiler@bluewin.ch"
+  s.homepage = "https://github.com/256dpi/aureus"
+  
+  # Files
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  #s.require_paths = ["lib"]
 end
