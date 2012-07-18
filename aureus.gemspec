@@ -19,5 +19,9 @@ Gem::Specification.new do |s|
   # Files
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  #s.require_paths = ["lib"]
+
+  # Dependencies
+  s.add_dependency "formtastic"
+  s.add_dependency "jquery-rails"
+
 end

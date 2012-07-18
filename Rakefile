@@ -1,9 +1,4 @@
-require 'rake/testtask'
 require 'highline/import'
-
-Rake::TestTask.new do |t|
-  t.libs << 'test'
-end
 
 desc "build and publish"
 task :build do
@@ -19,7 +14,7 @@ task :build do
   `rm *.gem`
 end
 
-task :test do
+task :check do
   require "rails"
   require "active_support"
   require "action_view"

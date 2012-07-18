@@ -17,3 +17,20 @@
 = aureus_row do
 	= aureus_box "a box title" do
 		%strong hello
+= aureus_row do
+	%strong only wrapper
+= aureus_row do |r|
+	- r.column 100 do
+		.one-column
+= aureus_row do |r|
+	- r.column 50 do
+		.first
+	- r.column 50 do
+		.second
+= aureus_row do |r|
+	- r.column 25 do
+		.first
+	- r.column 25 do
+		.second
+	- r.column 50 do
+		.third
