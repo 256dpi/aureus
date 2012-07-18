@@ -31,18 +31,6 @@
       th.center {
         text-align: center;
       }
-      th.b1 {
-        width: 1px;
-      }
-      th.b2 {
-        width: 80px;
-      }
-      th.b3 {
-        width: 120px;
-      }
-      th.b4 {
-        width: 160px;
-      }
     }
   }
   tbody {
@@ -79,6 +67,8 @@
       color: #444;
      }
     td.buttons {
+      width: 1px;
+      white-space: nowrap;
       text-align: right;
       padding: 7px !important;
       vertical-align: middle;
