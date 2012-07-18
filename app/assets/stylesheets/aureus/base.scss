@@ -20,13 +20,13 @@ strong {
 }
 
 #messages {
-  .error, .notice {
+  .error, .notice, .alert {
     padding: 10px 30px;
     color: white;
     font-size: 14px;
     text-shadow: -1px -1px 0 black;
   }
-  .error {
+  .error, .alert {
     @include gradient($color_main,$color_main_dark);
   }
   .notice {

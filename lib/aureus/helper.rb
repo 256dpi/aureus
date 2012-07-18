@@ -18,9 +18,29 @@ module Aureus
 			messages.render
 		end
 
-		def aureus_content content
-			content = Content.new content
+		def aureus_content html
+			content = Content.new html
 			content.render
+		end
+
+		def aureus_row &block
+			row = Row.new &block
+			row.render
+		end
+
+		def aureus_column width
+
+		end
+
+		def aureus_box title, &block
+			box = Box.new title, &block
+			box.render
+		end
+
+		def aureus_table resource
+			table = Table.new resource
+			yield table
+			table.render
 		end
 
 	end

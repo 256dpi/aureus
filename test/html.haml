@@ -1,0 +1,19 @@
+= aureus_toolbar "A nice title" do |t|
+	- t.left do |l|
+		- l.button "an anchor"
+		- l.button "an anchor"
+	- t.right do |r|
+		- r.info "some info"
+		- r.button "an anchor"
+
+= aureus_navigation do |n|
+	- n.title "the title"
+	- n.quicklinks "quicklinks"
+
+= aureus_messages :notice => "notice", :error => "error", :alert => "alert"
+
+= aureus_content "content"
+
+= aureus_row do
+	= aureus_box "a box title" do
+		%strong hello

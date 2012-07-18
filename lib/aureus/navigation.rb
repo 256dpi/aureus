@@ -18,7 +18,7 @@ module Aureus
 		def render
 			content_tag "div", :id => "navigation" do
 				content_tag "h2" do
-					compact content_tag("ul", @quicklinks, :id => "quicklinks"),@title
+					compact content_tag("ul", @quicklinks, :id => "quicklinks"), content_tag("span",@title)
 				end
 			end
 		end
