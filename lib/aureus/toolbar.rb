@@ -40,13 +40,7 @@ module Aureus
 		end
 
 		def render
-			content_tag "ul", { :class => @position } do
-				out = String.new.html_safe
-				@items.each do |i|
-					out += i.render
-				end
-				out
-			end
+			content_tag "ul", compact_render(*@items), :class => @position
 		end
 
 	end

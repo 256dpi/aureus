@@ -28,19 +28,25 @@ module Aureus
 			row.render
 		end
 
-		def aureus_column width
-
-		end
-
-		def aureus_box title, &block
-			box = Box.new title, &block
+		def aureus_box title, *args, &block
+			options = args.extract_options!
+      options[:for] ||= :text
+			box = Box.new title, options, &block
 			box.render
 		end
 
-		def aureus_table resource
-			table = Table.new resource
+		def aureus_datatable resource
+			table = DataTable.new resource
 			yield table
 			table.render
+		end
+
+		def aureus_form *args, &block
+			semantic_form_for *args do |f|
+				capture_haml f, &block
+			end
+			#form = Form.new args, &block
+			#form.render
 		end
 
 	end

@@ -1,5 +1,7 @@
 require "aureus/version"
 require "aureus/engine"
+
+require "formtastic"
 require "haml"
 
 module Aureus
@@ -12,8 +14,8 @@ module Aureus
 	autoload :Content
 	autoload :Row
 	autoload :Box
-	#autoload :Column
-	autoload :Table
+	autoload :DataTable
+	autoload :Form
 
 	class Renderable
 		include ActionView::Context

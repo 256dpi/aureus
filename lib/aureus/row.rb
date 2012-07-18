@@ -4,11 +4,60 @@ module Aureus
 
 		def initialize &block
 			init_haml_helpers
-			@content = capture_haml &block
+			@columns = Array.new
+			@content = capture_haml self, &block
+		end
+
+		def column width, &block
+			@columns << RowColumn.new(width,capture_haml(&block))
+		end
+
+		def space width
+			@columns << RowColumn.new(width,"")
 		end
 
 		def render
-			content_tag "div", @content, :class => "row"
+			if @columns.empty?
+				content_tag "div", @content, :class => "row"
+			elsif @columns.length == 1
+				content_tag "div", @columns.first.content, :class => "row"
+			else
+				total_width = @columns.inject 0 do |sum, n|
+					sum += n.width
+				end
+				out = String.new.html_safe
+				@columns.each_with_index do |c,i|
+					left = 1
+					right = 1
+					width = (100.0 / total_width * c.width).round
+					if i == 0
+						left = 0
+						width -= 1
+					elsif i == @columns.length-1
+						right = 0
+						width -= 1
+					else
+						width -= 2
+					end
+					out += content_tag "div", c.content, :style => "width: #{width}%; margin_left: #{left}%; margin_right: #{right}%"
+				end
+				content_tag "div", out, :class => "row"
+			end
+		end
+
+	end
+
+	class RowColumn < Renderable
+
+		attr_reader :width, :content
+
+		def initialize	width, content
+			@width = width
+			@content = content
+		end
+
+		def render
+
 		end
 
 	end

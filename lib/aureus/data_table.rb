@@ -1,11 +1,11 @@
 module Aureus
 
-	class Table < Renderable
+	class DataTable < Renderable
 
 		def initialize resource, toolbar = true
 			@resource = resource
 			@toolbar = toolbar
-			@head = TableHead.new
+			@head = DataTableHead.new
 			@rows = Array.new
 		end
 
@@ -15,7 +15,7 @@ module Aureus
 
 		def row
 			@resource.each do |r|
-				row = TableRow.new
+				row = DataTableRow.new
 				yield row, r
 				@rows << row
 			end
@@ -29,40 +29,34 @@ module Aureus
 
 	end
 
-	class TableHead < Renderable
+	class DataTableHead < Renderable
 
 		def initialize
 			@columns = Array.new
 		end
 
 		def text name
-			@columns << TableHeadColumn.new(name,"text-sorting")
+			@columns << DataTableHeadColumn.new(name,"text-sorting")
 		end
 
 		def date name
-			@columns << TableHeadColumn.new(name,"date-sorting")
+			@columns << DataTableHeadColumn.new(name,"date-sorting")
 		end
 
 		def raw name
-			@columns << TableHeadColumn.new(name,"no-sorting")
+			@columns << DataTableHeadColumn.new(name,"no-sorting")
 		end
 
 		def render
 			raw ""
 			content_tag "thead" do
-				content_tag "tr" do
-					out = String.new.html_safe
-						@columns.each do |i|
-						out += i.render
-					end
-					out
-				end
+				content_tag "tr", compact_render(*@columns)
 			end
 		end
 
 	end
 
-	class TableHeadColumn < Renderable
+	class DataTableHeadColumn < Renderable
 
 		def initialize name, sorting
 			@name = name
@@ -75,7 +69,7 @@ module Aureus
 
 	end
 
-	class TableRow < Renderable
+	class DataTableRow < Renderable
 
 		def initialize
 			@cells = Array.new
@@ -83,11 +77,11 @@ module Aureus
 		end
 
 		def cell data
-			@cells << TableRowCell.new(data)
+			@cells << DataTableRowCell.new(data)
 		end
 
 		def button type, content
-			@buttons << TableRowButton.new(type,content)
+			@buttons << DataTableRowButton.new(type,content)
 		end
 
 		def render
@@ -96,7 +90,7 @@ module Aureus
 
 	end
 
-	class TableRowCell < Renderable
+	class DataTableRowCell < Renderable
 
 		def initialize data
 			@data = data
@@ -108,7 +102,7 @@ module Aureus
 
 	end
 
-	class TableRowButton < Renderable
+	class DataTableRowButton < Renderable
 
 		def initialize type, content
 			@type = type
