@@ -2,8 +2,9 @@ module Aureus
 
 	class Table < Renderable
 
-		def initialize resource
+		def initialize resource, toolbar = true
 			@resource = resource
+			@toolbar = toolbar
 			@head = TableHead.new
 			@rows = Array.new
 		end
@@ -21,7 +22,7 @@ module Aureus
 		end
 
 		def render
-			content_tag "table", :id => @resource.class.name.downcase, :class => "datatable" do
+			content_tag "table", :id => @resource.class.name.downcase, :class => (@toolbar?"datatable":"datatable-no-toolbar") do
 				compact @head.render, content_tag("tbody",compact_render(*@rows))
 			end
 		end
@@ -34,12 +35,12 @@ module Aureus
 			@columns = Array.new
 		end
 
-		def string name
-			@columns << TableHeadColumn.new(name,"string")
+		def text name
+			@columns << TableHeadColumn.new(name,"text-sorting")
 		end
 
 		def date name
-			@columns << TableHeadColumn.new(name,"date")
+			@columns << TableHeadColumn.new(name,"date-sorting")
 		end
 
 		def raw name
@@ -63,13 +64,13 @@ module Aureus
 
 	class TableHeadColumn < Renderable
 
-		def initialize name, type
+		def initialize name, sorting
 			@name = name
-			@type = type
+			@sorting = sorting
 		end
 
 		def render
-			content_tag "th", @name, :class => @type
+			content_tag "th", @name, :class => @sorting
 		end
 
 	end
