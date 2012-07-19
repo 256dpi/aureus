@@ -5,8 +5,10 @@
 ## Installation
 
 To use **aureus** simply require the gem:
-	
-	gem "aureus"
+
+````ruby	
+gem "aureus"
+````
 
 The rails engine will automatically load the following dependencies:
 	
