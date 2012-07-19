@@ -1,0 +1,54 @@
+en:
+  devise:
+    ui:
+      confirmations:
+        new:
+          title: Resend confirmation instructions
+          email: Your Email Address
+          submit: Resend
+      passwords:
+        new:
+          title: Lost you Password?
+          email: Your Email Address
+          submit: Send
+        edit:
+          title: Change Password
+          password: Password
+          password_confirmation: Password Confirmation
+          submit: Change
+      registrations:
+        new:
+          title: Sign Up
+          email: Your Email
+          password: Password
+          password_confirmation: Password Confirmation
+          submit: Sign Up
+        edit:
+          title: Edit %{name}
+          email: Your Email
+          password: Password
+          password_confirmation: Password Confirmation
+          current_password: Current Password
+          submit: Update
+          destroy: Delete Account
+          destroy_confirm: Are you sure?
+          back: Back
+      sessions:
+        new:
+          title: Log In
+          email: Email Address
+          password: Password
+          remember_me: Remember me?
+          submit: Log In
+      unlocks:
+        new:
+          title: Resend unlock instructions
+          email: Email Address
+          submit: Resend
+      shared:
+        links:
+          login: Log In
+          signup: Sign Up
+          lost_password: Lost Password?
+          no_confirmation: No Confirmation Mail Received?
+          no_unlock: No Unlock Mail Received?

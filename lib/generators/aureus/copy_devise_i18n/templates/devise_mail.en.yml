@@ -1,0 +1,18 @@
+en:
+  devise:
+    mail:
+      confirmation_instructions:
+        title: Welcome %{name}!
+        info: 'You can confirm your account through the link below:'
+        link: Confirm my account
+      reset_password_instructions:
+        title: Hello %{name}!
+        info: Someone has requested a link to change your password, and you can do this through the link below.
+        link: Change my password
+        foot1: If you didn't request this, please ignore this email.
+        foot2: Your password won't change until you access the link above and create a new one.
+      unlock_instructions:
+        title: Hello %{name}!
+        info1: Your account has been locked due to an excessive amount of unsuccessful sign in attempts.
+        info2: 'Click the link below to unlock your account:'
+        link: Unlock my account
