@@ -1,0 +1,9 @@
+= aureus_box t("devise.ui.registrations.new.title"), :centered => true, :for => :form do |b|
+  - b.content do
+    = semantic_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |form|
+      = form.input :email, :label => t("devise.ui.registrations.new.email")
+      = form.input :password, :label => t("devise.ui.registrations.new.password")
+      = form.input :password_confirmation, :label => t("devise.ui.registrations.new.password_confirmation")
+      = form.action :submit, :label => t("devise.ui.registrations.new.submit")
+  - b.foot do
+    = render :partial => "{{{folder}}}/shared/links"
