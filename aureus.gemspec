@@ -23,5 +23,6 @@ Gem::Specification.new do |s|
   # Dependencies
   s.add_dependency "formtastic"
   s.add_dependency "jquery-rails"
+  s.add_dependency "haml"
 
 end
