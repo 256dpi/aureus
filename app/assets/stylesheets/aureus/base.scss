@@ -1,4 +1,4 @@
-$font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+$font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
 * {
   font-family: $font-family;
@@ -27,7 +27,7 @@ strong {
     text-shadow: -1px -1px 0 black;
   }
   .error, .alert {
-    @include gradient($color_main,$color_main_dark);
+    @include gradient($color_warn,$color_warn_dark);
   }
   .notice {
     @include gradient(#666,#444);

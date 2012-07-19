@@ -17,7 +17,7 @@ module Aureus
 		end
 
 		def render
-			content_tag "div", { :id => "topbar" } do
+			content_tag "div", { :id => "aureus-toolbar" } do
 				compact content_tag("h1",@title), @left.render, @right.render
 			end
 		end

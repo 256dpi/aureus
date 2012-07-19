@@ -88,7 +88,7 @@
           text-shadow: 1px 1px 0 #eee;
         }
       }
-      a.edit, a.delete, a.show, a.recover, a.print {
+      a.edit, a.destroy, a.show, a.recover, a.print {
         width: 16px;
         height: 16px;
         display: inline-block;
@@ -107,7 +107,7 @@
       a.edit span {
         background: url($asset_icon_pencil);
       }
-      a.delete span {
+      a.destroy span {
         background: url($asset_icon_cross);
       }
       a.show span {

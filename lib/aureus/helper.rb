@@ -29,9 +29,7 @@ module Aureus
 		end
 
 		def aureus_box title, *args, &block
-			options = args.extract_options!
-      options[:for] ||= :text
-			box = Box.new title, options, &block
+			box = Box.new title, args, &block
 			box.render
 		end
 
@@ -45,8 +43,6 @@ module Aureus
 			semantic_form_for *args do |f|
 				capture_haml f, &block
 			end
-			#form = Form.new args, &block
-			#form.render
 		end
 
 	end

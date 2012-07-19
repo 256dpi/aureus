@@ -1,8 +1,10 @@
 # ToDo
 
+* add generators for views
+* add generator for copying devise views
+* add generator fpr copying i18n files
 * create helper methods to completly generate interface
-* table buttons and datatanle improvements
-* table icon buttons
+* table buttons and datatable improvements
 * proper namespace css and clean up
 * update scripts
 * use i18n to be multi lingual

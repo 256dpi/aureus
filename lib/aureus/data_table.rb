@@ -80,8 +80,12 @@ module Aureus
 			@cells << DataTableRowCell.new(data)
 		end
 
-		def button type, content
-			@buttons << DataTableRowButton.new(type,content)
+		def button type_or_title, url, *args
+			if type_or_title.is_a? Symbol
+				@buttons << DataTableRowButton.new(type_or_title,type_or_title.to_s,url,args)
+			else
+				@buttons << DataTableRowButton.new(:text,type_or_title.to_s,url,args)
+			end
 		end
 
 		def render
@@ -104,13 +108,30 @@ module Aureus
 
 	class DataTableRowButton < Renderable
 
-		def initialize type, content
+		def initialize type, text, url, options
+			init options, :remote => true, :confirm => "Delete resource?"
 			@type = type
-			@content = content
+			@text = text
+			@url = url
 		end
 
 		def render
-			@content
+			case @type
+			when :text
+				link_to @text, @url
+			when :print
+				link_to @text, @url, :class => :print
+			when :show
+				link_to @text, @url, :class => :show
+			when :edit	
+				link_to @text, @url, :class => :edit
+			when :destroy
+				if @options[:remote]
+					link_to @text, @url, :class => :destroy, :method => :delete, :data => { :confirm => @options[:confirm] }
+				else
+					link_to @text, @url, :class => :destroy
+				end
+			end
 		end
 
 	end

@@ -8,7 +8,7 @@
 
 = aureus_navigation do |n|
 	- n.title "the title"
-	- n.quicklinks "quicklinks"
+	- n.button "quicklinks"
 
 = aureus_messages :notice => "notice", :error => "error", :alert => "alert"
 
@@ -17,16 +17,20 @@
 = aureus_row do
 	= aureus_box "a box title" do
 		%strong hello
+
 = aureus_row do
 	%strong only wrapper
+
 = aureus_row do |r|
 	- r.column 100 do
 		.one-column
+
 = aureus_row do |r|
 	- r.column 50 do
 		.first
 	- r.column 50 do
 		.second
+
 = aureus_row do |r|
 	- r.column 25 do
 		.first
@@ -34,3 +38,23 @@
 		.second
 	- r.column 50 do
 		.third
+
+= aureus_box "a title", :centered => true, :for => :form do
+	%li a entry
+
+= aureus_box "a title" do |b|
+	- b.content do
+		%strong the content
+	- b.foot do
+		%strong the footer
+
+= aureus_datatable @resources do |t|
+	- t.head do |h|
+		- h.text "Title"
+		- h.text "Text"
+	- t.row do |r,res|
+		- r.cell res.title
+		- r.cell res.text
+		- r.button :show, "url"
+		- r.button :edit, "url"
+		- r.button :destroy, "url", :confirm => "Delete user?"

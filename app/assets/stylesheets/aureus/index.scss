@@ -26,6 +26,7 @@ $asset_icon_print: image-path("aureus/icon-print.png");
 
 // colors
 $color_main_dark: darken($color_main,15);
+$color_warn_dark: darken($color_warn,15);
 
 @import "reset";
 @import "mixins";

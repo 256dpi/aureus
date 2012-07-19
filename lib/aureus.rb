@@ -21,7 +21,12 @@ module Aureus
 		include ActionView::Context
 		include ActionView::Helpers::TagHelper
 		include ActionView::Helpers::CaptureHelper
+		include ActionView::Helpers::UrlHelper
 		include Haml::Helpers
+
+		def init args, *defaults
+			@options = defaults.extract_options!.merge args.extract_options!
+		end
 
 		def content_tag name, content_or_options_with_block = nil, options = nil, escape = false, &block
 			super name, content_or_options_with_block, options, escape, &block

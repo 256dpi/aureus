@@ -15,7 +15,7 @@ module Aureus
 			@buttons << NavigationButton.new(content)
 		end
 
-		def submit_form resource, text
+		def submit_form_button resource, text
 			@buttons << NavigationButton.new(content_tag("a",text,:onclick=>"triggerForm('form.#{resource.class.name.downcase}')"))
 		end
 
