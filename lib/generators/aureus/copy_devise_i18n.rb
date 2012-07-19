@@ -12,7 +12,7 @@ module Aureus
 				target = "app/views/"+folder
 				directory "devise", target
 				Dir[target+"/**/*.haml"].each do |file|
-					gsub_file file, "{{{folder}}}", target
+					gsub_file file, "{{{folder}}}", folder
 				end
 			end
 
