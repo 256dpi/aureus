@@ -31,8 +31,8 @@ module Aureus
 			@position = position
 		end
 
-		def button content
-			@items << ToolbarButton.new(content)
+		def link_to text, url, *args
+			@items << ToolbarButton.new(text,url,args)
 		end
 
 		def info text
@@ -47,12 +47,14 @@ module Aureus
 
 	class ToolbarButton < Renderable
 
-		def initialize content
-			@content = content
+		def initialize text, url, args
+			@text = text
+			@url = url
+			@args = args
 		end
 
 		def render
-			content_tag "li", @content
+			content_tag "li", link_to(@text,@url,*@args)
 		end
 
 	end

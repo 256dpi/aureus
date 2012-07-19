@@ -1,10 +1,10 @@
 = aureus_toolbar "A nice title" do |t|
 	- t.left do |l|
-		- l.button "an anchor"
-		- l.button "an anchor"
+		- l.link_to "an anchor", "http://www.example.com"
+		- l.link_to "an anchor", "http://www.example.com"
 	- t.right do |r|
 		- r.info "some info"
-		- r.button "an anchor"
+		- r.link_to "an anchor", "http://www.example.com"
 
 = aureus_navigation do |n|
 	- n.title "the title"
