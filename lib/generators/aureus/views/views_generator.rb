@@ -47,24 +47,27 @@ module Aureus
 					singular = real_name
 					plural = real_name.pluralize
 					base_i18n = {
-						real_name.downcase.pluralize => {
+						plural.downcase => {
       				"index" => { "title" => plural, "button_new" => "Add "+singular },
       				"new" => { "title" => "New "+singular, "button_cancel" => "Cancel", "button_save" => "Save" },
       				"edit" => { "title" => "Edit "+singular, "button_cancel" => "Cancel", "button_save" => "Save" },
       				"form" => { "box_title" => "Details" },
-      				"list" => { "box_title" => plural+" Listing" }
+      				"list" => { "box_title" => plural+" Listing" },
+      				"show" => { "title" => singular, "button_edit" => "Edit "+singular, "button_back" => "Back" },
+      				"item" => { "box_title" => "Details" }
       			}
 					}
       		attributes = Hash.new
       		columns.each do |c|
-      			base_i18n[real_name.downcase.pluralize]["list"][("column_"+c)] = c.titleize
+      			base_i18n[plural.downcase]["item"][("entry_"+c)] = c.titleize
+      			base_i18n[plural.downcase]["list"][("column_"+c)] = c.titleize
       			attributes[c] = c.titleize
       		end
       		namespace.reverse.each do |n|
       			base_i18n = { n => base_i18n }
       		end
       		base_i18n = { "en" => base_i18n }
-      		base_i18n["en"]["activerecord"] = { "attributes" => { real_name.downcase.pluralize => attributes }}
+      		base_i18n["en"]["activerecord"] = { "attributes" => { singular.downcase => attributes }}
 					create_file i18n_file, base_i18n.to_yaml
 				end
 
