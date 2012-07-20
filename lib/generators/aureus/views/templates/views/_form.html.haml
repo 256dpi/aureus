@@ -1,6 +1,6 @@
 = aureus_form [{{{FORM_PATH}}},@{{{NAME_SINGULAR}}}] do |f|
   = aureus_row do |r|
     - r.column 25 do
-      = aureus_box "{{{TITLE_SINGULAR}}}", :for => :form do
+      = aureus_box t(".box_title"), :for => :form do
 {{{INPUTS}}}
     - r.space 75
