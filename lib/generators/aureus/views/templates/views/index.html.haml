@@ -1,0 +1,6 @@
+- content_for :navigation do
+  = aureus_navigation do |n|
+    - n.title "{{{TITLE_PLURAL}}}"
+    - n.button link_to("New {{{TITLE_SINGULAR}}}", new_{{{PATH_SINGULAR}}}_url) if can? :create, {{{MODEL}}}
+
+= render "list"

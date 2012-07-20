@@ -1,0 +1,7 @@
+- content_for :navigation do
+  = aureus_navigation do |n|
+    - n.title "Edit {{{TITLE_SINGULAR}}}"
+    - n.button link_to "Cancel", {{{PATH_PLURAL}}}_url(@{{{NAME_SINGULAR}}}) if can? :show, {{{MODEL}}}
+    - n.submit_form_button @{{{NAME_SINGULAR}}}, "Save {{{TITLE_SINGULAR}}}" if can? :update, {{{MODEL}}}
+
+= render "form"

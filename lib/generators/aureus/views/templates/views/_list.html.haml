@@ -1,0 +1,10 @@
+= aureus_row do
+  = aureus_box "{{{TITLE_PLURAL}}}" do
+    = aureus_datatable @{{{NAME_PLURAL}}} do |t|
+      - t.head do |h|
+{{{TABLE_HEADS}}}
+      - t.row do |r,{{{NAME_SINGULAR}}}|
+{{{TABLE_CELLS}}}
+        - r.button :show, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}) if can? :show, {{{MODEL}}}
+        - r.button :edit, edit_{{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}) if can? :edit, {{{MODEL}}}
+        - r.button :destroy, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}), :confirm => "Delete {{{TITLE_SINGULAR}}}?" if can? :destroy, {{{MODEL}}}
