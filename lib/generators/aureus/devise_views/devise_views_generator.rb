@@ -2,9 +2,9 @@ module Aureus
 
 	module Generators
 
-		class CreateDeviseViewsGenerator < Rails::Generators::Base
+		class DeviseViewsGenerator < Rails::Generators::Base
 
-			desc "create aureus compliant haml views with aureus helpers"
+			desc "generates aureus compliant devise haml views with aureus helpers"
 			source_root File.expand_path("../templates", __FILE__)
 			argument :folder, :type => :string, :default => "devise"
 
@@ -12,7 +12,7 @@ module Aureus
 				target = "app/views/"+folder
 				directory "devise", target
 				Dir[target+"/**/*.haml"].each do |file|
-					gsub_file file, "{{{folder}}}", folder
+					gsub_file file, "{{{folder}}}", folder, :verbose => false
 				end
 			end
 

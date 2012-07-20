@@ -2,9 +2,9 @@ module Aureus
 
 	module Generators
 
-		class CopyDeviseI18nGenerator < Rails::Generators::Base
+		class DeviseI18nGenerator < Rails::Generators::Base
 
-			desc "copies the improved devise i18n files"
+			desc "generates i18n files for the devise views"
 			source_root File.expand_path("../templates", __FILE__)
 
 			def generate
