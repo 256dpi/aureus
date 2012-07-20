@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    aureus (0.4.0)
+    aureus (1.0.0)
       formtastic
       haml
       jquery-rails
