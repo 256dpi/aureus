@@ -32,7 +32,7 @@ module Aureus
 						"TABLE_HEADS" => columns.collect{ |c| '        - h.text t(".column_'+c+'")' }.join("\n"),
 						"TABLE_CELLS" => columns.collect{ |c| '        - r.cell '+real_name.downcase+'.'+c }.join("\n"),
 						"ENTRIES" => columns.collect{ |c| '        - l.entry t(".entry_'+c+'"), @'+real_name.downcase+'.'+c }.join("\n"),
-						"INPUTS" => columns2.collect{ |c| '        = f.input :'+c }.join("\n"),
+						"INPUTS" => columns2.collect{ |c| '        = f.input :'+c+', :label => t(".field_'+c+'")' }.join("\n"),
 						"FORM_PATH" => namespace.collect{ |n| '"'+n+'"' }.join(",")
 					}
 					Dir[target+"/*.haml"].each do |file|
@@ -57,17 +57,15 @@ module Aureus
       				"item" => { "box_title" => "Details" }
       			}
 					}
-      		attributes = Hash.new
       		columns.each do |c|
       			base_i18n[plural.downcase]["item"][("entry_"+c)] = c.titleize
       			base_i18n[plural.downcase]["list"][("column_"+c)] = c.titleize
-      			attributes[c] = c.titleize
+      			base_i18n[plural.downcase]["form"][("field_"+c)] = c.titleize
       		end
       		namespace.reverse.each do |n|
       			base_i18n = { n => base_i18n }
       		end
       		base_i18n = { "en" => base_i18n }
-      		base_i18n["en"]["activerecord"] = { "attributes" => { singular.downcase => attributes }}
 					create_file i18n_file, base_i18n.to_yaml
 				end
 
