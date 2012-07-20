@@ -1,21 +1,20 @@
 #navigation {
   border-bottom: 1px solid #bbb;
-  padding: 10px 40px;
+  padding: 20px 40px;
   overflow: hidden;
   @include gradient(#eee,#ddd);
   h2 {
+    float: left;
     span {
-      padding: 10px 0;
       color: #222;
       font-size: 36px;
       font-weight: bold;
       text-shadow: 1px 1px 0 white;
-      display: block;
       overflow: hidden;
     }
   }
   ul {
-    margin-top: 20px;
+    margin-top: 10px;
     float: right;
     li {
       display: inline;
@@ -36,7 +35,7 @@
       }
     }
     li:hover {
-      a {
+      a, span {
         color: $color_main;
       }
     }

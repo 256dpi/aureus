@@ -4,4 +4,4 @@
 * datatable improvements
 * proper namespace css and clean up
 * update javascripts
-* use i18n to be multi lingual
+* datatable i18n
