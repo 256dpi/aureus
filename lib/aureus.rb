@@ -16,6 +16,7 @@ module Aureus
 	autoload :Box
 	autoload :DataTable
 	autoload :Form
+	autoload :Listing
 
 	class Renderable
 		include ActionView::Context

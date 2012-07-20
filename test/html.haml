@@ -26,10 +26,9 @@
 		.one-column
 
 = aureus_row do |r|
-	- r.column 50 do
+	- r.column 2 do
 		.first
-	- r.column 50 do
-		.second
+	- r.space 2
 
 = aureus_row do |r|
 	- r.column 25 do
@@ -58,3 +57,8 @@
 		- r.button :show, "url"
 		- r.button :edit, "url"
 		- r.button :destroy, "url", :confirm => "Delete user?"
+
+= aureus_listing do |l|
+	- l.entry "head", "body"
+	- l.entry "head2" do
+		%strong body2

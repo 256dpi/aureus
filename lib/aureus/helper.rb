@@ -45,6 +45,12 @@ module Aureus
 			end
 		end
 
+		def aureus_listing
+			listing = Listing.new
+			yield listing
+			listing.render
+		end
+
 	end
 
 end
