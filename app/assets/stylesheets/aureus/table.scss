@@ -79,7 +79,7 @@
         @include border-radius(30px);
         @include gradient(#eee,#ccc);
         border: 1px solid #999;
-        margin: 0 1px;
+        margin: 0 2px;
         span {
           color: #555;
           text-decoration: none;
@@ -88,7 +88,7 @@
           text-shadow: 1px 1px 0 #eee;
         }
       }
-      a.edit, a.destroy, a.show, a.recover, a.print {
+      a.edit, a.destroy, a.show, a.recover, a.print, a.icon {
         width: 16px;
         height: 16px;
         display: inline-block;

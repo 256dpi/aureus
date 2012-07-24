@@ -25,6 +25,10 @@ module Aureus
 		include ActionView::Helpers::UrlHelper
 		include Haml::Helpers
 
+		def initialize content
+			@content = content
+		end
+
 		def init args, *defaults
 			@options = defaults.extract_options!.merge args.extract_options!
 		end
@@ -47,6 +51,10 @@ module Aureus
 				out += i.render
 			end
 			out
+		end
+
+		def render
+			@content
 		end
 
 	end

@@ -23,8 +23,6 @@ But you have to ensure that these gems are available:
 
 ## Helper Methods
 
-
-
 ## The Layout
 
 Here is a simple layout done with aureus helpers:

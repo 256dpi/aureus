@@ -27,19 +27,19 @@ module Aureus
 				end
 				out = String.new.html_safe
 				@columns.each_with_index do |c,i|
-					left = 1
-					right = 1
+					left = 0.5
+					right = 0.5
 					width = (100.0 / total_width * c.width).round
 					if i == 0
 						left = 0
-						width -= 1
+						width -= 0.5
 					elsif i == @columns.length-1
 						right = 0
-						width -= 1
+						width -= 0.5
 					else
-						width -= 2
+						width -= 1
 					end
-					out += content_tag "div", c.content, :style => "width: #{width}%; margin_left: #{left}%; margin_right: #{right}%"
+					out += content_tag "div", c.content, :class => :column, :style => "width: #{width}%; margin-left: #{left}%; margin-right: #{right}%"
 				end
 				content_tag "div", out, :class => "row"
 			end

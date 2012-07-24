@@ -33,7 +33,7 @@ module Aureus
 						"TABLE_CELLS" => columns.collect{ |c| '        - r.cell '+real_name.downcase+'.'+c }.join("\n"),
 						"ENTRIES" => columns.collect{ |c| '        - l.entry t(".entry_'+c+'"), @'+real_name.downcase+'.'+c }.join("\n"),
 						"INPUTS" => columns2.collect{ |c| '        = f.input :'+c+', :label => t(".field_'+c+'")' }.join("\n"),
-						"FORM_PATH" => namespace.collect{ |n| '"'+n+'"' }.join(",")
+						"FORM_PATH" => namespace.collect{ |n| '"'+n+'"' }.push("@"+real_name.downcase).join(",")
 					}
 					Dir[target+"/*.haml"].each do |file|
 						replacements.each do |key,value|

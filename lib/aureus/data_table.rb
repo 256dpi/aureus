@@ -72,12 +72,17 @@ module Aureus
 	class DataTableRow < Renderable
 
 		def initialize
+			init_haml_helpers
 			@cells = Array.new
 			@buttons = Array.new
 		end
 
-		def cell data
-			@cells << DataTableRowCell.new(data)
+		def cell data="", &block
+			if block_given?
+				@cells << DataTableRowCell.new(capture_haml(&block))
+			else
+				@cells << DataTableRowCell.new(data)
+			end
 		end
 
 		def button type_or_title, url, *args
@@ -86,6 +91,10 @@ module Aureus
 			else
 				@buttons << DataTableRowButton.new(:text,type_or_title.to_s,url,args)
 			end
+		end
+
+		def button_raw content
+			@buttons << Renderable.new(content)
 		end
 
 		def render
