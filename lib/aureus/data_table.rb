@@ -2,9 +2,9 @@ module Aureus
 
 	class DataTable < Renderable
 
-		def initialize resource, toolbar = true
+		def initialize resource, args
+			init args, { :toolbar => true }
 			@resource = resource
-			@toolbar = toolbar
 			@head = DataTableHead.new
 			@rows = Array.new
 		end
@@ -22,7 +22,7 @@ module Aureus
 		end
 
 		def render
-			content_tag "table", :id => @resource.class.name.downcase, :class => (@toolbar?"datatable":"datatable-no-toolbar") do
+			content_tag "table", :id => @resource.class.name.downcase, :class => (@options[:toolbar] ? "datatable":"datatable-no-toolbar") do
 				compact @head.render, content_tag("tbody",compact_render(*@rows))
 			end
 		end

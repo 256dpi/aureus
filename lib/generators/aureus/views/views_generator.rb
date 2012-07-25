@@ -52,7 +52,7 @@ module Aureus
       				"new" => { "title" => "New "+singular, "button_cancel" => "Cancel", "button_save" => "Save" },
       				"edit" => { "title" => "Edit "+singular, "button_cancel" => "Cancel", "button_save" => "Save" },
       				"form" => { "box_title" => "Details" },
-      				"list" => { "box_title" => plural+" Listing" },
+      				"list" => { "box_title" => plural+" Listing", "destroy_confirm" => "Really want to delete the "+singular+"?" },
       				"show" => { "title" => singular, "button_edit" => "Edit "+singular, "button_back" => "Back" },
       				"item" => { "box_title" => "Details" }
       			}

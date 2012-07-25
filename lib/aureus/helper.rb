@@ -33,8 +33,8 @@ module Aureus
 			box.render
 		end
 
-		def aureus_datatable resource
-			table = DataTable.new resource
+		def aureus_datatable resource, *args
+			table = DataTable.new resource, args
 			yield table
 			table.render
 		end
@@ -49,6 +49,11 @@ module Aureus
 			listing = Listing.new
 			yield listing
 			listing.render
+		end
+
+		def aureus_map *args
+			map = Map.new args
+			map.render
 		end
 
 	end
