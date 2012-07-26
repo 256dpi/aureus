@@ -8,7 +8,9 @@ Aureus is a tool to quickly generate admin interfaces for a rails app. It's betw
 
 To use **aureus** simply require the gem:
 
-	gem "aureus"
+````ruby
+gem "aureus"
+```
 
 The rails engine will automatically load the following dependencies:
 	
@@ -27,44 +29,48 @@ Aureus uses the rails asset pipeline to load and override the style and behavior
 
 This is the basic application.scss setup:
 
-	/*
-	*= require_self
-	*= depend_on aureus
-	*/
+````scss
+/*
+*= require_self
+*= depend_on aureus
+*/
 
-	$color_main: #0f0; // the color used for highlights
-	$color_warn: $f00; // the color used for warning (should be red)
+$color_main: #0f0; // the color used for highlights
+$color_warn: $f00; // the color used for warning (should be red)
 
-	@import "aureus";
+@import "aureus";
 
-	// your styles here ...
+// your styles here ...
+```
 
 Configure the scripts in application.js:
 
-	//= require_self
-	//= require aureus
+````js
+//= require_self
+//= require aureus
 
-	var datepickerConfiguration = {
-	  dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
-	  monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','December'],
-	  nextText: "&rarr;",
-	  prevText: "&larr;",
-	  dateFormat: "yy-mm-dd",
-	  firstDay: 1,
-	}
+var datepickerConfiguration = {
+  dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+  monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','December'],
+  nextText: "&rarr;",
+  prevText: "&larr;",
+  dateFormat: "yy-mm-dd",
+  firstDay: 1,
+}
 
-	var timepickerConfiguration = {
-	  isoTime: true,
-	  minTime: {hour:6,minute:0},
-	  maxTime: {hour:22,minute:0},
-	  timInterval: 30
-	}
+var timepickerConfiguration = {
+  isoTime: true,
+  minTime: {hour:6,minute:0},
+  maxTime: {hour:22,minute:0},
+  timInterval: 30
+}
 
-	var tooltipConfiguration = {
-	  background: "none",
-	  color: 'black',
-	  border: "none"
-	}
+var tooltipConfiguration = {
+  background: "none",
+  color: 'black',
+  border: "none"
+}
+````
 
 ## Helpers
 
@@ -182,7 +188,7 @@ To generate a base layout issue `rails g aureus:layout layout_name` which produc
 
 The awesome thing about aureus is the following generator `rails g aureus:views Resource ResourcesController` which generates all views and i18n files for you. It uses your ActiveRecord model to determine all attributes and uses the controller name for proper folders. The above command will generate:
 
-#### /app/views/namespace/resources/index.html.haml
+#### app/views/resources/index.html.haml
 
 	- content_for :navigation do
 	  = aureus_navigation do |n|
@@ -191,11 +197,125 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
 
 	= render "list"
 
+#### app/views/resources/show.html.haml
 
+	- content_for :navigation do
+	  = aureus_navigation do |n|
+	    - n.title t(".title")
+	    - n.button link_to(t(".button_edit"), edit_resource_url(@resource)) if can? :update, Resource
+	    - n.button link_to(t(".button_back"),resources_url) if can? :index, Resource
 
+	= render "item"
 
+#### app/views/resources/new.html.haml
 
+	- content_for :navigation do
+	  = aureus_navigation do |n|
+	    - n.title t(".title")
+	    - n.button link_to(t(".button_cancel"), resources_url) if can? :index, Resource
+	    - n.submit_form_button @resource, t(".button_save") if can? :create, Resource
 
+	= render "form"
 
+#### app/views/resources/edit.html.haml
 
+	- content_for :navigation do
+	  = aureus_navigation do |n|
+	    - n.title t(".title")
+	    - n.button link_to t(".button_cancel"), resources_url if can? :show, Resource
+	    - n.submit_form_button @resource, t(".button_save") if can? :update, Resource
 
+	= render "form"
+
+#### app/views/resources/_list.html.haml
+
+	= aureus_row do
+	  = aureus_box t(".box_title") do
+	    = aureus_datatable @resources do |t|
+	      - t.head do |h|
+	        - h.text t(".column_id")
+	        - h.text t(".column_name")
+	        - h.text t(".column_body")
+	        - h.text t(".column_description")
+	        - h.text t(".column_created_at")
+	        - h.text t(".column_updated_at")
+	      - t.row do |r,resource|
+	        - r.cell resource.id
+	        - r.cell resource.name
+	        - r.cell resource.body
+	        - r.cell resource.description
+	        - r.cell resource.created_at
+	        - r.cell resource.updated_at
+	        - r.button :show, resource_url(resource) if can? :show, Resource
+	        - r.button :edit, edit_resource_url(resource) if can? :edit, Resource
+	        - r.button :destroy, resource_url(resource), :confirm => t(".destroy_confirm") if can? :destroy, Resource
+
+#### app/views/resources/_form.html.haml
+
+	= aureus_form [@resource] do |f|
+	  = aureus_row do |r|
+	    - r.column 25 do
+	      = aureus_box t(".box_title"), :for => :form do
+	        = f.input :name, :label => t(".field_name")
+	        = f.input :body, :label => t(".field_body")
+	        = f.input :description, :label => t(".field_description")
+	    - r.space 75
+
+#### app/views/resources/_item.html.haml
+
+	= aureus_row do |r|
+	  - r.column 25 do
+	    = aureus_box t(".box_title") do
+	      = aureus_listing do |l|
+	        - l.entry t(".entry_id"), @resource.id
+	        - l.entry t(".entry_name"), @resource.name
+	        - l.entry t(".entry_body"), @resource.body
+	        - l.entry t(".entry_description"), @resource.description
+	        - l.entry t(".entry_created_at"), @resource.created_at
+	        - l.entry t(".entry_updated_at"), @resource.updated_at
+	  - r.space 75
+
+#### config/locales/resources.en.yml
+
+	en:
+	  resources:
+	    index:
+	      title: Resources
+	      button_new: Add Resource
+	    new:
+	      title: New Resource
+	      button_cancel: Cancel
+	      button_save: Save
+	    edit:
+	      title: Edit Resource
+	      button_cancel: Cancel
+	      button_save: Save
+	    form:
+	      box_title: Details
+	      field_id: Id
+	      field_name: Name
+	      field_body: Body
+	      field_description: Description
+	      field_created_at: Created At
+	      field_updated_at: Updated At
+	    list:
+	      box_title: Resources Listing
+	      destroy_confirm: Really want to delete the Resource?
+	      column_id: Id
+	      column_name: Name
+	      column_body: Body
+	      column_description: Description
+	      column_created_at: Created At
+	      column_updated_at: Updated At
+	    show:
+	      title: Resource
+	      button_edit: Edit Resource
+	      button_back: Back
+	    item:
+	      box_title: Details
+	      entry_id: Id
+	      entry_name: Name
+	      entry_body: Body
+	      entry_description: Description
+	      entry_created_at: Created At
+      entry_updated_at: Updated At
