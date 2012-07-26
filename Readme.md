@@ -297,7 +297,7 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
 
 #### config/locales/resources.en.yml
 
-````yaml
+````yml
 en:
   resources:
     index:
