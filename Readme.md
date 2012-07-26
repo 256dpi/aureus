@@ -80,12 +80,12 @@ There are several helper methods available to generate the interface:
 // Toolbar
 = aureus_toolbar "A nice title" do |t|
 	- t.left do |l|
-		- l.link_to "an anchor", "http://www.example.com"
-		- l.link_to "an anchor", "http://www.example.com"
+		- l.link_to "root", root_url
+		- l.link_to "an anchor", an_anchor_url
 		- l.info "cool"
 	- t.right do |r|
 		- r.info "some info"
-		- r.link_to "an anchor", "http://www.example.com"
+		- r.link_to "an anchor", some_other_controller_url
 
 // Navigation
 = aureus_navigation do |n|
@@ -106,7 +106,7 @@ There are several helper methods available to generate the interface:
 	- r.column 100 do
 		.one-column
 = aureus_row do |r|
-	- r.column 2 do // two '2 width' colums are the same like 50 / 50
+	- r.column 2 do # two '2 width' colums are the same like 50 / 50
 		.first
 	- r.space 2
 = aureus_row do |r|
@@ -144,11 +144,11 @@ There are several helper methods available to generate the interface:
 		- r.button :show, "url" if can? :show, Resource
 		- r.button :edit, "url"
 		- r.button :destroy, "url", :confirm => "Delete user?"
-		- r.button_raw link_to(...,..., :class => ["icon","my-icon"])
+		- r.button_raw link_to("a action",the_action_url, :class => ["icon","my-icon"])
 
 // Forms
 = aureus_form [@parent,@resource] do |f|
-	= f.input :name // formtastic
+	= f.input :name # formtastic is here
 
 // Listings
 = aureus_listing do |l|
@@ -186,7 +186,7 @@ To generate a base layout issue `rails g aureus:layout layout_name` which produc
     = yield :navigation
     = aureus_messages flash
     = aureus_content yield
-````
+```
 
 ### Views
 
@@ -194,132 +194,148 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
 
 #### app/views/resources/index.html.haml
 
-	- content_for :navigation do
-	  = aureus_navigation do |n|
-	    - n.title t(".title")
-	    - n.button link_to(t(".button_new"), new_resource_url) if can? :create, Resource
+````haml
+- content_for :navigation do
+  = aureus_navigation do |n|
+    - n.title t(".title")
+    - n.button link_to(t(".button_new"), new_resource_url) if can? :create, Resource
 
-	= render "list"
+= render "list"
+````
 
 #### app/views/resources/show.html.haml
 
-	- content_for :navigation do
-	  = aureus_navigation do |n|
-	    - n.title t(".title")
-	    - n.button link_to(t(".button_edit"), edit_resource_url(@resource)) if can? :update, Resource
-	    - n.button link_to(t(".button_back"),resources_url) if can? :index, Resource
+````haml
+- content_for :navigation do
+  = aureus_navigation do |n|
+    - n.title t(".title")
+    - n.button link_to(t(".button_edit"), edit_resource_url(@resource)) if can? :update, Resource
+    - n.button link_to(t(".button_back"),resources_url) if can? :index, Resource
 
-	= render "item"
+= render "item"
+````
 
 #### app/views/resources/new.html.haml
 
-	- content_for :navigation do
-	  = aureus_navigation do |n|
-	    - n.title t(".title")
-	    - n.button link_to(t(".button_cancel"), resources_url) if can? :index, Resource
-	    - n.submit_form_button @resource, t(".button_save") if can? :create, Resource
+````haml
+- content_for :navigation do
+  = aureus_navigation do |n|
+    - n.title t(".title")
+    - n.button link_to(t(".button_cancel"), resources_url) if can? :index, Resource
+    - n.submit_form_button @resource, t(".button_save") if can? :create, Resource
 
-	= render "form"
+= render "form"
+````
 
 #### app/views/resources/edit.html.haml
 
-	- content_for :navigation do
-	  = aureus_navigation do |n|
-	    - n.title t(".title")
-	    - n.button link_to t(".button_cancel"), resources_url if can? :show, Resource
-	    - n.submit_form_button @resource, t(".button_save") if can? :update, Resource
+````haml
+- content_for :navigation do
+  = aureus_navigation do |n|
+    - n.title t(".title")
+    - n.button link_to t(".button_cancel"), resources_url if can? :show, Resource
+    - n.submit_form_button @resource, t(".button_save") if can? :update, Resource
 
-	= render "form"
+= render "form"
+````
 
 #### app/views/resources/_list.html.haml
 
-	= aureus_row do
-	  = aureus_box t(".box_title") do
-	    = aureus_datatable @resources do |t|
-	      - t.head do |h|
-	        - h.text t(".column_id")
-	        - h.text t(".column_name")
-	        - h.text t(".column_body")
-	        - h.text t(".column_description")
-	        - h.text t(".column_created_at")
-	        - h.text t(".column_updated_at")
-	      - t.row do |r,resource|
-	        - r.cell resource.id
-	        - r.cell resource.name
-	        - r.cell resource.body
-	        - r.cell resource.description
-	        - r.cell resource.created_at
-	        - r.cell resource.updated_at
-	        - r.button :show, resource_url(resource) if can? :show, Resource
-	        - r.button :edit, edit_resource_url(resource) if can? :edit, Resource
-	        - r.button :destroy, resource_url(resource), :confirm => t(".destroy_confirm") if can? :destroy, Resource
+````haml
+= aureus_row do
+  = aureus_box t(".box_title") do
+    = aureus_datatable @resources do |t|
+      - t.head do |h|
+        - h.text t(".column_id")
+        - h.text t(".column_name")
+        - h.text t(".column_body")
+        - h.text t(".column_description")
+        - h.text t(".column_created_at")
+        - h.text t(".column_updated_at")
+      - t.row do |r,resource|
+        - r.cell resource.id
+        - r.cell resource.name
+        - r.cell resource.body
+        - r.cell resource.description
+        - r.cell resource.created_at
+        - r.cell resource.updated_at
+        - r.button :show, resource_url(resource) if can? :show, Resource
+        - r.button :edit, edit_resource_url(resource) if can? :edit, Resource
+        - r.button :destroy, resource_url(resource), :confirm => t(".destroy_confirm") if can? :destroy, Resource
+````
 
 #### app/views/resources/_form.html.haml
 
-	= aureus_form [@resource] do |f|
-	  = aureus_row do |r|
-	    - r.column 25 do
-	      = aureus_box t(".box_title"), :for => :form do
-	        = f.input :name, :label => t(".field_name")
-	        = f.input :body, :label => t(".field_body")
-	        = f.input :description, :label => t(".field_description")
-	    - r.space 75
+````haml
+= aureus_form [@resource] do |f|
+  = aureus_row do |r|
+    - r.column 25 do
+      = aureus_box t(".box_title"), :for => :form do
+        = f.input :name, :label => t(".field_name")
+        = f.input :body, :label => t(".field_body")
+        = f.input :description, :label => t(".field_description")
+    - r.space 75
+````
 
 #### app/views/resources/_item.html.haml
 
-	= aureus_row do |r|
-	  - r.column 25 do
-	    = aureus_box t(".box_title") do
-	      = aureus_listing do |l|
-	        - l.entry t(".entry_id"), @resource.id
-	        - l.entry t(".entry_name"), @resource.name
-	        - l.entry t(".entry_body"), @resource.body
-	        - l.entry t(".entry_description"), @resource.description
-	        - l.entry t(".entry_created_at"), @resource.created_at
-	        - l.entry t(".entry_updated_at"), @resource.updated_at
-	  - r.space 75
+````haml
+= aureus_row do |r|
+  - r.column 25 do
+    = aureus_box t(".box_title") do
+      = aureus_listing do |l|
+        - l.entry t(".entry_id"), @resource.id
+        - l.entry t(".entry_name"), @resource.name
+        - l.entry t(".entry_body"), @resource.body
+        - l.entry t(".entry_description"), @resource.description
+        - l.entry t(".entry_created_at"), @resource.created_at
+        - l.entry t(".entry_updated_at"), @resource.updated_at
+  - r.space 75
+````
 
 #### config/locales/resources.en.yml
 
-	en:
-	  resources:
-	    index:
-	      title: Resources
-	      button_new: Add Resource
-	    new:
-	      title: New Resource
-	      button_cancel: Cancel
-	      button_save: Save
-	    edit:
-	      title: Edit Resource
-	      button_cancel: Cancel
-	      button_save: Save
-	    form:
-	      box_title: Details
-	      field_id: Id
-	      field_name: Name
-	      field_body: Body
-	      field_description: Description
-	      field_created_at: Created At
-	      field_updated_at: Updated At
-	    list:
-	      box_title: Resources Listing
-	      destroy_confirm: Really want to delete the Resource?
-	      column_id: Id
-	      column_name: Name
-	      column_body: Body
-	      column_description: Description
-	      column_created_at: Created At
-	      column_updated_at: Updated At
-	    show:
-	      title: Resource
-	      button_edit: Edit Resource
-	      button_back: Back
-	    item:
-	      box_title: Details
-	      entry_id: Id
-	      entry_name: Name
-	      entry_body: Body
-	      entry_description: Description
-	      entry_created_at: Created At
-      entry_updated_at: Updated At
+````yaml
+en:
+  resources:
+    index:
+      title: Resources
+      button_new: Add Resource
+    new:
+      title: New Resource
+      button_cancel: Cancel
+      button_save: Save
+    edit:
+      title: Edit Resource
+      button_cancel: Cancel
+      button_save: Save
+    form:
+      box_title: Details
+      field_id: Id
+      field_name: Name
+      field_body: Body
+      field_description: Description
+      field_created_at: Created At
+      field_updated_at: Updated At
+    list:
+      box_title: Resources Listing
+      destroy_confirm: Really want to delete the Resource?
+      column_id: Id
+      column_name: Name
+      column_body: Body
+      column_description: Description
+      column_created_at: Created At
+      column_updated_at: Updated At
+    show:
+      title: Resource
+      button_edit: Edit Resource
+      button_back: Back
+    item:
+      box_title: Details
+      entry_id: Id
+      entry_name: Name
+      entry_body: Body
+      entry_description: Description
+      entry_created_at: Created At
+    entry_updated_at: Updated At
+````
