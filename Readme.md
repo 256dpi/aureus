@@ -66,7 +66,7 @@ Configure the scripts in application.js:
 	  border: "none"
 	}
 
-## Helper Methods
+## Helpers
 
 There are several helper methods available to generate the interface:
 
@@ -92,14 +92,14 @@ There are several helper methods available to generate the interface:
 	// Content wrapper for layout
 	= aureus_content yield
 
-	// Grid system
+	// Grid system (with automatic proportion calculation)
 	= aureus_row do
 		%strong only wrapper
 	= aureus_row do |r|
 		- r.column 100 do
 			.one-column
 	= aureus_row do |r|
-		- r.column 2 do
+		- r.column 2 do // two '2 width' colums are the same like 50 / 50
 			.first
 		- r.space 2
 	= aureus_row do |r|
@@ -111,9 +111,12 @@ There are several helper methods available to generate the interface:
 			.third
 
 	// Boxes
+	= aureus_box "a title" do
+		%strong content
 	= aureus_box "a title", :centered => true, :for => :form do
 		%li a entry
 	= aureus_box "a title" do |b|
+		- b.button link_to("a button",cool_controller_url)
 		- b.content do
 			%strong the content
 		- b.foot do
@@ -124,12 +127,21 @@ There are several helper methods available to generate the interface:
 		- t.head do |h|
 			- h.text "Title"
 			- h.text "Text"
+			- h.date "Date"
+			- h.raw "Raw"
 		- t.row do |r,res|
 			- r.cell res.title
 			- r.cell res.text
-			- r.button :show, "url"
+			- r.cell res.date
+			- r.cell res.unsortable_data
+			- r.button :show, "url" if can? :show, Resource
 			- r.button :edit, "url"
 			- r.button :destroy, "url", :confirm => "Delete user?"
+			- r.button_raw link_to(...,..., :class => ["icon","my-icon"])
+
+	// Forms
+	= aureus_form [@parent,@resource] do |f|
+		= f.input :name // formtastic
 
 	// Listings
 	= aureus_listing do |l|
@@ -137,6 +149,53 @@ There are several helper methods available to generate the interface:
 		- l.entry "head2" do
 			%strong body2
 
-## The Layout
+	// Maps (Google Maps iFrame)
+	= aureus_map :longitude => 12, :latitude => 6
 
-Here is a simple layout done with aureus helpers:
+## Generators
+
+Aureus has a bunch of generators builtin to easily generate a complete interface including i18n.
+
+### Layout
+
+To generate a base layout issue `rails g aureus:layout layout_name` which produces:
+
+	!!! 5
+	%html
+	  %head
+	    %meta{ :charset => "utf-8" }/
+	    %title= t(".title")
+	    = stylesheet_link_tag "application"
+	    = javascript_include_tag "application"
+	    = csrf_meta_tag
+	  %body
+	    = aureus_toolbar t(".title") do |t|
+	      - t.left do |l|
+	        - l.link_to t(".root"), root_url
+	      - t.right do |r|
+	        - r.info "info"
+	    = yield :navigation
+	    = aureus_messages flash
+	    = aureus_content yield
+
+### Views
+
+The awesome thing about aureus is the following generator `rails g aureus:views Resource ResourcesController` which generates all views and i18n files for you. It uses your ActiveRecord model to determine all attributes and uses the controller name for proper folders. The above command will generate:
+
+#### /app/views/namespace/resources/index.html.haml
+
+	- content_for :navigation do
+	  = aureus_navigation do |n|
+	    - n.title t(".title")
+	    - n.button link_to(t(".button_new"), new_resource_url) if can? :create, Resource
+
+	= render "list"
+
+
+
+
+
+
+
+
+

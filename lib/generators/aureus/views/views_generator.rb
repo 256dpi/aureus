@@ -16,6 +16,7 @@ module Aureus
 				target = ["app/views",folder].join "/"
 				namespace = folder.split("/").slice(0...-1)
 				model = model_name.constantize
+				controller_test = controller.constantize
 				columns = model.column_names
 				columns2 = columns - ["id","created_at","updated_at"]
 				real_name = model_name.demodulize
