@@ -188,6 +188,8 @@ To generate a base layout issue `rails g aureus:layout layout_name` which produc
     = aureus_content yield
 ```
 
+Add the I18n keys to your en.yml.
+
 ### Views
 
 The awesome thing about aureus is the following generator `rails g aureus:views Resource ResourcesController` which generates all views and i18n files for you. It uses your ActiveRecord model to determine all attributes and uses the controller name for proper folders. The above command will generate:
@@ -337,5 +339,11 @@ en:
       entry_body: Body
       entry_description: Description
       entry_created_at: Created At
-    entry_updated_at: Updated At
+    	entry_updated_at: Updated At
 ````
+
+### Devise
+
+Therer are serveral generators to nicely integrate devise with aureus.
+
+Use `rails g aureus:devise_views folder` where folder is basically devise or namespace/devise, to generate aureus compatible devise views. These views are all set with I18n keys so you need to generate them too: `rails g aureus:devise_i18n` which generates 3 files with all keys set in english. Remove your devise.en.yml to have no duplication.
