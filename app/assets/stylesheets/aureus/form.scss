@@ -23,14 +23,15 @@ form {
     color: #555;
     font-size: 14px;
   }
-  input[type="text"], input[type=password], input[type=email], input[type=tel], textarea {
+  input[type="text"], input[type=password], input[type=email], input[type=tel], textarea, select[multiple=multiple] {
     border: 1px solid #ccc;
+    box-sizing: border-box;
     font-family: $font-family;
     font-size: 14px;
     padding: 5px;
     outline: none;
     color: black;
-    width: 96%;
+    width: 100%;
     :focus {
       border: 1px solid #999;
       @include box-shadow(0,0,4px,#999);
