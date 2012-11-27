@@ -8,23 +8,19 @@
 //= depend_on form
 //= depend_on ui
 
-// backgrounds
 $asset_app_background: image-path('aureus/background.png');
 $asset_topbar_background: image-path('aureus/topbar.png');
 
-// tabel toolbar icons
 $asset_icon_sort: image-path('aureus/icon-sort.png');
 $asset_icon_sort_abc_asc: image-path('aureus/icon-sort-abc-asc.png');
 $asset_icon_sort_abc_desc: image-path('aureus/icon-sort-abc-desc.png');
 
-// button icons
 $asset_icon_pencil: image-path("aureus/icon-pencil.png");
 $asset_icon_cross: image-path("aureus/icon-cross.png");
 $asset_icon_eye: image-path("aureus/icon-eye.png");
 $asset_icon_refresh: image-path("aureus/icon-refresh.png");
 $asset_icon_print: image-path("aureus/icon-print.png");
 
-// colors
 $color_main_dark: darken($color_main,15);
 $color_warn_dark: darken($color_warn,15);
 

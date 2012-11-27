@@ -8,75 +8,70 @@ Aureus is a tool to quickly generate admin interfaces for a rails app. It's betw
 
 To use **aureus** simply require the gem:
 
-````ruby
+```ruby
 gem "aureus"
 ```
 
-The rails engine will automatically load the following dependencies:
-	
-* formtastic
-* haml
-* jquery-rails
+Please activate the following dependencies in your Gemfile:
 
-But you have to ensure that these gems are available:
+```ruby
+gem "formtastic"
+gem "haml"
+gem "jquery-rails"
+gem "sass-rails"
+```
 
-* sass-rails
-* coffee-rails
+And optionally activate:
 
-## Asset Pipeline
+```ruby
+gem "i18n-js", :git => "git://github.com/fnando/i18n-js.git", :branch => "rewrite" # for js translations
+```
+
+### Asset Pipeline
 
 Aureus uses the rails asset pipeline to load and override the style and behavior.
 
 This is the basic application.scss setup:
 
-````scss
+```scss
 /*
 *= require_self
 *= depend_on aureus
+*= require_tree .
 */
 
-$color_main: #0f0; // the color used for highlights
-$color_warn: #f00; // the color used for warning (should be red)
+$color_main: #0f0;
+$color_warn: #f00;
 
 @import "aureus";
-
-// your styles here ...
 ```
 
-Configure the scripts in application.js:
+Setup application.js to match the given order:
 
-````js
+```javascript
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require i18n/translations
 //= require_self
 //= require aureus
+//= require_tree .
 
-var datepickerConfiguration = {
-  dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
-  monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','December'],
-  nextText: "&rarr;",
-  prevText: "&larr;",
-  dateFormat: "yy-mm-dd",
-  firstDay: 1,
-}
-
-var timepickerConfiguration = {
-  isoTime: true,
-  minTime: {hour:6,minute:0},
-  maxTime: {hour:22,minute:0},
-  timInterval: 30
-}
-
-var tooltipConfiguration = {
-  background: "none",
-  color: 'black',
-  border: "none"
-}
+$(document).ready(function(){
+  aureus_remove_messages_after(2);
+  aureus_setup_i18n("<%= I18n.default_locale %>","<%= I18n.locale %>");
+  aureus_datatables_translate();
+  aureus_datatables_decorate();
+});
 ```
+
+You can now start using the aureus framework to rapidly build awesome interfaces!
 
 ## Helpers
 
 There are several helper methods available to generate the interface:
 
-````haml
+```haml
 // Toolbar
 = aureus_toolbar "A nice title" do |t|
 	- t.left do |l|
@@ -158,17 +153,37 @@ There are several helper methods available to generate the interface:
 
 // Maps (Google Maps iFrame)
 = aureus_map :longitude => 12, :latitude => 6
-````
+```
+
+## Javascript Helpers
+
+There are several Javascript helpers for certain actions:
+
+```javascript
+// remove flash messages after 3 seconds
+aureus_remove_messages_after(3);
+
+// setup i18n for js
+aureus_setup_i18n("<%= I18n.default_locale %>","<%= I18n.locale %>");
+
+// translate datatables with i18n
+aureus_datatables_translate();
+
+// transform datatables in given actual document
+aureus_datatables_decorate();
+```
+
+---
 
 ## Generators
 
-Aureus has a bunch of generators builtin to easily generate a complete interface including i18n.
+Aureus has a bunch of generators builtin to easily generate a complete interface.
 
 ### Layout
 
 To generate a base layout issue `rails g aureus:layout layout_name` which produces:
 
-````haml
+```haml
 !!! 5
 %html
   %head
@@ -190,24 +205,30 @@ To generate a base layout issue `rails g aureus:layout layout_name` which produc
 
 Add the I18n keys to your en.yml.
 
+---
+
+refactoring
+
+---
+
 ### Views
 
 The awesome thing about aureus is the following generator `rails g aureus:views Resource ResourcesController` which generates all views and i18n files for you. It uses your ActiveRecord model to determine all attributes and uses the controller name for proper folders. The above command will generate:
 
 #### app/views/resources/index.html.haml
 
-````haml
+```haml
 - content_for :navigation do
   = aureus_navigation do |n|
     - n.title t(".title")
     - n.button link_to(t(".button_new"), new_resource_url) if can? :create, Resource
 
 = render "list"
-````
+```
 
 #### app/views/resources/show.html.haml
 
-````haml
+```haml
 - content_for :navigation do
   = aureus_navigation do |n|
     - n.title t(".title")
@@ -215,11 +236,11 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
     - n.button link_to(t(".button_back"),resources_url) if can? :index, Resource
 
 = render "item"
-````
+```
 
 #### app/views/resources/new.html.haml
 
-````haml
+```haml
 - content_for :navigation do
   = aureus_navigation do |n|
     - n.title t(".title")
@@ -227,11 +248,11 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
     - n.submit_form_button @resource, t(".button_save") if can? :create, Resource
 
 = render "form"
-````
+```
 
 #### app/views/resources/edit.html.haml
 
-````haml
+```haml
 - content_for :navigation do
   = aureus_navigation do |n|
     - n.title t(".title")
@@ -239,11 +260,11 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
     - n.submit_form_button @resource, t(".button_save") if can? :update, Resource
 
 = render "form"
-````
+```
 
 #### app/views/resources/_list.html.haml
 
-````haml
+```haml
 = aureus_row do
   = aureus_box t(".box_title") do
     = aureus_datatable @resources do |t|
@@ -264,11 +285,11 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
         - r.button :show, resource_url(resource) if can? :show, Resource
         - r.button :edit, edit_resource_url(resource) if can? :edit, Resource
         - r.button :destroy, resource_url(resource), :confirm => t(".destroy_confirm") if can? :destroy, Resource
-````
+```
 
 #### app/views/resources/_form.html.haml
 
-````haml
+```haml
 = aureus_form [@resource] do |f|
   = aureus_row do |r|
     - r.column 25 do
@@ -277,11 +298,11 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
         = f.input :body, :label => t(".field_body")
         = f.input :description, :label => t(".field_description")
     - r.space 75
-````
+```
 
 #### app/views/resources/_item.html.haml
 
-````haml
+```haml
 = aureus_row do |r|
   - r.column 25 do
     = aureus_box t(".box_title") do
@@ -293,11 +314,11 @@ The awesome thing about aureus is the following generator `rails g aureus:views 
         - l.entry t(".entry_created_at"), @resource.created_at
         - l.entry t(".entry_updated_at"), @resource.updated_at
   - r.space 75
-````
+```
 
 #### config/locales/resources.en.yml
 
-````yml
+```yml
 en:
   resources:
     index:
@@ -340,7 +361,7 @@ en:
       entry_description: Description
       entry_created_at: Created At
     	entry_updated_at: Updated At
-````
+```
 
 ### Devise
 
