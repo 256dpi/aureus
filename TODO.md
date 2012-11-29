@@ -1,6 +1,5 @@
 # ToDo
 
-* test library
 * test generators
 
 * datatable proper date and time support
@@ -9,3 +8,4 @@
 * update javascripts
 * dropdown in top bar
 * nesting in boxes?
+* paginate helpers?

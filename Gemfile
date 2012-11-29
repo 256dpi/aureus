@@ -5,5 +5,7 @@ group :test do
   gem "guard-rspec"
   gem "rb-fsevent", "~> 0.9.1"
   gem "highline"
+  gem "rails"
+  gem "sqlite3"
   gem "haml"
 end
