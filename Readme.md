@@ -160,7 +160,7 @@ There are several helper methods available to generate the interface:
 There are several Javascript helpers for certain actions:
 
 ```javascript
-// remove flash messages after 3 seconds
+// remove flash messages automatically after 3 seconds
 aureus_remove_messages_after(3);
 
 // setup i18n for js
@@ -172,8 +172,6 @@ aureus_datatables_translate();
 // transform datatables in given actual document
 aureus_datatables_decorate();
 ```
-
----
 
 ## Generators
 
