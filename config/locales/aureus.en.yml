@@ -6,4 +6,4 @@ en:
       zero_records: "No data found"
       info: "Show _START_-_END_ from _TOTAL_ entries"
       info_empty: "Show 0 entries"
-      info_filtered: "(total _MAX entries)"
+      info_filtered: "(total _MAX_ entries)"

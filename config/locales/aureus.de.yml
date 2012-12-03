@@ -1,0 +1,9 @@
+de:
+  aureus:
+    datatables:
+      search: "Suchen:"
+      length_menu: "Zeige _MENU_ Einträge per Seite"
+      zero_records: "Keine Daten gefunden"
+      info: "Zeige _START_-_END_ von _TOTAL_ Einträgen"
+      info_empty: "Zeige 0 Einträge"
+      info_filtered: "(total _MAX_ Einträge)"

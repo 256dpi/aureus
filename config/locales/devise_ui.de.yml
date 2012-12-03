@@ -1,0 +1,54 @@
+de:
+  devise:
+    ui:
+      confirmations:
+        new:
+          title: Aktivierungsangaben nochmals senden
+          email: Deine Email Adresse
+          submit: wiederholen
+      passwords:
+        new:
+          title: Passwort vergessen?
+          email: Deine Email Adresse
+          submit: senden
+        edit:
+          title: Passwort ändern
+          password: Passwort
+          password_confirmation: Passwort Bestätigung
+          submit: ändern
+      registrations:
+        new:
+          title: Registrieren
+          email: Deine Email Adresse
+          password: Passwort
+          password_confirmation: Passwort Bestätigung
+          submit: anmelden
+        edit:
+          title: Bearbeiten %{name}
+          email: Deine Email
+          password: Passwort
+          password_confirmation: Passwort Bestätigung
+          current_password: Aktuelles Passwort
+          submit: Aktualisieren
+          destroy: Konto löschen
+          destroy_confirm: Bist du sicher?
+          back: zurück
+      sessions:
+        new:
+          title: Anmelden
+          email: Email Adresse
+          password: Passwort
+          remember_me: An mich errinern?
+          submit: anmelden
+      unlocks:
+        new:
+          title: Ensperrungsangaben nochmals senden
+          email: Email Adresse
+          submit: wiederholen
+      shared:
+        links:
+          login: Anmelden
+          signup: Registrieren
+          lost_password: Passwort vergessen?
+          no_confirmation: Leine Aktivierungsangaben erhalten?
+          no_unlock: Keine Ensperrungsangaben erhalten?
