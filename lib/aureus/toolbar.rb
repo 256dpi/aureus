@@ -35,6 +35,12 @@ module Aureus
 			@items << ToolbarButton.new(text,url,args)
 		end
 
+		def dropdown title
+			toolbar = ToolbarDropdown.new(title)
+			yield toolbar
+			@items << toolbar
+		end
+
 		def info text
 			@items << ToolbarInfo.new(text)
 		end
@@ -67,6 +73,25 @@ module Aureus
 
 		def render
 			content_tag "li", content_tag("span",@text)
+		end
+
+	end
+
+	class ToolbarDropdown < Renderable
+
+		def initialize title
+			@title = title
+			@items = Array.new
+		end
+
+		def link_to text, url, *args
+			@items << ToolbarButton.new(text,url,args)
+		end
+
+		def render
+			title = content_tag "div", @title, :class => "dropdown-caption"
+			list = content_tag "ul", compact_render(*@items), :class => "dropdown-inner"
+			content_tag "li", title+list, :class => "dropdown-outer"
 		end
 
 	end

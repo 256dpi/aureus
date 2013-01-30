@@ -1,6 +1,6 @@
 #aureus-toolbar {
   padding: 11px 40px;
-  overflow: hidden;
+  height: 18px;
   @include gradient(#333,#222);
   background-image: url($asset_topbar_background);
   h1 {
@@ -10,18 +10,18 @@
     float: left;
     text-shadow: -1px -1px 0 black;
   }
-  ul.left {
+  > ul.left {
     float: left;
     margin-left: 20px;
   }
-  ul.right {
+  > ul.right {
     float: right;
   }
-  ul {
-    li {
+  > ul {
+    > li {
       display: inline;
       position: relative;
-      a, span {
+      > a, span {
         font-size: 14px ;
         color: #ddd;
         text-decoration: none;
@@ -29,14 +29,54 @@
         @include border-radius(15px);
         text-shadow: -1px -1px 0 black;
       }
-      span {
+      > span {
         color: #777;
       }
     }
-    li:hover {  
-      a {
+    > li.dropdown-outer {
+      > div {
+        display: inline;
+        font-size: 14px ;
+        color: #ddd;
+        text-decoration: none;
+        padding: 4px 10px;
+        @include border-radius(15px);
+        text-shadow: -1px -1px 0 black;
+      }
+      > ul.dropdown-inner {
+        display: none;
+      }
+    }
+    > li:hover {  
+      > a {
         color: white;
         @include gradient(#000,#333);
+      }
+    }
+    li.dropdown-outer:hover {
+      margin-bottom: 5px;
+      > ul.dropdown-inner {
+        margin-left: -20px;
+        display: block !important;
+        position: absolute;
+        @include gradient(#333,#222);
+        @include border-radius(15px);
+        padding: 20px;
+        margin-top: 5px;
+        li > a, span {
+          font-size: 14px ;
+          color: #ddd;
+          text-decoration: none;
+          padding: 4px 10px;
+          @include border-radius(15px);
+          text-shadow: -1px -1px 0 black;
+        }
+        > li:hover {  
+          > a {
+            color: white;
+            @include gradient(#000,#333);
+          }
+        }
       }
     }
   }

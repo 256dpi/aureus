@@ -78,6 +78,8 @@ There are several helper methods available to generate the interface:
 		- l.link_to "root", root_url
 		- l.link_to "an anchor", an_anchor_url
 		- l.info "cool"
+    - l.dropdown "a caption" do |d|
+      - d.link_to "an anchor", an_anchor_url
 	- t.right do |r|
 		- r.info "some info"
 		- r.link_to "an anchor", some_other_controller_url
