@@ -45,6 +45,12 @@
       }
       > ul.dropdown-inner {
         display: none;
+        li {
+          margin: 7px 0;
+          a {
+            white-space: nowrap;
+          }
+        }
       }
     }
     > li:hover {  
