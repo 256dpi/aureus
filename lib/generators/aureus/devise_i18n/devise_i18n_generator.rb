@@ -4,7 +4,7 @@ module Aureus
 
 		class DeviseI18nGenerator < Rails::Generators::Base
 
-			desc "generates i18n files for the devise views"
+			desc "generates base i18n files for the devise views"
 			source_root File.expand_path("../templates", __FILE__)
 
 			def generate

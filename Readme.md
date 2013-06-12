@@ -205,6 +205,11 @@ To generate a base layout issue `rails g aureus:layout layout_name` which produc
 
 Add the I18n keys to your en.yml.
 
+### I18n
+
+Download i18n files from the official repository: `rails g aureus:i18n locale` where local defines the locale identifier.
+
+
 ---
 
 refactoring
