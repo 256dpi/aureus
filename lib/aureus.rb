@@ -1,5 +1,4 @@
 require "aureus/version"
-require "aureus/engine"
 
 require "haml"
 
@@ -20,3 +19,5 @@ module Aureus
   autoload :Map
 
 end
+
+require "aureus/engine"
