@@ -18,6 +18,7 @@ Please activate the following dependencies in your Gemfile:
 gem "formtastic"
 gem "haml"
 gem "jquery-rails"
+gem "jquery-ui-rails"
 gem "sass-rails"
 ```
 
@@ -38,6 +39,7 @@ This is the basic application.scss setup:
 *= require_self
 *= depend_on aureus
 *= require_tree .
+*= require jquery.ui.all
 */
 
 $color_main: #0f0;
@@ -51,7 +53,7 @@ Setup application.js to match the given order:
 ```javascript
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.all
 //= require i18n/translations
 //= require_self
 //= require aureus
