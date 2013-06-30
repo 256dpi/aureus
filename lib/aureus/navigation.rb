@@ -16,7 +16,8 @@ module Aureus
 		end
 
 		def submit_form_button resource, text
-			@buttons << NavigationButton.new(content_tag("a",text,:onclick=>"aureus_trigger_form('form.#{resource.class.name.underscore}')"))
+			form_class = resource.is_a?(String) ? resource : resource.class.name.underscore
+			@buttons << NavigationButton.new(content_tag("a",text,:onclick=>"aureus_trigger_form('form.#{form_class}')"))
 		end
 
 		def render
