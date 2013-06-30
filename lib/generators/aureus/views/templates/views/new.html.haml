@@ -2,6 +2,6 @@
   = aureus_navigation do |n|
     - n.title t(".title")
     - n.button link_to(t(".button_cancel"), {{{PATH_PLURAL}}}_url) if can? :index, {{{MODEL}}}
-    - n.submit_form_button @{{{NAME_SINGULAR}}}, t(".button_save") if can? :create, {{{MODEL}}}
+    - n.submit_form_button {{{MODEL}}}, t(".button_save") if can? :create, {{{MODEL}}}
 
 = render "form"
