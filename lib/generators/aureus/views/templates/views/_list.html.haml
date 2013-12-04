@@ -5,6 +5,6 @@
 {{{TABLE_HEADS}}}
       - t.row do |r,{{{NAME_SINGULAR}}}|
 {{{TABLE_CELLS}}}
-        - r.button :show, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}) if can? :show, {{{MODEL}}}
-        - r.button :edit, edit_{{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}) if can? :edit, {{{MODEL}}}
-        - r.button :destroy, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}), :confirm => t(".destroy_confirm") if can? :destroy, {{{MODEL}}}
+        - r.button :show, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}) if can? :show, {{{NAME_SINGULAR}}}
+        - r.button :edit, edit_{{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}) if can? :edit, {{{NAME_SINGULAR}}}
+        - r.button :destroy, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}), :confirm => t(".destroy_confirm") if can? :destroy, {{{NAME_SINGULAR}}}

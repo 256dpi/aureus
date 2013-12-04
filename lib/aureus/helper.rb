@@ -1,40 +1,41 @@
 module Aureus
+
 	module Helper
 
 		def aureus_toolbar title
-      toolbar = Toolbar.new title
+      toolbar = Components::Toolbar.new title
       yield toolbar
       toolbar.render
 		end
 
 		def aureus_navigation
-			navigation = Navigation.new
+			navigation = Components::Navigation.new
 			yield navigation
 			navigation.render
 		end
 
 		def aureus_messages flash
-			messages = Messages.new flash
+			messages = Components::Messages.new flash
 			messages.render
 		end
 
 		def aureus_content html
-			content = Content.new html
+			content = Components::Content.new html
 			content.render
 		end
 
 		def aureus_row &block
-			row = Row.new &block
+			row = Components::Row.new &block
 			row.render
 		end
 
 		def aureus_box title, *args, &block
-			box = Box.new title, args, &block
+			box = Components::Box.new title, args, &block
 			box.render
 		end
 
 		def aureus_datatable resource, *args
-			table = DataTable.new resource, args
+			table = Components::DataTable.new resource, args
 			yield table
 			table.render
 		end
@@ -46,13 +47,13 @@ module Aureus
 		end
 
 		def aureus_listing
-			listing = Listing.new
+			listing = Components::Listing.new
 			yield listing
 			listing.render
 		end
 
-		def aureus_map *args
-			map = Map.new args
+		def aureus_simple_map *args
+			map = Components::SimpleMap.new args
 			map.render
 		end
 

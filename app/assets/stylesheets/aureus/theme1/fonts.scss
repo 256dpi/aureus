@@ -1,0 +1,30 @@
+// @font-face {
+//   font-family: "font-light";
+//   src: font-url("aureus/font-light.otf");
+// }
+
+// @font-face {
+//   font-family: "font-regular";
+//   src: font-url("aureus/font-regular.otf");
+// }
+
+// @font-face {
+//   font-family: "font-medium";
+//   src: font-url("aureus/font-medium.otf");
+// }
+
+// @font-face {
+//   font-family: "font-bold";
+//   src: font-url("aureus/font-bold.otf");
+// }
+
+// @font-face {
+//   font-family: "font-black";
+//   src: font-url("aureus/font-black.otf");
+// }
+
+$font_light: "font-light", "Helvetica", "Arial", sans-serif;
+$font_regular: "font-regular", "Helvetica", "Arial", sans-serif;
+$font_medium: "font-medium", "Helvetica", "Arial", sans-serif;
+$font_bold: "font-bold", "Helvetica", "Arial", sans-serif;
+$font_black: "font-black", "Helvetica", "Arial", sans-serif;

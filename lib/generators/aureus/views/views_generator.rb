@@ -9,6 +9,7 @@ module Aureus
 			source_root File.expand_path("../templates", __FILE__)
 			argument :resource, :type => :string, :required => true
 			argument :controller, :type => :string, :required => true
+      argument :columns, :type => :array
 
 			def generate
 				model_name = resource.camelize
@@ -16,9 +17,7 @@ module Aureus
 				target = ["app/views",folder].join "/"
 				namespace = folder.split("/").slice(0...-1)
 				model = model_name.constantize
-				controller_test = controller.constantize
-				columns = model.column_names
-				columns2 = columns - ["id","created_at","updated_at"]
+				controller.constantize
 				real_name = model_name.demodulize
 				route = folder.gsub("/","_").singularize
 
@@ -26,14 +25,14 @@ module Aureus
 					directory "views", target
 					replacements = {
 						"MODEL" => model_name,
-						"NAME_SINGULAR" => real_name.downcase,
-						"NAME_PLURAL" => real_name.pluralize.downcase,
+						"NAME_SINGULAR" => real_name.underscore.downcase,
+						"NAME_PLURAL" => real_name.pluralize.underscore.downcase,
 						"PATH_SINGULAR" => route,
 						"PATH_PLURAL" => route.pluralize,
 						"TABLE_HEADS" => columns.collect{ |c| '        - h.text t(".column_'+c+'")' }.join("\n"),
 						"TABLE_CELLS" => columns.collect{ |c| '        - r.cell '+real_name.downcase+'.'+c }.join("\n"),
 						"ENTRIES" => columns.collect{ |c| '        - l.entry t(".entry_'+c+'"), @'+real_name.downcase+'.'+c }.join("\n"),
-						"INPUTS" => columns2.collect{ |c| '        = f.input :'+c+', :label => t(".field_'+c+'")' }.join("\n"),
+						"INPUTS" => columns.collect{ |c| '        = f.input :'+c+', :label => t(".field_'+c+'")' }.join("\n"),
 						"FORM_PATH" => namespace.collect{ |n| '"'+n+'"' }.push("@"+real_name.downcase).join(",")
 					}
 					Dir[target+"/*.haml"].each do |file|
