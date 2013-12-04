@@ -10,7 +10,7 @@ module Aureus
 
 			def render
 				if @options[:longitude] and @options[:latitude]
-					content_tag("div",nil, class: "aureus-simple-map", data: @options )
+					content_tag('div',nil, class: 'aureus-simple-map', data: @options )
 				end
 			end
 

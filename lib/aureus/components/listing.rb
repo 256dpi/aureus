@@ -18,7 +18,7 @@ module Aureus
 			end
 
 			def render
-				content_tag "table", compact_render(*@entries), :class => "simple-table"
+				content_tag 'table', compact_render(*@entries), :class => 'simple-table'
 			end
 
 		end
@@ -31,8 +31,8 @@ module Aureus
 			end
 
 			def render
-				content_tag "tr" do
-					compact content_tag("th",@head), content_tag("td",@body)
+				content_tag 'tr' do
+					compact content_tag('th',@head), content_tag('td',@body)
 				end
 			end
 

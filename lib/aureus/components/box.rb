@@ -25,17 +25,17 @@ module Aureus
 			end
 
 			def render
-				title = content_tag("h3",compact(content_tag("span",@title),compact_render(*@buttons)))
-				classes = ["box"]
-				classes << "centered" if @options[:centered]
+				title = content_tag('h3',compact(content_tag('span',@title),compact_render(*@buttons)))
+				classes = ['box']
+				classes << 'centered' if @options[:centered]
 				@content = @new_content if not @new_content.nil?
-				content_tag "div", :class => classes.join(" ") do
+				content_tag 'div', :class => classes.join(' ') do
 					case @options[:for]
 						when :form
-							@content = content_tag("ul",@content,:class => "content")
+							@content = content_tag('ul',@content,:class => 'content')
 					end
-					footer = @foot.nil? ? "" : content_tag("div",@foot,:class => "foot")
-					compact title, content_tag("div",@content), footer
+					footer = @foot.nil? ? '' : content_tag('div',@foot,:class => 'foot')
+					compact title, content_tag('div',@content), footer
 				end
 			end
 

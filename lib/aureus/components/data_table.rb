@@ -24,8 +24,8 @@ module Aureus
 			end
 
 			def render
-				content_tag "table", :id => @resource.class.name.downcase, :class => (@options[:toolbar] ? "datatable":"datatable-no-toolbar") do
-					compact @head.render, content_tag("tbody",compact_render(*@rows))
+				content_tag 'table', :id => @resource.class.name.downcase, :class => (@options[:toolbar] ? 'datatable':'datatable-no-toolbar') do
+					compact @head.render, content_tag('tbody',compact_render(*@rows))
 				end
 			end
 
@@ -38,21 +38,21 @@ module Aureus
 			end
 
 			def text name
-				@columns << DataTableHeadColumn.new(name,"text-sorting")
+				@columns << DataTableHeadColumn.new(name,'text-sorting')
 			end
 
 			def date name
-				@columns << DataTableHeadColumn.new(name,"date-sorting")
+				@columns << DataTableHeadColumn.new(name,'date-sorting')
 			end
 
 			def raw name
-				@columns << DataTableHeadColumn.new(name,"no-sorting")
+				@columns << DataTableHeadColumn.new(name,'no-sorting')
 			end
 
 			def render
-				raw ""
-				content_tag "thead" do
-					content_tag "tr", compact_render(*@columns)
+				raw ''
+				content_tag 'thead' do
+					content_tag 'tr', compact_render(*@columns)
 				end
 			end
 
@@ -66,7 +66,7 @@ module Aureus
 			end
 
 			def render
-				content_tag "th", @name, :class => @sorting
+				content_tag 'th', @name, :class => @sorting
 			end
 
 		end
@@ -77,14 +77,14 @@ module Aureus
 				init_haml_helpers
 				@cells = Array.new
 				@buttons = Array.new
-        @identifier = ""
+        @identifier = ''
       end
 
       def identifier value
         @identifier = value
       end
 
-			def cell data="", &block
+			def cell data='', &block
 				if block_given?
 					@cells << DataTableRowCell.new(capture_haml(&block))
 				else
@@ -105,7 +105,7 @@ module Aureus
 			end
 
 			def render
-				content_tag "tr", compact_render(*@cells)+content_tag("td",compact_render(*@buttons),:class => "buttons"), id: @identifier
+				content_tag 'tr', compact_render(*@cells)+content_tag('td',compact_render(*@buttons),:class => 'buttons'), id: @identifier
 			end
 
 		end
@@ -117,7 +117,7 @@ module Aureus
 			end
 
 			def render
-				content_tag "td", @data
+				content_tag 'td', @data
 			end
 
 		end
@@ -125,14 +125,14 @@ module Aureus
 		class DataTableRowButton < Renderable
 
 			def initialize type, text, url, options
-				init options, :remote => true, :confirm => "Delete resource?"
+				init options, :remote => true, :confirm => 'Delete resource?'
 				@type = type
 				@text = text
 				@url = url
 			end
 
 			def render
-				@text = "&nbsp;" unless @type == :text
+				@text = '&nbsp;' unless @type == :text
 				case @type
 				when :text
 					link_to @text, @url
