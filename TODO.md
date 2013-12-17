@@ -1,8 +1,6 @@
 # ToDo
 
-* find a font subsitute
 * normalize colors for theme
-
 * test generators
 
 * datatable proper date and time support
