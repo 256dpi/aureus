@@ -1,20 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require i18n/translations
+//= require leaflet
+
 //= require_directory ./plugins
 //= require ./extensions
 //= require ./defaults
+//= require ./helpers
 //= require ./functions
-//= require_self
-
-$(document).ready(function(){
-  
-  $("td.buttons a").wrapInner("<span/>");
-  
-  //$(".datepicker").datepicker(datepickerConfiguration);
-  
-  // Prevent Bug
-  //$("div.ui-datepicker").hide();
-  
-  //$(".timepicker").calendricalTime(timepickerConfiguration);
-  
-  //$.fn.qtip.styles.single = tooltipConfiguration;
-  
-});

@@ -1,11 +1,10 @@
-source "http://rubygems.org"
+source 'http://rubygems.org'
 gemspec
 
 group :test do
-  gem "guard-rspec"
-  gem "rb-fsevent", "~> 0.9.1"
-  gem "highline"
-  gem "rails"
-  gem "sqlite3"
-  gem "haml"
+  gem 'rspec'
+  gem 'highline'
+  gem 'rails', '~> 4.0'
+  gem 'sqlite3'
+  gem 'haml'
 end

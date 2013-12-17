@@ -1,6 +1,11 @@
+function aureus_initialize() {
+  _aureus_simple_map();
+  _aureus_ipad_compatibility();
+}
+
 function aureus_remove_messages_after(seconds) {
   setTimeout(function() {
-    $("#messages p").fadeOut();
+    $(".aureus-messages p").fadeOut();
   }, seconds*1000);
 }
 

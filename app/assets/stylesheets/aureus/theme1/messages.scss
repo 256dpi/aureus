@@ -1,0 +1,14 @@
+.aureus-messages {
+  .error, .notice, .alert {
+    margin: 0;
+    padding: 10px 30px;
+    color: black;
+    font-size: 14px;
+  }
+  .error, .alert {
+    background-color: $color_red;
+  }
+  .notice {
+    background-color: $color_green;
+  }
+}
