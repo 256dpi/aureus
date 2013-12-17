@@ -5,7 +5,8 @@ require 'jquery-rails'
 require 'leaflet-rails'
 
 module Aureus
-
+  module Components
+  end
 end
 
 require 'aureus/renderable'
