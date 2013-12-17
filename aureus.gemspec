@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.test_files = `git ls-files -- {test,spec,features}/*`.split('\n')
 
   s.add_dependency 'jquery-rails'
-  s.add_dependency 'haml'
+  s.add_dependency 'haml-rails'
   s.add_dependency 'leaflet-rails'
 end
