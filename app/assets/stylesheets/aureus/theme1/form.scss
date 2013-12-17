@@ -55,7 +55,7 @@ form {
     color: white;
     cursor: pointer;
     background-color: $color_brown;
-    font-family: $font_medium;
+    font-weight: bold;
   }
   button:hover, input[type=submit]:hover {
     background-color: $color_cyan;

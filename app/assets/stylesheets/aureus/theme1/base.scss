@@ -1,6 +1,6 @@
 body {
   font-size: 100%;
-  font-family: $font_regular;
+  font-family: 'Raleway';
   color: white;
   background-color: $color_light_grey;
   min-width: 1000px;
@@ -11,8 +11,7 @@ body {
 }
 
 strong {
-  font-weight: normal;
-  font-family: $font_bold;
+  font-weight: bold;
 }
 
 a {
