@@ -1,11 +1,11 @@
-= aureus_box t("devise.ui.registrations.edit.title",:name => resource_name.to_s.humanize), :centered => true, :for => :form do |b|
+= aureus_box t('devise.ui.registrations.edit.title',name: resource_name.to_s.humanize), centered: true, for: :form do |b|
   - b.content do
-    = semantic_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put } do |form|
-      = form.input :email, :label => t("devise.ui.registrations.edit.email")
-      = form.input :password, :label => t("devise.ui.registrations.edit.password")
-      = form.input :password_confirmation, :label => t("devise.ui.registrations.edit.password_confirmation")
-      = form.input :current_password, :label => t("devise.ui.registrations.edit.current_password")
-      = form.action :submit, :label => t("devise.ui.registrations.edit.submit")
+    = semantic_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put } do |form|
+      = form.input :email, label: t('devise.ui.registrations.edit.email')
+      = form.input :password, label: t('devise.ui.registrations.edit.password')
+      = form.input :password_confirmation, label: t('devise.ui.registrations.edit.password_confirmation')
+      = form.input :current_password, label: t('devise.ui.registrations.edit.current_password')
+      = form.action :submit, label: t('devise.ui.registrations.edit.submit')
   - b.foot do
-    %p= link_to t("devise.ui.registrations.edit.destroy"), registration_path(resource_name), :confirm => t("devise.ui.registrations.edit.destroy_confirm"), :method => :delete
-    %p= link_to t("devise.ui.registrations.edit.back"), :back
+    %p= link_to t('devise.ui.registrations.edit.destroy'), registration_path(resource_name), confirm: t('devise.ui.registrations.edit.destroy_confirm'), method: :delete
+    %p= link_to t('devise.ui.registrations.edit.back'), :back

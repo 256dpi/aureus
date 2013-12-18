@@ -1,7 +1,7 @@
-= aureus_box t("devise.ui.unlocks.new.title"), :centered => true, :for => :form do |b|
+= aureus_box t('devise.ui.unlocks.new.title'), centered: true, for: :form do |b|
   - b.content do
-    = semantic_form_for resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post } do |form|
-      = form.input :email, :label => t("devise.ui.unlocks.new.email")
-      = form.action :submit, :label => t("devise.ui.unlocks.new.submit")
+    = semantic_form_for resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post } do |form|
+      = form.input :email, label: t('devise.ui.unlocks.new.email')
+      = form.action :submit, label: t('devise.ui.unlocks.new.submit')
   - b.foot do
-    = render :partial => "{{{folder}}}/shared/links"
+    = render partial: '{{{folder}}}/shared/links'

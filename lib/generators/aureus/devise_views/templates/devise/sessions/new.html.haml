@@ -1,9 +1,9 @@
-= aureus_box t("devise.ui.sessions.new.title"), :centered => true, :for => :form do |b|
+= aureus_box t('devise.ui.sessions.new.title'), centered: true, for: :form do |b|
   - b.content do
-    = semantic_form_for resource, :as => resource_name, :url => session_path(resource_name) do |form|
-      = form.input :email, :label => t("devise.ui.sessions.new.email")
-      = form.input :password, :label => t("devise.ui.sessions.new.password")
-      = form.input :remember_me, :as => :boolean, :label => t("devise.ui.sessions.new.remember_me") if devise_mapping.rememberable?
-      = form.action :submit, :label => t("devise.ui.sessions.new.submit")
+    = semantic_form_for resource, as: resource_name, url: session_path(resource_name) do |form|
+      = form.input :email, label: t('devise.ui.sessions.new.email')
+      = form.input :password, label: t('devise.ui.sessions.new.password')
+      = form.input :remember_me, as: :boolean, label: t('devise.ui.sessions.new.remember_me') if devise_mapping.rememberable?
+      = form.action :submit, label: t('devise.ui.sessions.new.submit')
   - b.foot do
-    = render :partial => "{{{folder}}}/shared/links"
+    = render partial: '{{{folder}}}/shared/links'

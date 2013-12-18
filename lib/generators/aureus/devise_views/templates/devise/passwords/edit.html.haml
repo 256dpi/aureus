@@ -1,9 +1,9 @@
-= aureus_box t("devise.ui.passwords.edit.title"), :centered => true, :for => :form do |b|
+= aureus_box t('devise.ui.passwords.edit.title'), centered: true, for: :form do |b|
   - b.content do
-    = semantic_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put } do |form|
-      = form.input :reset_password_token, :as => :hidden
-      = form.input :password, :label => t("devise.ui.passwords.edit.password")
-      = form.input :password_confirmation, :label => t("devise.ui.passwords.edit.password_confirmation")
-      = form.action :submit, :label => t("devise.ui.passwords.edit.submit")
+    = semantic_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |form|
+      = form.input :reset_password_token, as: :hidden
+      = form.input :password, label: t('devise.ui.passwords.edit.password')
+      = form.input :password_confirmation, label: t('devise.ui.passwords.edit.password_confirmation')
+      = form.action :submit, label: t('devise.ui.passwords.edit.submit')
   - b.foot do
-    = render :partial => "{{{folder}}}/shared/links"
+    = render partial: '{{{folder}}}/shared/links'

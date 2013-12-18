@@ -1,5 +1,7 @@
 # ToDo
 
+* remove i18n tools (new gem?)
+
 * normalize colors for theme
 * test generators
 

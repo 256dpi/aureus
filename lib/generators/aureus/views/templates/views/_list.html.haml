@@ -1,5 +1,5 @@
 = aureus_row do
-  = aureus_box t(".box_title") do
+  = aureus_box t('.box_title') do
     = aureus_datatable @{{{NAME_PLURAL}}} do |t|
       - t.head do |h|
 {{{TABLE_HEADS}}}
@@ -7,4 +7,4 @@
 {{{TABLE_CELLS}}}
         - r.button :show, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}) if can? :show, {{{NAME_SINGULAR}}}
         - r.button :edit, edit_{{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}) if can? :edit, {{{NAME_SINGULAR}}}
-        - r.button :destroy, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}), confirm: t(".destroy_confirm") if can? :destroy, {{{NAME_SINGULAR}}}
+        - r.button :destroy, {{{PATH_SINGULAR}}}_url({{{NAME_SINGULAR}}}), confirm: t('.destroy_confirm') if can? :destroy, {{{NAME_SINGULAR}}}
