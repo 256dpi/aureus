@@ -19,7 +19,7 @@ module Aureus
 			end
 
 			def render
-				content_tag 'div', { :class => 'aureus-toolbar' } do
+				content_tag 'div', { class: 'aureus-toolbar' } do
 					compact content_tag('h1',@title), @left.render, @right.render
 				end
 			end
@@ -48,7 +48,7 @@ module Aureus
 			end
 
 			def render
-				content_tag 'ul', compact_render(*@items), :class => @position
+				content_tag 'ul', compact_render(*@items), class: @position
 			end
 
 		end
@@ -63,7 +63,7 @@ module Aureus
 			end
 
 			def render
-				content_tag 'li', link_to(@text,@url,*@args), :class => "level-#{@level}"
+				content_tag 'li', link_to(@text,@url,*@args), class: "level-#{@level}"
 			end
 
 		end
@@ -76,7 +76,7 @@ module Aureus
 			end
 
 			def render
-				content_tag 'li', content_tag('span', @text, class: :info), :class => "level-#{@level}"
+				content_tag 'li', content_tag('span', @text, class: :info), class: "level-#{@level}"
 			end
 
 		end
@@ -87,7 +87,7 @@ module Aureus
 			end
 
 			def render
-				content_tag 'div', '', :class => :line
+				content_tag 'div', '', class: :line
 			end
 
 		end
@@ -113,8 +113,8 @@ module Aureus
 
 			def render
 				title = content_tag 'span', @title, class: 'dropdown-accessor'
-				list = content_tag 'ul', compact_render(*@items), :class => 'dropdown-inner'
-				content_tag 'li', title+list, :class => 'dropdown-outer'
+				list = content_tag 'ul', compact_render(*@items), class: 'dropdown-inner'
+				content_tag 'li', title+list, class: 'dropdown-outer'
 			end
 
 		end

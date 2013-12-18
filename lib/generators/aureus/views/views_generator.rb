@@ -7,9 +7,9 @@ module Aureus
 
 			desc 'generates aures views for a existing model'
 			source_root File.expand_path('../templates', __FILE__)
-			argument :resource, :type => :string, :required => true
-			argument :controller, :type => :string, :required => true
-      argument :columns, :type => :array
+			argument :resource, type: :string, required: true
+			argument :controller, type: :string, required: true
+      argument :columns, type: :array
 
 			def generate
 				model_name = resource.camelize
@@ -37,7 +37,7 @@ module Aureus
 					}
 					Dir[target+'/*.haml'].each do |file|
 						replacements.each do |key,value|
-							gsub_file file, '{{{#{key}}}}', value, :verbose => false
+							gsub_file file, '{{{#{key}}}}', value, verbose: false
 						end
 					end
 				end

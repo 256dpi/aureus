@@ -6,7 +6,7 @@ module Aureus
 
       desc 'download i18n files from rails-i18n repository'
       source_root File.expand_path('../templates', __FILE__)
-      argument :locale, :type => :string, :required => true
+      argument :locale, type: :string, required: true
 
       def generate
         begin

@@ -5,7 +5,7 @@ module Aureus
 		class DataTable < Renderable
 
 			def initialize resource, args
-				init args, { :toolbar => true }
+				init args, { toolbar: true }
 				@resource = resource
 				@head = DataTableHead.new
 				@rows = Array.new
@@ -24,7 +24,7 @@ module Aureus
 			end
 
 			def render
-				content_tag 'table', :id => @resource.class.name.downcase, :class => (@options[:toolbar] ? 'datatable':'datatable-no-toolbar') do
+				content_tag 'table', id: @resource.class.name.downcase, class: (@options[:toolbar] ? 'datatable':'datatable-no-toolbar') do
 					compact @head.render, content_tag('tbody',compact_render(*@rows))
 				end
 			end
@@ -66,7 +66,7 @@ module Aureus
 			end
 
 			def render
-				content_tag 'th', @name, :class => @sorting
+				content_tag 'th', @name, class: @sorting
 			end
 
 		end
@@ -105,7 +105,7 @@ module Aureus
 			end
 
 			def render
-				content_tag 'tr', compact_render(*@cells)+content_tag('td',compact_render(*@buttons),:class => 'buttons'), id: @identifier
+				content_tag 'tr', compact_render(*@cells)+content_tag('td',compact_render(*@buttons),class: 'buttons'), id: @identifier
 			end
 
 		end
@@ -125,7 +125,7 @@ module Aureus
 		class DataTableRowButton < Renderable
 
 			def initialize type, text, url, options
-				init options, :remote => true, :confirm => 'Delete resource?'
+				init options, remote: true, confirm: 'Delete resource?'
 				@type = type
 				@text = text
 				@url = url
@@ -137,16 +137,16 @@ module Aureus
 				when :text
 					link_to @text, @url
 				when :print
-					link_to @text, @url, :class => :print
+					link_to @text, @url, class: :print
 				when :show
-					link_to @text, @url, :class => :show
+					link_to @text, @url, class: :show
 				when :edit	
-					link_to @text, @url, :class => :edit
+					link_to @text, @url, class: :edit
 				when :destroy
 					if @options[:remote]
-						link_to @text, @url, :class => :destroy, :method => :delete, :data => { :confirm => @options[:confirm] }
+						link_to @text, @url, class: :destroy, method: :delete, data: { confirm: @options[:confirm] }
 					else
-						link_to @text, @url, :class => :destroy
+						link_to @text, @url, class: :destroy
 					end
 				end
 			end

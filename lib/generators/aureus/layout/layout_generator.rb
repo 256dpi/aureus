@@ -6,7 +6,7 @@ module Aureus
 
 			desc 'generate an aureus layout file'
 			source_root File.expand_path('../templates', __FILE__)
-			argument :name, :required => true
+			argument :name, required: true
 
 			def generate
 				copy_file 'layout.html.haml', 'app/views/layouts/'+name+'.html.haml'

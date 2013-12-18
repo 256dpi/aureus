@@ -9,7 +9,7 @@ module Aureus
   		end
 
   		def render
-  			content_tag 'div', @content, :class => 'aureus-content'
+  			content_tag 'div', @content, class: 'aureus-content'
   		end
 
   	end

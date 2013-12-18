@@ -24,9 +24,9 @@ module Aureus
 
 			def render
 				if @columns.empty?
-					content_tag 'div', @content, :class => 'row'
+					content_tag 'div', @content, class: 'row'
 				elsif @columns.length == 1
-					content_tag 'div', @columns.first.content, :class => 'row'
+					content_tag 'div', @columns.first.content, class: 'row'
 				else
 					total_width = @columns.inject 0 do |sum, n|
 						sum += n.width
@@ -45,9 +45,9 @@ module Aureus
 						else
 							width -= 1
 						end
-						out += content_tag 'div', c.content, :class => :column, :style => "width: #{width}%; margin-left: #{left}%; margin-right: #{right}%"
+						out += content_tag 'div', c.content, class: :column, style: "width: #{width}%; margin-left: #{left}%; margin-right: #{right}%"
 					end
-					content_tag 'div', out, :class => 'row'
+					content_tag 'div', out, class: 'row'
 				end
 			end
 
