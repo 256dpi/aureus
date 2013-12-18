@@ -12,22 +12,6 @@ To use **aureus** simply require the gem:
 gem "aureus"
 ```
 
-Please activate the following dependencies in your Gemfile:
-
-```ruby
-gem "formtastic"
-gem "haml"
-gem "jquery-rails"
-gem "jquery-ui-rails"
-gem "sass-rails"
-```
-
-And optionally activate:
-
-```ruby
-gem "i18n-js", :git => "git://github.com/fnando/i18n-js.git", :branch => "rewrite" # for js translations
-```
-
 ### Asset Pipeline
 
 Aureus uses the rails asset pipeline to load and override the style and behavior.
