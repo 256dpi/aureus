@@ -39,5 +39,5 @@ module Aureus
 		end
 
 	end
-	
+
 end

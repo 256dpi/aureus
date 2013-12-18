@@ -12,7 +12,7 @@ module Aureus
     end
 
     def init args, *defaults
-      @options = defaults.extract_options!.merge args.extract_options!
+      @options = defaults.extract_options!.merge(args.extract_options!)
     end
 
     def content_tag name, content_or_options_with_block = nil, options = nil, escape = false, &block
@@ -20,19 +20,11 @@ module Aureus
     end
 
     def compact *args
-      out = String.new.html_safe
-      args.each do |i|
-        out += i
-      end
-      out
+      args.join.html_safe
     end
 
     def compact_render *args
-      out = String.new.html_safe
-      args.each do |i|
-        out += i.render
-      end
-      out
+      args.map{ |e| e.render }.join.html_safe
     end
 
     def render
