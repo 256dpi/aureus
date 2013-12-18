@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split('\n')
   s.test_files = `git ls-files -- {test,spec,features}/*`.split('\n')
 
-  s.add_dependenca 'sass-rails'
+  s.add_dependency 'sass-rails'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jquery-ui-rails'
   s.add_dependency 'formtastic'
