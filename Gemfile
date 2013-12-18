@@ -6,5 +6,4 @@ group :test do
   gem 'highline'
   gem 'rails', '~> 4.0'
   gem 'sqlite3'
-  gem 'haml'
 end
