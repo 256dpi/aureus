@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.email = 'joel.gaehwiler@bluewin.ch'
   s.homepage = 'https://github.com/256dpi/aureus'
   
-  s.files = `git ls-files`.split('\n')
-  s.test_files = `git ls-files -- {test,spec,features}/*`.split('\n')
+  s.files = `git ls-files`.split("\n")
+  s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
   s.add_dependency 'sass-rails'
   s.add_dependency 'jquery-rails'
