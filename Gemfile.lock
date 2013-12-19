@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     aureus (2.0.0)
-      formtastic
+      formtastic (= 2.3.0.rc2)
       haml-rails
       i18n-js (= 3.0.0.rc5)
       jquery-rails
@@ -42,7 +42,7 @@ GEM
     builder (3.1.4)
     diff-lcs (1.2.5)
     erubis (2.7.0)
-    formtastic (2.2.1)
+    formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
     haml (4.0.4)
       tilt

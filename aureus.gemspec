@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass-rails'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jquery-ui-rails'
-  s.add_dependency 'formtastic'
+  s.add_dependency 'formtastic', '2.3.0.rc2'
   s.add_dependency 'haml-rails'
   s.add_dependency 'leaflet-rails'
   s.add_dependency 'i18n-js', '3.0.0.rc5'
