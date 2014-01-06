@@ -21,7 +21,7 @@ module Aureus
 				real_name = model_name.demodulize
 				route = folder.gsub('/','_').singularize
 
-				if yes? 'generate views for ''+model_name+'' to: '+target+'?'
+				if yes? "generate views for '#{model_name}' to: '#{target}'?"
 					directory 'views', target
 					replacements = {
 						'MODEL' => model_name,
@@ -42,7 +42,7 @@ module Aureus
 					end
 				end
 
-				i18n_file = 'config/locales/'+route.gsub('_','.').pluralize+'.en.yml'
+				i18n_file = "config/locales/#{route.gsub('_','.').pluralize}.en.yml"
 				if yes? 'generate i18n file to: '+i18n_file+'?'
 					singular = real_name
 					plural = real_name.pluralize
