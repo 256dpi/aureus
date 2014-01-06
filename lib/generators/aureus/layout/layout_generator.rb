@@ -9,7 +9,7 @@ module Aureus
 			argument :name, required: true
 
 			def generate
-				copy_file 'layout.html.haml', 'app/views/layouts/'+name+'.html.haml'
+				copy_file 'layout.html.haml', "app/views/layouts/#{name}.html.haml"
 			end
 
 		end

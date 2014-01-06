@@ -9,7 +9,7 @@ module Aureus
 
 			def generate
 				['devise_base.en.yml','devise_mail.en.yml','devise_ui.en.yml'].each do |f|
-					copy_file f, 'config/locales/'+f
+					copy_file f, "config/locales/#{f}"
 				end
 			end
 

@@ -9,7 +9,7 @@ module Aureus
 			argument :folder, type: :string, default: 'devise'
 
 			def generate
-				target = 'app/views/'+folder
+				target = "app/views/#{folder}"
 				directory 'devise', target
 				Dir[target+'/**/*.haml'].each do |file|
 					gsub_file file, '{{{folder}}}', folder, verbose: false
