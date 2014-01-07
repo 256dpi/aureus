@@ -23,19 +23,13 @@ form {
     font-size: 14px;
     color: #666;
   }
-  // p.inline-hints {
-  //   // color: #999;
-  // }
-  // p.hint {
-  //   // color: $color_main;
-  // }
   label {
     display: block;
     margin-bottom: 2px;
     color: black;
     font-size: 14px;
   }
-  input[type="text"], input[type=password], input[type=email], input[type=tel], texaureusea, select[multiple=multiple] {
+  input[type="text"], input[type=password], input[type=email], input[type=tel], textarea, select[multiple=multiple] {
     border: 1px solid $color_light_grey;
     box-sizing: border-box;
     font-size: 14px;
