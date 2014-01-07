@@ -1,5 +1,10 @@
-function aureus_initialize() {
-  _aureus_simple_map();
+aureus_default_options = {
+  mapbox_id: 'the_id'
+};
+
+function aureus_initialize(options) {
+  options = jQuery.extend({}, aureus_default_options, options || {});
+  _aureus_simple_map(options);
   _aureus_ipad_compatibility();
 }
 
