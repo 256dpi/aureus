@@ -1,6 +1,13 @@
 require 'bundler/setup'
 
-require 'rails/all'
+require 'combustion'
+#require 'capybara/rspec'
+
+Combustion.initialize! :all
+
+require 'rspec/rails'
+#require 'capybara/rails'
+
 require 'haml'
 
 Bundler.require :default, :test
