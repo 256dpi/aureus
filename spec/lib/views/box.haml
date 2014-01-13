@@ -1,13 +1,13 @@
 .first
-  = aureus_box "first_box" do
+  = aureus_box 'first_box' do
     %strong content
 
 .second
-  = aureus_box "a title", centered: true, for: :form do
+  = aureus_box 'a title', centered: true, for: :form do
     %li a entry
 
 .third
-  = aureus_box "a title" do |b|
+  = aureus_box 'a title' do |b|
     - b.content do
       %strong the content
     - b.foot do
