@@ -9,7 +9,7 @@ module Aureus
 			argument :language, type: :string, default: 'en'
 
 			def generate
-				Dir['*.{{{language}}}.yml'].each do |locale_file|
+				Dir["*.#{language}.yml"].each do |locale_file|
 					copy_file locale_file, "config/locales/#{f}"
 				end
 			end
