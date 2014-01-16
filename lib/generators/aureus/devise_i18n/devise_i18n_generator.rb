@@ -5,11 +5,12 @@ module Aureus
 		class DeviseI18nGenerator < Rails::Generators::Base
 
 			desc 'generates base i18n files for the devise views'
-			source_root File.expand_path('../templates', __FILE__)
+			source_root File.expand_path('../locales', __FILE__)
+			argument :language, type: :string, default: 'en'
 
 			def generate
-				['devise_base.en.yml','devise_mail.en.yml','devise_ui.en.yml'].each do |f|
-					copy_file f, "config/locales/#{f}"
+				Dir['*.{{{language}}}.yml'].each do |locale_file|
+					copy_file locale_file, "config/locales/#{f}"
 				end
 			end
 
