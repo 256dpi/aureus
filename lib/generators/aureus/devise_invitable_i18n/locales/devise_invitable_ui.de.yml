@@ -1,0 +1,10 @@
+de:
+  devise:
+    ui:
+      invitations:
+        new:
+          header: "Einladung"
+          submit_button: "Einladung senden"
+        edit:
+          header: "Passwort"
+          submit_button: "Password setzen"
