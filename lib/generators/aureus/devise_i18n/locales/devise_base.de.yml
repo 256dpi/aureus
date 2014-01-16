@@ -46,12 +46,6 @@ de:
     omniauth_callbacks:
       failure: Sie konnten nicht Ihrem %{kind}-Account angemeldet werden, weil "%{reason}".
       success: Sie haben sich erfolgreich mit Ihrem %{kind}-Account angemeldet.
-    invitations:
-      send_instructions: 'An invitation email has been sent to %{email}.'
-      invitation_token_invalid: 'The invitation token provided is not valid!'
-      updated: 'Your password was set successfully. You are now signed in.'
-      no_invitations_remaining: "No invitations remaining"
-      invitation_removed: 'Your invitation was removed.'
     mailer:
       confirmation_instructions:
         subject: Anleitung zur Bestätigung Ihres Accounts
@@ -59,5 +53,3 @@ de:
         subject: Anleitung um Ihr Passwort zurückzusetzen
       unlock_instructions:
         subject: Anleitung um Ihren Account freizuschalten
-      invitation_instructions:
-        subject: Einladung
