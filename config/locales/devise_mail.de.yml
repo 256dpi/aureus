@@ -16,3 +16,9 @@ de:
         info1: "Dein Konto wurde gesperrt, da du dich zu oft mit falschem Passwort versucht hast anzumelden."
         info2: "Benutze den folgenden Link um dein Konto zu entsperren"
         link: "Mein Konto entsperren"
+      invitation_instructions:
+        title: Hallo %{name}!
+        info1: Jemand hat Ihnen zur %{website_url} eingeladet. Sie können das akzeptieren durch das Link unten.
+        link: Einladung akzeptieren
+        info2: Wenn Sie das nicht akzeptieren wollen, bitte dieses Email löschen.
+        info3: Ihr Konto wird nicht aktiviert, wenn Sie das Link nicht clicken und ein Passwort nicht setzen.

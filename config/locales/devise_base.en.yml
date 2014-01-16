@@ -46,6 +46,18 @@ en:
     omniauth_callbacks:
       success: Successfully authorized from %{kind} account.
       failure: Could not authorize you from %{kind} because %{reason}.
+    invitations:
+      send_instructions: 'An invitation email has been sent to %{email}.'
+      invitation_token_invalid: 'The invitation token provided is not valid!'
+      updated: 'Your password was set successfully. You are now signed in.'
+      no_invitations_remaining: "No invitations remaining"
+      invitation_removed: 'Your invitation was removed.'
+      new:
+        header: "Send invitation"
+        submit_button: "Send an invitation"
+      edit:
+        header: "Set your password"
+        submit_button: "Set my password"
     mailer:
       confirmation_instructions:
         subject: Confirmation instructions
@@ -53,3 +65,5 @@ en:
         subject: Reset password instructions
       unlock_instructions:
         subject: Unlock Instructions
+      invitation_instructions:
+        subject: 'Invitation instructions'
