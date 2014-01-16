@@ -45,6 +45,13 @@ de:
           title: Ensperrungsangaben nochmals senden
           email: Email Adresse
           submit: wiederholen
+      invitations:
+        new:
+          header: "Einladung"
+          submit_button: "Einladung senden"
+        edit:
+          header: "Passwort"
+          submit_button: "Password setzen"
       shared:
         links:
           login: Anmelden

@@ -45,6 +45,13 @@ en:
           title: Resend unlock instructions
           email: Email Address
           submit: Resend
+      invitations:
+        new:
+          header: "Send invitation"
+          submit_button: "Send an invitation"
+        edit:
+          header: "Set your password"
+          submit_button: "Set my password"
       shared:
         links:
           login: Log In
