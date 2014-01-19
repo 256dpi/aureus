@@ -3,8 +3,10 @@ de:
     ui:
       invitations:
         new:
-          header: "Einladung"
-          submit_button: "Einladung senden"
+          title: "Einladung"
+          submit: "Einladung senden"
         edit:
-          header: "Passwort"
-          submit_button: "Password setzen"
+          title: "Passwort setzen"
+          password: "Passwort"
+          password_confirmation: "Passwort Bestätigung"
+          submit: "Bestätigen"
