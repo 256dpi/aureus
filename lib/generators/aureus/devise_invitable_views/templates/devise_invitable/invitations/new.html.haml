@@ -1,0 +1,8 @@
+= aureus_box t('devise.ui.invitations.new.title'), centered: true, for: :form do |b|
+  - b.content do
+    = semantic_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post } do |f|
+      - resource.class.invite_key_fields.each do |field|
+        = f.input field.to_sym, label: t("devise.ui.invitations.new.#{field}")
+      = f.action :submit, label: t('devise.ui.invitiations.new.submit')
+  - b.foot do
+    = render partial: '{{{folder}}}/shared/links'
