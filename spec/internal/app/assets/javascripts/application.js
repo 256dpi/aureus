@@ -6,7 +6,7 @@
 //= require_self
 
 $(function(){
-  aureus_initialize({
+  aureus({
     remove_messages_after: 2
   });
 });

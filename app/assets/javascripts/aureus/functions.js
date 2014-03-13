@@ -2,7 +2,7 @@ var aureus_default_options = {
   mapbox_id: 'the_id'
 };
 
-function aureus_initialize(options) {
+function aureus(options) {
   window.aureus = { options: jQuery.extend({}, aureus_default_options, options || {}) };
   _aureus_remove_messages_after(window.aureus.options.remove_messages_after);
   _aureus_datatables_decorate();

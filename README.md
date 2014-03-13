@@ -56,7 +56,7 @@ Change your `application.js` to match the following:
 //= require_self
 
 $(function(){
-  aureus_initialize({
+  aureus({
     remove_messages_after: 2
   });
 });
