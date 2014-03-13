@@ -30,7 +30,7 @@ A typical aureus driven view would look like this:
 To use **aureus** simply require the gem:
 
 ```ruby
-gem "aureus"
+gem 'aureus'
 ```
 
 ### Asset Pipeline
@@ -43,7 +43,7 @@ Change your `application.scss` to match the following:
 //= depend_on aureus/theme1
 //= require_self
 
-@import "aureus/theme1";
+@import 'aureus/theme1';
 ```
 
 Change your `application.js` to match the following:
@@ -70,22 +70,22 @@ There are several helper methods available to generate the interface:
 
 ```haml
 // Toolbar
-= aureus_toolbar "A nice title" do |t|
+= aureus_toolbar 'A nice title' do |t|
   - t.left do |l|
-    - l.link_to "root", root_url
-    - l.link_to "an anchor", an_anchor_url
-    - l.info "cool"
-    - l.dropdown "a caption" do |d|
-      - d.link_to "an anchor", an_anchor_url
+    - l.link_to 'root', root_url
+    - l.link_to 'an anchor', an_anchor_url
+    - l.info 'cool'
+    - l.dropdown 'a caption' do |d|
+      - d.link_to 'an anchor', an_anchor_url
   - t.right do |r|
-    - r.info "some info"
-    - r.link_to "an anchor", some_other_controller_url
+    - r.info 'some info'
+    - r.link_to 'an anchor', some_other_controller_url
 
 // Navigation
 = aureus_navigation do |n|
-  - n.title "the title"
-  - n.button link_to("target name",some_cool_url) if can? :read, Stuff
-  - n.submit_form_button @post, "save"
+  - n.title 'the title'
+  - n.button link_to('target name',some_cool_url) if can? :read, Stuff
+  - n.submit_form_button @post, 'save'
 
 // Flash messages
 = aureus_messages flash
@@ -112,12 +112,12 @@ There are several helper methods available to generate the interface:
     .third
 
 // Boxes
-= aureus_box "a title" do
+= aureus_box 'a title' do
   %strong content
-= aureus_box "a title", :centered => true, :for => :form do
+= aureus_box 'a title', centered: true, for: :form do
   %li a entry
-= aureus_box "a title" do |b|
-  - b.button link_to("a button",cool_controller_url)
+= aureus_box 'a title' do |b|
+  - b.button link_to('a button',cool_controller_url)
   - b.content do
     %strong the content
   - b.foot do
@@ -126,19 +126,19 @@ There are several helper methods available to generate the interface:
 // Datatables
 = aureus_datatable @resources do |t|
   - t.head do |h|
-    - h.text "Title"
-    - h.text "Text"
-    - h.date "Date"
-    - h.raw "Raw"
+    - h.text 'Title'
+    - h.text 'Text'
+    - h.date 'Date'
+    - h.raw 'Raw'
   - t.row do |r,res|
     - r.cell res.title
     - r.cell res.text
     - r.cell res.date
     - r.cell res.unsortable_data
-    - r.button :show, "url" if can? :show, Resource
-    - r.button :edit, "url"
-    - r.button :destroy, "url", :confirm => "Delete user?"
-    - r.button_raw link_to("a action",the_action_url, :class => ["icon","my-icon"])
+    - r.button :show, 'url' if can? :show, Resource
+    - r.button :edit, 'url'
+    - r.button :destroy, 'url', confirm: 'Delete user?'
+    - r.button_raw link_to('a action', the_action_url, class: ['icon','my-icon'])
 
 // Forms
 = aureus_form [@parent,@resource] do |f|
@@ -146,12 +146,12 @@ There are several helper methods available to generate the interface:
 
 // Listings
 = aureus_listing do |l|
-  - l.entry "head", "body"
-  - l.entry "head2" do
+  - l.entry 'head', 'body'
+  - l.entry 'head2' do
     %strong body2
 
 // Maps (Google Maps iFrame)
-= aureus_map :longitude => 12, :latitude => 6
+= aureus_map longitude: 12, latitude: 6
 ```
 
 ## Generators
@@ -166,17 +166,17 @@ Run `rails g aureus:layout layout_name` to generate a layout typical file:
 !!! 5
 %html
   %head
-    %meta{ :charset => "utf-8" }/
-    %title= t(".title")
-    = stylesheet_link_tag "application"
-    = javascript_include_tag "application"
+    %meta{ charset: 'utf-8' }/
+    %title= t('.title')
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
     = csrf_meta_tag
   %body
-    = aureus_toolbar t(".title") do |t|
+    = aureus_toolbar t('.title') do |t|
       - t.left do |l|
-        - l.link_to t(".root"), root_url
+        - l.link_to t('.root'), root_url
       - t.right do |r|
-        - r.info "info"
+        - r.info 'info'
     = yield :navigation
     = aureus_messages flash
     = aureus_content yield
@@ -191,10 +191,10 @@ Run `rails g aureus:views Resource ResourcesController` to generate views for a 
 ```haml
 - content_for :navigation do
   = aureus_navigation do |n|
-    - n.title t(".title")
-    - n.button link_to(t(".button_new"), new_resource_url) if can? :create, Resource
+    - n.title t('.title')
+    - n.button link_to(t('.button_new'), new_resource_url) if can? :create, Resource
 
-= render "list"
+= render 'list'
 ```
 
 #### app/views/resources/show.html.haml
@@ -202,11 +202,11 @@ Run `rails g aureus:views Resource ResourcesController` to generate views for a 
 ```haml
 - content_for :navigation do
   = aureus_navigation do |n|
-    - n.title t(".title")
-    - n.button link_to(t(".button_edit"), edit_resource_url(@resource)) if can? :update, Resource
-    - n.button link_to(t(".button_back"),resources_url) if can? :index, Resource
+    - n.title t('.title')
+    - n.button link_to(t('.button_edit'), edit_resource_url(@resource)) if can? :update, Resource
+    - n.button link_to(t('.button_back'),resources_url) if can? :index, Resource
 
-= render "item"
+= render 'item'
 ```
 
 #### app/views/resources/new.html.haml
@@ -214,11 +214,11 @@ Run `rails g aureus:views Resource ResourcesController` to generate views for a 
 ```haml
 - content_for :navigation do
   = aureus_navigation do |n|
-    - n.title t(".title")
-    - n.button link_to(t(".button_cancel"), resources_url) if can? :index, Resource
-    - n.submit_form_button @resource, t(".button_save") if can? :create, Resource
+    - n.title t('.title')
+    - n.button link_to(t('.button_cancel'), resources_url) if can? :index, Resource
+    - n.submit_form_button @resource, t('.button_save') if can? :create, Resource
 
-= render "form"
+= render 'form'
 ```
 
 #### app/views/resources/edit.html.haml
@@ -226,26 +226,26 @@ Run `rails g aureus:views Resource ResourcesController` to generate views for a 
 ```haml
 - content_for :navigation do
   = aureus_navigation do |n|
-    - n.title t(".title")
-    - n.button link_to t(".button_cancel"), resources_url if can? :show, Resource
-    - n.submit_form_button @resource, t(".button_save") if can? :update, Resource
+    - n.title t('.title')
+    - n.button link_to t('.button_cancel'), resources_url if can? :show, Resource
+    - n.submit_form_button @resource, t('.button_save') if can? :update, Resource
 
-= render "form"
+= render 'form'
 ```
 
 #### app/views/resources/_list.html.haml
 
 ```haml
 = aureus_row do
-  = aureus_box t(".box_title") do
+  = aureus_box t('.box_title') do
     = aureus_datatable @resources do |t|
       - t.head do |h|
-        - h.text t(".column_id")
-        - h.text t(".column_name")
-        - h.text t(".column_body")
-        - h.text t(".column_description")
-        - h.text t(".column_created_at")
-        - h.text t(".column_updated_at")
+        - h.text t('.column_id')
+        - h.text t('.column_name')
+        - h.text t('.column_body')
+        - h.text t('.column_description')
+        - h.text t('.column_created_at')
+        - h.text t('.column_updated_at')
       - t.row do |r,resource|
         - r.cell resource.id
         - r.cell resource.name
@@ -255,7 +255,7 @@ Run `rails g aureus:views Resource ResourcesController` to generate views for a 
         - r.cell resource.updated_at
         - r.button :show, resource_url(resource) if can? :show, Resource
         - r.button :edit, edit_resource_url(resource) if can? :edit, Resource
-        - r.button :destroy, resource_url(resource), :confirm => t(".destroy_confirm") if can? :destroy, Resource
+        - r.button :destroy, resource_url(resource), confirm: t('.destroy_confirm') if can? :destroy, Resource
 ```
 
 #### app/views/resources/_form.html.haml
@@ -264,10 +264,10 @@ Run `rails g aureus:views Resource ResourcesController` to generate views for a 
 = aureus_form [@resource] do |f|
   = aureus_row do |r|
     - r.column 25 do
-      = aureus_box t(".box_title"), :for => :form do
-        = f.input :name, :label => t(".field_name")
-        = f.input :body, :label => t(".field_body")
-        = f.input :description, :label => t(".field_description")
+      = aureus_box t('.box_title'), for: :form do
+        = f.input :name, label: t('.field_name')
+        = f.input :body, label: t('.field_body')
+        = f.input :description, label: t('.field_description')
     - r.space 75
 ```
 
@@ -276,14 +276,14 @@ Run `rails g aureus:views Resource ResourcesController` to generate views for a 
 ```haml
 = aureus_row do |r|
   - r.column 25 do
-    = aureus_box t(".box_title") do
+    = aureus_box t('.box_title') do
       = aureus_listing do |l|
-        - l.entry t(".entry_id"), @resource.id
-        - l.entry t(".entry_name"), @resource.name
-        - l.entry t(".entry_body"), @resource.body
-        - l.entry t(".entry_description"), @resource.description
-        - l.entry t(".entry_created_at"), @resource.created_at
-        - l.entry t(".entry_updated_at"), @resource.updated_at
+        - l.entry t('.entry_id'), @resource.id
+        - l.entry t('.entry_name'), @resource.name
+        - l.entry t('.entry_body'), @resource.body
+        - l.entry t('.entry_description'), @resource.description
+        - l.entry t('.entry_created_at'), @resource.created_at
+        - l.entry t('.entry_updated_at'), @resource.updated_at
   - r.space 75
 ```
 
