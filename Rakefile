@@ -1,17 +1,4 @@
-require 'rubygems'
-gem 'highline'
+require 'rspec/core/rake_task'
 
-desc 'build and publish'
-task :build do
-  require 'highline/import'
-  puts 'build gem...'
-  `gem build aureus.gemspec`
-  Dir['*.gem'].each do |file|
-    if agree "publish gem: #{file}? (y,n)"
-      puts 'publishing gem...'
-      `gem push #{file}`
-    end
-  end
-  puts 'remove gem...'
-  `rm *.gem`
-end
+RSpec::Core::RakeTask.new :spec
+task :default => :spec

@@ -4,4 +4,8 @@ class AllController < ActionController::Base
     render :index, layout: 'application'
   end
 
+  def centered
+    render :centered, layout: 'naked'
+  end
+
 end

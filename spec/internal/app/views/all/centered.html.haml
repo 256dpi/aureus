@@ -1,0 +1,5 @@
+= aureus_form [Resource.new] do |f|
+  = aureus_box 'Centered Box', centered: true, for: :form do
+    = f.input :title
+    = f.input :text
+    = f.action :submit
