@@ -5,7 +5,7 @@ require_relative '../../internal/app/controllers/resources_controller'
 require_relative '../../../lib/generators/aureus/views/views_generator'
 
 describe Aureus::Generators::ViewsGenerator do
-  destination File.expand_path('../../../../tmp', __FILE__)
+  destination File.expand_path('../../../../tmp/gen', __FILE__)
   arguments ['Resource', 'ResourcesController', 'title text', '--yes']
 
   before do

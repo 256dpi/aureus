@@ -10,10 +10,12 @@ module Aureus
 
 			def generate
 				target = "app/views/#{folder}"
-				directory 'devise', target
-				Dir[target + '/**/*.haml'].each do |file|
-					gsub_file file, '{{{folder}}}', folder, verbose: false
+				directory 'devise', target do |content|
+          content.gsub '{{{folder}}}', folder
         end
+        #Dir[target + '/**/*.haml'].each do |file|
+					#gsub_file file, '{{{folder}}}', folder, verbose: false
+        #end
 			end
 
 		end
