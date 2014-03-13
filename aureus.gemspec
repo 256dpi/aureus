@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'sass-rails'
   s.add_runtime_dependency 'jquery-rails'
   s.add_runtime_dependency 'jquery-ui-rails'
-  s.add_runtime_dependency 'formtastic', '2.3.0.rc2'
   s.add_runtime_dependency 'haml-rails'
   s.add_runtime_dependency 'leaflet-rails'
+  s.add_runtime_dependency 'formtastic', '2.3.0.rc2'
 end

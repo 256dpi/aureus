@@ -1,41 +1,68 @@
+# aureus
+
+**a framework for rails admin interfaces**
+
+Aureus is a tool to quickly generate admin interfaces for a rails app. It's between scaffolding and tools like ActiveAdmin.
+
+## General Concept
+
+The idea behind aureus is to abstract as much as possible of GUI rendering by still giving enough freedom for customization.
+A typical aureus driven view would look like this:
+
+```haml
+= aureus_row do |r|
+  = aureus_box 'Datatable' do
+    = aureus_datatable Resource.all do |t|
+      - t.head do |h|
+        - h.text 'Title'
+        - h.text 'Text'
+      - t.row do |r,res|
+        - r.identifier res.id
+        - r.cell res.title
+        - r.cell res.text
+        - r.button :show, 'url'
+        - r.button :edit, 'url'
+        - r.button :destroy, 'url', confirm: 'Delete user?'
+```
+
+## Installation
+
+To use **aureus** simply require the gem:
+
+```ruby
+gem "aureus"
+```
+
 ### Asset Pipeline
 
 Aureus uses the rails asset pipeline to load and override the style and behavior.
 
-This is the basic application.scss setup:
+Change your `application.scss` to match the following:
 
 ```scss
-/*
-*= require_self
-*= depend_on aureus
-*= require_tree .
-*= require jquery.ui.all
-*/
+//= depend_on aureus/theme1
+//= require_self
 
-$color_main: #0f0;
-$color_warn: #f00;
-
-@import "aureus";
+@import "aureus/theme1";
 ```
 
-Setup application.js to match the given order:
+Change your `application.js` to match the following:
 
 ```javascript
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
-//= require_self
+//= require leaflet
 //= require aureus
-//= require_tree .
+//= require_self
 
-$(document).ready(function(){
-  aureus_remove_messages_after(2);
-  aureus_datatables_translate();
-  aureus_datatables_decorate();
+$(function(){
+  aureus_initialize({
+    remove_messages_after: 2
+  });
 });
 ```
 
-You can now start using the aureus framework to rapidly build awesome interfaces!
+You can now use the aureus framework to rapidly build awesome interfaces!
 
 ## Helpers
 
@@ -127,25 +154,13 @@ There are several helper methods available to generate the interface:
 = aureus_map :longitude => 12, :latitude => 6
 ```
 
-## Javascript Helpers
-
-There are several Javascript helpers for certain actions:
-
-```javascript
-// remove flash messages automatically after 3 seconds
-aureus_remove_messages_after(3);
-
-// transform datatables in given actual document
-aureus_datatables_decorate();
-```
-
 ## Generators
 
-Aureus has a bunch of generators builtin to easily generate a complete interface.
+Aureus has a bunch of generators built-in to easily generate a complete interface.
 
 ### Layout
 
-To generate a base layout issue `rails g aureus:layout layout_name` which produces:
+Run `rails g aureus:layout layout_name` to generate a layout typical file:
 
 ```haml
 !!! 5
@@ -167,17 +182,9 @@ To generate a base layout issue `rails g aureus:layout layout_name` which produc
     = aureus_content yield
 ```
 
-Add the I18n keys to your en.yml.
-
----
-
-refactoring
-
----
-
 ### Views
 
-The awesome thing about aureus is the following generator `rails g aureus:views Resource ResourcesController` which generates all views and i18n files for you. It uses your ActiveRecord model to determine all attributes and uses the controller name for proper folders. The above command will generate:
+Run `rails g aureus:views Resource ResourcesController` to generate views for a model and its controller:
 
 #### app/views/resources/index.html.haml
 
@@ -329,6 +336,4 @@ en:
 
 ### Devise
 
-Therer are serveral generators to nicely integrate devise with aureus.
-
-Use `rails g aureus:devise_views folder` where folder is basically devise or namespace/devise, to generate aureus compatible devise views. These views are all set with I18n keys so you need to generate them too: `rails g aureus:devise_i18n` which generates 3 files with all keys set in english. Remove your devise.en.yml to have no duplication.
+Run `rails g aureus:devise folder` to generate devise views using aureus helpers.
