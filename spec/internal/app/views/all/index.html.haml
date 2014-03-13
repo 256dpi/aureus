@@ -1,12 +1,22 @@
 .first
-  = aureus_datatable Resource.all do |t|
-    - t.head do |h|
-      - h.text 'Title'
-      - h.text 'Text'
-    - t.row do |r,res|
-      - r.identifier res.id
-      - r.cell res.title
-      - r.cell res.text
-      - r.button :show, 'url'
-      - r.button :edit, 'url'
-      - r.button :destroy, 'url', confirm: 'Delete user?'
+  = aureus_box 'Simple Datatable' do
+    = aureus_datatable Resource.all do |t|
+      - t.head do |h|
+        - h.text 'Title'
+        - h.text 'Text'
+      - t.row do |r,res|
+        - r.identifier res.id
+        - r.cell res.title
+        - r.cell res.text
+        - r.button :show, 'url'
+        - r.button :edit, 'url'
+        - r.button :destroy, 'url', confirm: 'Delete user?'
+
+  = aureus_box 'a title', centered: true, for: :form do
+    %li a entry
+
+  = aureus_box 'a title' do |b|
+    - b.content do
+      %strong the content
+    - b.foot do
+      %strong the footer
