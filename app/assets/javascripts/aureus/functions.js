@@ -1,10 +1,10 @@
-aureus_default_options = {
+var aureus_default_options = {
   mapbox_id: 'the_id'
 };
 
 function aureus_initialize(options) {
-  options = jQuery.extend({}, aureus_default_options, options || {});
-  _aureus_simple_map(options);
+  window.aureus = { options: jQuery.extend({}, aureus_default_options, options || {}) };
+  _aureus_simple_map();
   _aureus_ipad_compatibility();
 }
 
@@ -12,11 +12,6 @@ function aureus_remove_messages_after(seconds) {
   setTimeout(function() {
     $(".aureus-messages p").fadeOut();
   }, seconds*1000);
-}
-
-function aureus_setup_i18n(default_locale, current_locale) {
-  I18n.defaultLocale = default_locale;
-  I18n.locale = current_locale;
 }
 
 function aureus_datatables_decorate() {
@@ -29,7 +24,7 @@ function aureus_datatables_decorate() {
   $(".datatable").each(function(){
     $(this).dataTable({
       sDom: "<'toolbar'fi>t",
-      oLanguage: aureus_datatable_language_config,
+      oLanguage: _aureus_datatable_translation(this),
       bPaginate: false,
       aoColumns: aureus_datatables_column_configurator($(this))
     });
@@ -38,7 +33,7 @@ function aureus_datatables_decorate() {
   $(".datatable-no-toolbar").each(function(){
     $(this).dataTable({
       sDom: "t",
-      oLanguage: aureus_datatable_language_config,
+      oLanguage: _aureus_datatable_translation(this),
       bPaginate: false,
       aoColumns: aureus_datatables_column_configurator($(this))
     });
@@ -49,14 +44,15 @@ function aureus_trigger_form(selector) {
   $(selector).submit();
 }
 
-function aureus_datatables_translate() {
-  aureus_datatable_language_config = {
-    sSearch : I18n.t("aureus.datatables.search"),
-    sLengthMenu: I18n.t("aureus.datatables.lenght_menu"),
-    sZeroRecords: I18n.t("aureus.datatables.zero_records"),
-    sInfo: I18n.t("aureus.datatables.info"),
-    sInfoEmpty: I18n.t("aureus.datatables.info_empty"),
-    sInfoFiltered: I18n.t("aureus.datatables.info_filtered")
+function _aureus_datatable_translation(table) {
+  var el = $(table);
+  return {
+    sSearch : el.data('i18n_sSearch'),
+    sLengthMenu: el.data('i18n_sLengthMenu'),
+    sZeroRecords: el.data('i18n_sZeroRecords'),
+    sInfo: el.data('i18n_sInfo'),
+    sInfoEmpty: el.data('i18n_sInfoEmpty'),
+    sInfoFiltered: el.data('i18n_sInfoFiltere')
   };
 }
 

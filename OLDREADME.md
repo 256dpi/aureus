@@ -24,14 +24,12 @@ Setup application.js to match the given order:
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require i18n/translations
 //= require_self
 //= require aureus
 //= require_tree .
 
 $(document).ready(function(){
   aureus_remove_messages_after(2);
-  aureus_setup_i18n("<%= I18n.default_locale %>","<%= I18n.locale %>");
   aureus_datatables_translate();
   aureus_datatables_decorate();
 });
@@ -137,12 +135,6 @@ There are several Javascript helpers for certain actions:
 // remove flash messages automatically after 3 seconds
 aureus_remove_messages_after(3);
 
-// setup i18n for js
-aureus_setup_i18n("<%= I18n.default_locale %>","<%= I18n.locale %>");
-
-// translate datatables with i18n
-aureus_datatables_translate();
-
 // transform datatables in given actual document
 aureus_datatables_decorate();
 ```
@@ -176,11 +168,6 @@ To generate a base layout issue `rails g aureus:layout layout_name` which produc
 ```
 
 Add the I18n keys to your en.yml.
-
-### I18n
-
-Download i18n files from the official repository: `rails g aureus:i18n locale` where local defines the locale identifier.
-
 
 ---
 

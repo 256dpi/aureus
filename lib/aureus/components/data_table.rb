@@ -3,6 +3,7 @@ module Aureus
 	module Components
 
 		class DataTable < Renderable
+      include ActionView::Helpers::JavaScriptHelper
 
 			def initialize resource, args
 				init args, { toolbar: true }
@@ -21,10 +22,21 @@ module Aureus
 					yield row, r
 					@rows << row
 				end
-			end
+      end
+
+      def data
+        {
+          i18n_sSearch: I18n.t('aureus.datatables.search'),
+          i18n_sLengthMenu: I18n.t('aureus.datatables.length_menu'),
+          i18n_sZeroRecords: I18n.t('aureus.datatables.zero_records'),
+          i18n_sInfo: I18n.t('aureus.datatables.info'),
+          i18n_sInfoEmpty: I18n.t('aureus.datatables.info_empty'),
+          i18n_sInfoFiltered: I18n.t('aureus.datatables.info_filtered')
+        }
+      end
 
 			def render
-				content_tag 'table', id: @resource.class.name.downcase, class: (@options[:toolbar] ? 'datatable':'datatable-no-toolbar') do
+				content_tag 'table', id: @resource.class.name.downcase, class: (@options[:toolbar] ? 'datatable':'datatable-no-toolbar'), data: data do
 					compact @head.render, content_tag('tbody',compact_render(*@rows))
 				end
 			end

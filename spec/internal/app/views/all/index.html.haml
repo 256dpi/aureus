@@ -1,0 +1,12 @@
+.first
+  = aureus_datatable Resource.all do |t|
+    - t.head do |h|
+      - h.text 'Title'
+      - h.text 'Text'
+    - t.row do |r,res|
+      - r.identifier res.id
+      - r.cell res.title
+      - r.cell res.text
+      - r.button :show, 'url'
+      - r.button :edit, 'url'
+      - r.button :destroy, 'url', confirm: 'Delete user?'

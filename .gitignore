@@ -1,2 +1,3 @@
 .DS_Store
 tmp/restart.txt
+spec/internal/tmp
