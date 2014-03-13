@@ -1,5 +1,6 @@
 require 'aureus/version'
 
+require 'formtastic'
 require 'haml'
 require 'jquery-rails'
 require 'leaflet-rails'

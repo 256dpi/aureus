@@ -7,6 +7,7 @@ module Aureus
 
 			desc 'generates aures views for a existing model'
 			source_root File.expand_path('../templates', __FILE__)
+      class_option :yes, type: :boolean, default: false, description: 'do not ask'
 			argument :resource, type: :string, required: true
 			argument :controller, type: :string, required: true
       argument :columns, type: :array
@@ -22,7 +23,7 @@ module Aureus
         name_singular = real_name.underscore.downcase
 				route = folder.gsub('/','_').singularize
 
-				if yes? "generate views for '#{model_name}' to: '#{target}'?"
+				if options[:yes] or yes?("generate views for '#{model_name}' to: '#{target}'?")
 					directory 'views', target
 					replacements = {
 						model: model_name,
@@ -44,7 +45,7 @@ module Aureus
 				end
 
 				i18n_file = "config/locales/en/#{route.pluralize}.en.yml"
-				if yes? 'generate i18n file to: '+i18n_file+'?'
+				if options[:yes] or yes?('generate i18n file to: '+i18n_file+'?')
 					singular = real_name
 					plural = real_name.pluralize
 					base_i18n = {
