@@ -290,7 +290,7 @@ Run `rails g aureus:views Resource ResourcesController` to generate views for a 
 
 #### config/locales/resources.en.yml
 
-```yml
+```yaml
 en:
   resources:
     index:
