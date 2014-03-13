@@ -6,7 +6,7 @@ module Aureus
       include ActionView::Helpers::JavaScriptHelper
 
 			def initialize resource, args
-				init args, { toolbar: true }
+				init args, { toolbar: false }
 				@resource = resource
 				@head = DataTableHead.new
 				@rows = Array.new
