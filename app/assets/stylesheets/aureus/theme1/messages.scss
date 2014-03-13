@@ -5,7 +5,10 @@
     color: black;
     font-size: 14px;
   }
-  .error, .alert {
+  .alert {
+    background-color: $color_yellow;
+  }
+  .error {
     background-color: $color_red;
   }
   .notice {
