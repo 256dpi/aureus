@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.name = 'aureus'
   s.version = Aureus::VERSION
   s.summary = 'a nice looking framework for your rails admin interfaces'
-  s.description = 'Aureus is a tool to quickly generate admin interfaces for a rails app. Its between scaffolding an tools like ActiveAdmin.'
+  s.description = 'Aureus is a tool to quickly generate admin interfaces for a rails app. Its between scaffolding and tools like ActiveAdmin.'
   s.license = 'MIT'
 
   s.author = 'Joël Gähhwiler'

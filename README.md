@@ -337,4 +337,8 @@ en:
 
 ### Devise
 
-Run `rails g aureus:devise folder` to generate devise views using aureus helpers.
+* Run `rails g aureus:devise_views folder` to generate devise views using aureus helpers.
+* Run `rails g aureus:devise_i18n folder` to generate the i18n file used by the views.
+
+* Run `rails g aureus:devise_invitable_views folder` to generate devise invitable views using aureus helpers.
+* Run `rails g aureus:devise_invitable_i18n folder` to generate invitable the i18n file used by the views.
