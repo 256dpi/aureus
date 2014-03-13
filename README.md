@@ -2,7 +2,8 @@
 
 **a framework for rails admin interfaces**
 
-Aureus is a tool to quickly generate admin interfaces for a rails app. It's between scaffolding and tools like ActiveAdmin.
+Aureus is a tool to quickly generate admin interfaces for a rails app.
+It's between scaffolding and tools like ActiveAdmin.
 
 ## General Concept
 
