@@ -24,6 +24,4 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'haml-rails'
   s.add_runtime_dependency 'leaflet-rails'
   s.add_runtime_dependency 'i18n-js', '3.0.0.rc5'
-
-  s.add_development_dependency 'combustion'
 end

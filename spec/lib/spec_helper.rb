@@ -3,7 +3,9 @@ require 'bundler/setup'
 require 'combustion'
 #require 'capybara/rspec'
 
-Combustion.initialize! :all
+Combustion.initialize! :active_record, :action_controller, :action_view, :sprockets
+require 'jquery-rails'
+require 'i18n-js'
 
 require 'rspec/rails'
 #require 'capybara/rails'
