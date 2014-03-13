@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler'
 require 'combustion'
 
+#Rails.env = 'development'
 Combustion.initialize! :active_record, :action_controller, :action_view, :sprockets
 
 ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: ':memory:'

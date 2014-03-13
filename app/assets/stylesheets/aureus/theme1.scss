@@ -1,7 +1,6 @@
 //= require aureus/extensions
 
 //= depend_on aureus/theme1/normalize
-//= depend_on aureus/theme1/fonts
 //= depend_on aureus/theme1/colors
 //= depend_on aureus/theme1/icons
 
@@ -12,10 +11,8 @@
 //= depend_on aureus/theme1/content
 //= depend_on aureus/theme1/table
 //= depend_on aureus/theme1/form
-//= depend_on aureus/theme1/ui
 
 @import "aureus/theme1/normalize";
-@import "aureus/theme1/fonts";
 @import "aureus/theme1/colors";
 @import "aureus/theme1/icons";
 
@@ -26,4 +23,3 @@
 @import "aureus/theme1/content";
 @import "aureus/theme1/table";
 @import "aureus/theme1/form";
-@import "aureus/theme1/ui";

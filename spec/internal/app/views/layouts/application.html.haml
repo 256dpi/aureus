@@ -9,7 +9,7 @@
   %body
     = aureus_toolbar 'Aureus' do |t|
       - t.left do |l|
-        - l.link_to 'Root', root_url
+        - l.link_to Rails.env, root_url
         - l.dropdown 'Dropdown' do |d|
           - d.link_to 'Element', '#'
           - d.link_to 'Element', '#'
