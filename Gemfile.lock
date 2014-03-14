@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    aureus (2.0.0)
+    aureus (2.1.0)
       formtastic (= 2.3.0.rc2)
       haml-rails
       jquery-datatables-rails
