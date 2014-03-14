@@ -24,24 +24,25 @@ module Aureus
 				route = folder.gsub('/','_').singularize
 
 				if options[:yes] or yes?("generate views for '#{model_name}' to: '#{target}'?")
-					directory 'views', target
-					replacements = {
-						model: model_name,
-						name_singular: name_singular,
-						name_plural: real_name.pluralize.underscore.downcase,
-						path_singular: route,
-						path_plural: route.pluralize,
-						table_heads: columns.collect{ |c| "- h.text t('.column_#{c}')" }.join("\n").indent(8),
-						table_cells: columns.collect{ |c| "- r.cell #{name_singular}.#{c}" }.join("\n").indent(8),
-						entries: columns.collect{ |c| "- l.entry t('.entry_#{c}'), @#{name_singular}.#{c}" }.join("\n").indent(8),
-						inputs: columns.collect{ |c| "= f.input :#{c}, label: t('.field_#{c}')" }.join("\n").indent(8),
-						form_path: namespace.collect{ |n| "'#{n}'" }.push("@#{name_singular}").join(',')
-					}
-					Dir[target+'/*.haml'].each do |file|
-						replacements.each do |key,value|
-							gsub_file file, "{{{#{key.to_s}}}}", value, verbose: false
-						end
-					end
+          replacements = {
+            model: model_name,
+            name_singular: name_singular,
+            name_plural: real_name.pluralize.underscore.downcase,
+            path_singular: route,
+            path_plural: route.pluralize,
+            table_heads: columns.collect{ |c| "- h.text t('.column_#{c}')" }.join("\n").indent(8),
+            table_cells: columns.collect{ |c| "- r.cell #{name_singular}.#{c}" }.join("\n").indent(8),
+            entries: columns.collect{ |c| "- l.entry t('.entry_#{c}'), @#{name_singular}.#{c}" }.join("\n").indent(8),
+            inputs: columns.collect{ |c| "= f.input :#{c}, label: t('.field_#{c}')" }.join("\n").indent(8),
+            form_path: namespace.collect{ |n| "'#{n}'" }.push("@#{name_singular}").join(',')
+          }
+
+					directory 'views', target do |content|
+            replacements.each do |key,value|
+              content.gsub! "{{{#{key}}}}", value
+            end
+            content
+          end
 				end
 
 				i18n_file = "config/locales/en/#{route.pluralize}.en.yml"

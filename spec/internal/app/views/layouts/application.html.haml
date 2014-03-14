@@ -19,8 +19,6 @@
           - d.link_to 'Element', '#'
           - d.link_to 'Element', '#'
         - r.link_to 'Element', '#'
-    = aureus_navigation do |n|
-      - n.title 'Navigation Title'
-      - n.button link_to 'Button', '#'
+    = yield(:navigation)
     = aureus_messages flash
     = aureus_content yield

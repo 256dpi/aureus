@@ -1,3 +1,8 @@
+- content_for :navigation do
+  = aureus_navigation do |n|
+    - n.title 'Navigation Title'
+    - n.button link_to 'Button', '#'
+
 = aureus_row do |r|
   - r.column 25 do
     = aureus_box 'Column 1' do
@@ -6,11 +11,18 @@
         - l.entry 'Field 2' do
           %strong Element 2
   - r.column 25 do
-    = aureus_box 'Column 2' do
-      &nbsp;
+    = aureus_box 'Resource' do
+      = aureus_listing do |l|
+        - l.entry 'Title', Resource.first.title
   - r.column 25 do
-    = aureus_box 'Column 3' do
-      &nbsp;
+    = aureus_form [Resource.new] do |f|
+      = aureus_box 'Simple Datatable', for: :form do |b|
+        - b.button link_to 'Button', '#'
+        - b.content do
+          = f.input :title
+          = f.action :submit
+        - b.foot do
+          The Footer
   - r.space 25
 = aureus_row do |r|
   = aureus_box 'Simple Datatable' do
@@ -25,20 +37,3 @@
         - r.button :show, 'url'
         - r.button :edit, 'url'
         - r.button :destroy, 'url', confirm: 'Delete user?'
-  = r.divider
-  = aureus_box 'Simple Datatable' do |b|
-    - b.button link_to 'Button', '#'
-    - b.content do
-      = aureus_datatable Resource.all do |t|
-        - t.head do |h|
-          - h.text 'Title'
-          - h.text 'Text'
-        - t.row do |r,res|
-          - r.identifier res.id
-          - r.cell res.title
-          - r.cell res.text
-          - r.button :show, 'url'
-          - r.button :edit, 'url'
-          - r.button :destroy, 'url', confirm: 'Delete user?'
-    - b.foot do
-      The Footer
