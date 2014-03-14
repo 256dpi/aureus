@@ -7,6 +7,6 @@
 
 $(function(){
   aureus({
-    remove_messages_after: 2
+    remove_messages_after: 3600
   });
 });

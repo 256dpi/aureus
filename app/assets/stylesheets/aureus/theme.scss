@@ -1,0 +1,25 @@
+//= require aureus/extensions
+
+//= depend_on aureus/theme/normalize
+//= depend_on aureus/theme/colors
+//= depend_on aureus/theme/icons
+
+//= depend_on aureus/theme/base
+//= depend_on aureus/theme/messages
+//= depend_on aureus/theme/toolbar
+//= depend_on aureus/theme/navigation
+//= depend_on aureus/theme/content
+//= depend_on aureus/theme/table
+//= depend_on aureus/theme/form
+
+@import "aureus/theme/normalize";
+@import "aureus/theme/colors";
+@import "aureus/theme/icons";
+
+@import "aureus/theme/base";
+@import "aureus/theme/messages";
+@import "aureus/theme/toolbar";
+@import "aureus/theme/navigation";
+@import "aureus/theme/content";
+@import "aureus/theme/table";
+@import "aureus/theme/form";

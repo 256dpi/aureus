@@ -45,14 +45,13 @@ form {
     border: 0;
     font-size: 12px;
     padding: 7px 14px;
-    text-transform: uppercase;
     color: white;
     cursor: pointer;
     background-color: $color_brown;
     font-weight: bold;
-  }
-  button:hover, input[type=submit]:hover {
-    background-color: $color_cyan;
+    &:hover {
+      background-color: $color_cyan;
+    }
   }
   input[type=checkbox], input[type=radio] {
     margin-right: 7px;

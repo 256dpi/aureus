@@ -1,9 +1,8 @@
 .aureus-messages {
   .error, .notice, .alert {
     margin: 0;
-    padding: 10px 30px;
+    padding: 10px 40px;
     color: black;
-    font-size: 14px;
   }
   .alert {
     background-color: $color_yellow;
