@@ -50,12 +50,15 @@ function _aureus_datatable_translation(table) {
 }
 
 function _aureus_datatables_column_configurator(table) {
-  return table.children('thead tr th').map(function(){
+  var ret = [];
+  table.find('thead tr th').each(function(){
     if($(this).hasClass('no-sorting')) {
-      return { bSortable: false };
+      ret.push({ bSortable: false });
+    } else {
+      ret.push(null);
     }
-    return {};
   });
+  return ret;
 }
 
 function _aureus_simple_map() {
