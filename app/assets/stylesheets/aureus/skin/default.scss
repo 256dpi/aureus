@@ -1,21 +1,52 @@
-$color_grey: #1e1e1d;
-$color_brown: #59483c;
-$color_beige: #c6b78d;
-$color_cyan: #0a89cf;
-$color_blue: #00334c;
+$color-background: #ccc;
+$color-font-default: #fff;
 
-$color_red: #ff1a1a;
-$color_yellow: #ffbb20;
-$color_green: #3dbc13;
+$color-notice: #3dbc13;
+$color-alert: #ffbb20;
+$color-error: #ff1a1a;
 
-$color_light_grey: #ccc;
+$color-box-background: #fff;
+$color-box-header: #00334c;
+$color-box-title: #fff;
+$color-box-button: #fff;
+$color-box-button-hover: #0a89cf;
+$color-box-footer: #59483c;
 
-$asset_icon_sort: image-path("aureus/icon-sort.png");
-$asset_icon_sort_abc_asc: image-path("aureus/icon-sort-abc-asc.png");
-$asset_icon_sort_abc_desc: image-path("aureus/icon-sort-abc-desc.png");
+$color-form-hints: #666;
+$color-form-labels: #000;
+$color-form-field-border: #ccc;
+$color-form-field-border-focus: #1e1e1e;
+$color-form-field-text: #000;
+$color-form-button: #59483c;
+$color-form-button-hover: #0a89cf;
+$color-form-button-text: #fff;
 
-$asset_icon_pencil: image-path("aureus/icon-pencil.png");
-$asset_icon_cross: image-path("aureus/icon-cross.png");
-$asset_icon_eye: image-path("aureus/icon-eye.png");
-$asset_icon_refresh: image-path("aureus/icon-refresh.png");
-$asset_icon_print: image-path("aureus/icon-print.png");
+$color-navigation: #59483c;
+$color-navigation-title: #fff;
+$color-navigation-button: #c6b78d;
+$color-navigation-button-hover: #000;
+$color-navigation-button-text: #000;
+$color-navigation-button-text-hover: #fff;
+
+$color-table-head-background: #1e1e1e;
+$color-table-head-border: #59483c;
+$color-table-border: #c6b78d;
+$color-table-link: #00334c;
+$color-table-link-hover: #000;
+$color-table-list-head: #444;
+
+$color-toolbar: #1e1e1e;
+$color-toolbar-title: #fff;
+$color-toolbar-info: #59483c;
+$color-toolbar-link: #fff;
+$color-toolbar-link-hover: #c6b78d;
+
+$icon-sort: image-path("aureus/icon-sort.png");
+$icon-sort_abc_asc: image-path("aureus/icon-sort-abc-asc.png");
+$icon-sort_abc_desc: image-path("aureus/icon-sort-abc-desc.png");
+
+$icon-pencil: image-path("aureus/icon-pencil.png");
+$icon-cross: image-path("aureus/icon-cross.png");
+$icon-eye: image-path("aureus/icon-eye.png");
+$icon-refresh: image-path("aureus/icon-refresh.png");
+$icon-print: image-path("aureus/icon-print.png");

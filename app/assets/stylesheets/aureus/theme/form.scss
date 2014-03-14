@@ -7,7 +7,7 @@ form {
     list-style: none;
     margin-top: 10px;
     .inline-errors {
-      color: $color_red;
+      color: $color-error;
       margin-top: 2px;
     }
     abbr {
@@ -21,36 +21,36 @@ form {
   p {
     margin: 7px 0px;
     font-size: 14px;
-    color: #666;
+    color: $color-form-hints;
   }
   label {
     display: block;
     margin-bottom: 2px;
-    color: black;
+    color: $color-form-labels;
     font-size: 14px;
   }
   input[type="text"], input[type=password], input[type=email], input[type=tel], textarea, select[multiple=multiple] {
-    border: 1px solid $color_light_grey;
+    border: 1px solid $color-form-field-border;
     box-sizing: border-box;
     font-size: 14px;
     padding: 5px;
     outline: none;
-    color: black;
+    color: $color-form-field-text;
     width: 100%;
     &:focus {
-      border: 1px solid $color_grey;
+      border: 1px solid $color-form-field-border-focus;
     }
   }
   button, input[type=submit] {
     border: 0;
     font-size: 12px;
     padding: 7px 14px;
-    color: white;
+    color: $color-form-button-text;
     cursor: pointer;
-    background-color: $color_brown;
+    background-color: $color-form-button;
     font-weight: bold;
     &:hover {
-      background-color: $color_cyan;
+      background-color: $color-form-button-hover;
     }
   }
   input[type=checkbox], input[type=radio] {

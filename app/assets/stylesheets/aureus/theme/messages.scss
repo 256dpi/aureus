@@ -5,12 +5,12 @@
     color: black;
   }
   .alert {
-    background-color: $color_yellow;
+    background-color: $color-alert;
   }
   .error {
-    background-color: $color_red;
+    background-color: $color-error;
   }
   .notice {
-    background-color: $color_green;
+    background-color: $color-notice;
   }
 }

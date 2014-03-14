@@ -1,9 +1,9 @@
 .aureus-toolbar {
   padding: 12px 40px;
   height: 18px;
-  background-color: $color_grey;
+  background-color: $color-toolbar;
   h1 {
-    color: white;
+    color: $color-toolbar-title;
     margin: 1px 0px;
     font-size: 14px;
     font-weight: normal;
@@ -30,20 +30,20 @@
       padding: 0 10px;
     }
     .info {
-      color: $color_brown;
+      color: $color-toolbar-info;
       padding: 0 10px;
     }
   }
   li.level-0:hover, li.dropdown-outer:hover {  
     > a, .dropdown-accessor {
-      color: $color_beige;
+      color: $color-toolbar-link-hover;
       cursor: pointer;
     }
   }
   li.dropdown-outer {
     ul.dropdown-inner {
       display: none;
-      background-color: $color_grey;
+      background-color: $color-toolbar;
       padding: 10px;
       padding-top: 15px;
       margin-left: -10px;
@@ -59,7 +59,7 @@
       }
       .line {
         margin: 8px 0;
-        border-top: 1px solid $color_beige;
+        border-top: 1px solid $color-toolbar-link;
       }
     }
   }
@@ -73,7 +73,7 @@
   ul.dropdown-inner {
     li:hover {
       a {
-        color: $color_beige;
+        color: $color-toolbar-link-hover;
       }
     }
   }

@@ -3,7 +3,7 @@
   border-spacing: 0;
   thead {
     tr {
-      background-color: $color_grey;
+      background-color: $color-table-head-background;
       th {
         padding: 10px 10px;
         padding-right: 30px;
@@ -11,7 +11,7 @@
         font-weight: normal;
         font-size: 14px;
         color: white;
-        border-left: 1px solid $color_brown;
+        border-left: 1px solid $color-table-head-border;
         &:first-child {
           padding-left: 20px;
         }
@@ -23,17 +23,17 @@
         border-left: 0;
       }
       th.sorting {
-        background-image: url($asset_icon_sort);
+        background-image: url($icon-sort);
         background-repeat: no-repeat;
         background-position: center right;
       }
       th.sorting_asc {
-        background-image: url($asset_icon_sort_abc_asc);
+        background-image: url($icon-sort_abc_asc);
         background-repeat: no-repeat;
         background-position: center right;
       }
       th.sorting_desc {
-        background-image: url($asset_icon_sort_abc_desc);
+        background-image: url($icon-sort_abc_desc);
         background-repeat: no-repeat;
         background-position: center right;
       }
@@ -45,16 +45,16 @@
   tbody {
     td, th {
       text-align: left;
-      border-top: 1px solid $color_beige;
+      border-top: 1px solid $color-table-border;
+      border-left: 1px solid $color-table-border;
       padding: 12px 10px;
       font-size: 14px;
-      border-left: 1px solid $color_beige;
       color: black;
       a {
-        color: black;
+        color: $color-table-link;
       }
       a:hover {
-        color: $color_cyan;
+        color: $color-table-link-hover;
       }
       &:first-child {
         padding-left: 20px;
@@ -73,9 +73,9 @@
       text-align: center;
     }
     th {
-      border-right: 1px solid $color_beige;
+      border-right: 1px solid $color-table-border;
       font-size: 12px;
-      color: #444;
+      color: $color-table-list-head;
      }
     td.buttons {
       width: 1px;
@@ -102,19 +102,19 @@
         width: 16px;
       }
       a.edit {
-        background-image: url($asset_icon_pencil);
+        background-image: url($icon-pencil);
       }
       a.destroy {
-        background-image: url($asset_icon_cross);
+        background-image: url($icon-cross);
       }
       a.show {
-        background-image: url($asset_icon_eye);
+        background-image: url($icon-eye);
       }
       a.recover {
-        background-image: url($asset_icon_refresh);
+        background-image: url($icon-refresh);
       }
       a.print {
-        background-image: url($asset_icon_print);
+        background-image: url($icon-print);
       }
     }
   }

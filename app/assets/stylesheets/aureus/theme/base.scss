@@ -2,18 +2,18 @@ body {
   margin: 0;
   font-size: 14px;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  color: white;
-  background-color: $color_light_grey;
+  color: $color-font-default;
+  background-color: $color-background;
   min-width: 1000px;
 }
 
 a {
-  color: white;
+  color: $color-font-default;
 }
 
 .translation_missing {
   padding: 0 !important;
   margin: 0 !important;
-  color: $color_red !important;
+  color: $color-error !important;
   text-decoration: line-through !important;
 }
