@@ -5,8 +5,7 @@ module Aureus
 		class DataTable < Renderable
       include ActionView::Helpers::JavaScriptHelper
 
-			def initialize resource, args
-				init args, { toolbar: false }
+			def initialize resource
 				@resource = resource
 				@head = DataTableHead.new
 				@rows = Array.new
@@ -36,7 +35,7 @@ module Aureus
       end
 
 			def render
-				content_tag 'table', id: @resource.class.name.downcase, class: (@options[:toolbar] ? 'datatable':'datatable-no-toolbar'), data: data do
+				content_tag 'table', id: @resource.class.name.downcase, class: 'datatable', data: data do
 					compact @head.render, content_tag('tbody',compact_render(*@rows))
 				end
 			end

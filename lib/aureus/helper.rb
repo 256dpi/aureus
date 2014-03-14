@@ -34,14 +34,14 @@ module Aureus
 			box.render
 		end
 
-		def aureus_datatable resource, *args
-			table = Components::DataTable.new resource, args
+		def aureus_datatable resource
+			table = Components::DataTable.new resource
 			yield table
 			table.render
 		end
 
-		def aureus_form *args, &block
-			semantic_form_for *args do |f|
+		def aureus_form args, &block
+			semantic_form_for args do |f|
 				capture_haml f, &block
 			end
 		end

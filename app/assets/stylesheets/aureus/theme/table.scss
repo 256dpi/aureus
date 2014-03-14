@@ -1,4 +1,4 @@
-.datatable, .datatable-no-toolbar, .simple-table {
+.datatable, .simple-table {
   width: 100%;
   border-spacing: 0;
   thead {
@@ -119,33 +119,3 @@
     }
   }
 }
-  
-// .datatable-wrapper {
-//   .toolbar {
-//     padding: 5px 12px;
-//     padding-bottom: 2px;
-//     // @include gradient(#ddd,#bbb);
-//     color: #333;
-//     font-size: 12px;
-//     overflow: hidden;
-//     .datatable-length {
-//       float: right;
-//     }
-//     .datatable-filter {
-//       float: left;
-//       input {
-//         width: 200px;
-//         border: 1px solid #666;
-//         padding: 2px 10px;
-//         // @include border-radius(20px);
-//         // @include gradient(#777,#999);
-//         color: white;
-//       }
-//     }
-//     .datatable-info {
-//       float: right;
-//       padding: 6px 0px;
-//       margin-left: 15px;
-//     }
-//   }
-// }
