@@ -1,5 +1,6 @@
 .datatable, .datatable-no-toolbar, .simple-table {
   width: 100%;
+  border-spacing: 0;
   thead {
     tr {
       background-color: $color_grey;

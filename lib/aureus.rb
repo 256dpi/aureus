@@ -4,6 +4,7 @@ require 'formtastic'
 require 'haml'
 require 'jquery-rails'
 require 'leaflet-rails'
+require 'normalize-rails'
 
 module Aureus
   module Components

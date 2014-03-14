@@ -41,18 +41,16 @@ Aureus uses the rails asset pipeline to load and override the style and behavior
 Change your `application.scss` to match the following:
 
 ```scss
-//= depend_on aureus/theme1
+//= require aureus
 //= require_self
 
-@import 'aureus/theme1';
+@import 'aureus/skin/default';
+@import 'aureus/theme';
 ```
 
 Change your `application.js` to match the following:
 
 ```javascript
-//= require jquery
-//= require jquery_ujs
-//= require leaflet
 //= require aureus
 //= require_self
 
