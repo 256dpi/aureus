@@ -29,7 +29,7 @@ module Aureus
           content_tag 'div', @columns.first.content, class: 'row'
         else
           total_width = @columns.inject 0 do |sum, n|
-            sum += n.width
+            sum + n.width
           end
           out = String.new.html_safe
           @columns.each_with_index do |c,i|
@@ -45,7 +45,7 @@ module Aureus
             else
               width -= 1
             end
-            out += content_tag 'div', c.content, class: :column, style: "width: #{width}%; margin-left: #{left}%; margin-right: #{right}%"
+            out += content_tag 'div', c.render, class: :column, style: "width: #{width}%; margin-left: #{left}%; margin-right: #{right}%"
           end
           content_tag 'div', out, class: 'row'
         end
@@ -60,10 +60,6 @@ module Aureus
       def initialize  width, content
         @width = width
         @content = content
-      end
-
-      def render
-
       end
 
     end
