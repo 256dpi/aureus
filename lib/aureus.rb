@@ -5,6 +5,7 @@ require 'haml'
 require 'jquery-rails'
 require 'leaflet-rails'
 require 'normalize-rails'
+require 'mapbox-rails'
 
 module Aureus
   module Components

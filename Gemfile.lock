@@ -7,6 +7,7 @@ PATH
       jquery-rails
       jquery-ui-rails
       leaflet-rails
+      mapbox-rails
       normalize-rails
       sass-rails
 
@@ -63,6 +64,7 @@ GEM
     jquery-ui-rails (4.2.0)
       railties (>= 3.2.16)
     leaflet-rails (0.7.2)
+    mapbox-rails (1.6.1.1)
     minitest (4.7.5)
     multi_json (1.8.2)
     normalize-rails (3.0)
