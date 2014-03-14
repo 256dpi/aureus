@@ -25,4 +25,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'formtastic', '2.3.0.rc2'
   s.add_runtime_dependency 'normalize-rails'
   s.add_runtime_dependency 'mapbox-rails'
+  s.add_runtime_dependency 'jquery-datatables-rails'
 end
