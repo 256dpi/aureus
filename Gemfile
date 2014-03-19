@@ -2,8 +2,11 @@ source 'http://rubygems.org'
 gemspec
 
 group :test do
-  gem 'rspec'
-  gem 'highline'
-  gem 'rails', '~> 4.0'
+  gem 'rspec-rails'
+  gem 'combustion'
+  gem 'actionpack'
+  gem 'activerecord'
   gem 'sqlite3'
+  gem 'sprockets'
+  gem 'generator_spec'
 end

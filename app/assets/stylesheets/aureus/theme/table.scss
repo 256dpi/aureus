@@ -1,0 +1,121 @@
+.datatable, .simple-table {
+  width: 100%;
+  border-spacing: 0;
+  thead {
+    tr {
+      background-color: $color-table-head-background;
+      th {
+        padding: 10px 10px;
+        padding-right: 30px;
+        text-align: left;
+        font-weight: normal;
+        font-size: 14px;
+        color: white;
+        border-left: 1px solid $color-table-head-border;
+        &:first-child {
+          padding-left: 20px;
+        }
+        &:last-child {
+          padding-right: 20px;
+        }
+      }
+      th:first-child {
+        border-left: 0;
+      }
+      th.sorting {
+        background-image: url($icon-sort);
+        background-repeat: no-repeat;
+        background-position: center right;
+      }
+      th.sorting_asc {
+        background-image: url($icon-sort_abc_asc);
+        background-repeat: no-repeat;
+        background-position: center right;
+      }
+      th.sorting_desc {
+        background-image: url($icon-sort_abc_desc);
+        background-repeat: no-repeat;
+        background-position: center right;
+      }
+      th.center {
+        text-align: center;
+      }
+    }
+  }
+  tbody {
+    td, th {
+      text-align: left;
+      border-top: 1px solid $color-table-border;
+      border-left: 1px solid $color-table-border;
+      padding: 12px 10px;
+      font-size: 14px;
+      color: black;
+      a {
+        color: $color-table-link;
+      }
+      a:hover {
+        color: $color-table-link-hover;
+      }
+      &:first-child {
+        padding-left: 20px;
+      }
+      &:last-child {
+        padding-right: 20px;
+      }
+    }
+    tr:first-child td, tr:first-child th {
+      border-top: 0;
+    }
+    td:first-child, th:first-child {
+      border-left: 0;
+    }
+    td.center {
+      text-align: center;
+    }
+    th {
+      border-right: 1px solid $color-table-border;
+      font-size: 12px;
+      color: $color-table-list-head;
+     }
+    td.buttons {
+      width: 1px;
+      white-space: nowrap;
+      text-align: right;
+      vertical-align: middle;
+      a {
+        cursor: pointer;
+        display: inline-block;
+        padding: 3px 10px 3px;
+        border: 1px solid black;
+        margin: 0 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-size: 14px;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      a.edit, a.destroy, a.show, a.recover, a.print, a.icon {
+        width: 16px;
+      }
+      a.edit {
+        background-image: url($icon-pencil);
+      }
+      a.destroy {
+        background-image: url($icon-cross);
+      }
+      a.show {
+        background-image: url($icon-eye);
+      }
+      a.recover {
+        background-image: url($icon-refresh);
+      }
+      a.print {
+        background-image: url($icon-print);
+      }
+    }
+  }
+}

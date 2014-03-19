@@ -1,0 +1,16 @@
+.aureus-messages {
+  .error, .notice, .alert {
+    margin: 0;
+    padding: 10px 40px;
+    color: black;
+  }
+  .alert {
+    background-color: $color-alert;
+  }
+  .error {
+    background-color: $color-error;
+  }
+  .notice {
+    background-color: $color-notice;
+  }
+}

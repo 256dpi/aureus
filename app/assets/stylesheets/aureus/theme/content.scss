@@ -1,0 +1,65 @@
+.aureus-content {
+  padding: 20px;
+  overflow: hidden;
+  .row {
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .column {
+    float: left;
+    overflow: hidden;
+  }
+  .box {
+    background-color: $color-box-background;
+    h3 {
+      background-color: $color-box-header;
+      margin: 0;
+      padding: 14px 20px;
+      span {
+        color: $color-box-title;
+        font-size: 16px;
+        font-weight: normal;
+      }
+      a {
+        float: right;
+        cursor: pointer;
+        display: inline-block;
+        color: $color-box-button;
+        text-decoration: none;
+        font-size: 12px;
+        padding: 2px 10px;
+        margin-left: 5px;
+        border: 1px solid $color-box-button;
+      }
+      a:hover {
+        color: $color-box-button-hover;
+        border-color: $color-box-button-hover;
+      }
+    }
+    .datatable-wrapper {
+      overflow: auto;
+      overflow-x: scoll;
+    }
+    .content {
+      margin: 0;
+      padding: 12px;
+    }
+    .foot {
+      padding: 10px 20px;
+      background-color: $color-box-footer;
+    }
+  }
+  .centered {
+    margin: 0 auto;
+    margin-top: 15%;
+    float: none !important;
+    width: 400px;
+  }
+  hr {
+    width: 100%;
+    border: 0;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+  }
+}

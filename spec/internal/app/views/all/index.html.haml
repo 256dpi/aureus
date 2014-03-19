@@ -1,0 +1,39 @@
+- content_for :navigation do
+  = aureus_navigation do |n|
+    - n.title 'Navigation Title'
+    - n.button link_to 'Button', '#'
+
+= aureus_row do |r|
+  - r.column 25 do
+    = aureus_box 'List' do
+      = aureus_listing do |l|
+        - l.entry 'Field 1', 'Element 1'
+        - l.entry 'Field 2' do
+          %strong Element 2
+  - r.column 25 do
+    = aureus_form [Resource.new] do |f|
+      = aureus_box 'Form', for: :form do |b|
+        - b.button link_to 'Button', '#'
+        - b.content do
+          = f.input :title
+          = f.action :submit
+        - b.foot do
+          The Footer
+  - r.column 25 do
+    = aureus_box 'Map' do
+      = aureus_simple_map longitude: 47, latitude: 38
+  - r.space 25
+
+= aureus_row do
+  = aureus_box 'Simple Datatable' do
+    = aureus_datatable Resource.all do |t|
+      - t.head do |h|
+        - h.text 'Title'
+        - h.text 'Text'
+      - t.row do |r,res|
+        - r.identifier res.id
+        - r.cell res.title
+        - r.cell res.text
+        - r.button :show, 'url'
+        - r.button :edit, 'url'
+        - r.button :destroy, 'url', confirm: 'Delete user?'

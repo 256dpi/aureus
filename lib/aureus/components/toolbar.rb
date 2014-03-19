@@ -1,124 +1,124 @@
 module Aureus
 
-	module Components
+  module Components
 
-		class Toolbar < Renderable
+    class Toolbar < Renderable
 
-			def initialize title
-				@title = title
-				@left = ToolbarSection.new 'left'
-				@right = ToolbarSection.new 'right'
-			end
+      def initialize title
+        @title = title
+        @left = ToolbarSection.new 'left'
+        @right = ToolbarSection.new 'right'
+      end
 
-			def left
-				yield @left
-			end
+      def left
+        yield @left
+      end
 
-			def right
-				yield @right
-			end
+      def right
+        yield @right
+      end
 
-			def render
-				content_tag 'div', { class: 'aureus-toolbar' } do
-					compact content_tag('h1',@title), @left.render, @right.render
-				end
-			end
+      def render
+        content_tag 'div', { class: 'aureus-toolbar' } do
+          compact content_tag('h1',@title), @left.render, @right.render
+        end
+      end
 
-		end
+    end
 
-		class ToolbarSection < Renderable
+    class ToolbarSection < Renderable
 
-			def initialize position
-				@items = Array.new
-				@position = position
-			end
+      def initialize position
+        @items = Array.new
+        @position = position
+      end
 
-			def link_to text, url, *args
-				@items << ToolbarButton.new(text,0,url,args)
-			end
+      def link_to text, url, *args
+        @items << ToolbarButton.new(text,0,url,args)
+      end
 
-			def dropdown title
-				toolbar = ToolbarDropdown.new(title)
-				yield toolbar
-				@items << toolbar
-			end
+      def dropdown title
+        toolbar = ToolbarDropdown.new(title)
+        yield toolbar
+        @items << toolbar
+      end
 
-			def info text
-				@items << ToolbarInfo.new(text,0)
-			end
+      def info text
+        @items << ToolbarInfo.new(text,0)
+      end
 
-			def render
-				content_tag 'ul', compact_render(*@items), class: @position
-			end
+      def render
+        content_tag 'ul', compact_render(*@items), class: @position
+      end
 
-		end
+    end
 
-		class ToolbarButton < Renderable
+    class ToolbarButton < Renderable
 
-			def initialize text, level, url, args
-				@text = text
-				@level = level
-				@url = url
-				@args = args
-			end
+      def initialize text, level, url, args
+        @text = text
+        @level = level
+        @url = url
+        @args = args
+      end
 
-			def render
-				content_tag 'li', link_to(@text,@url,*@args), class: "level-#{@level}"
-			end
+      def render
+        content_tag 'li', link_to(@text,@url,*@args), class: "level-#{@level}"
+      end
 
-		end
+    end
 
-		class ToolbarInfo < Renderable
+    class ToolbarInfo < Renderable
 
-			def initialize text, level
-				@text = text
-				@level = level
-			end
+      def initialize text, level
+        @text = text
+        @level = level
+      end
 
-			def render
-				content_tag 'li', content_tag('span', @text, class: :info), class: "level-#{@level}"
-			end
+      def render
+        content_tag 'li', content_tag('span', @text, class: :info), class: "level-#{@level}"
+      end
 
-		end
+    end
 
-		class ToolbarDivider < Renderable
+    class ToolbarDivider < Renderable
 
-			def initialize
-			end
+      def initialize
+      end
 
-			def render
-				content_tag 'div', '', class: :line
-			end
+      def render
+        content_tag 'div', '', class: :line
+      end
 
-		end
+    end
 
-		class ToolbarDropdown < Renderable
+    class ToolbarDropdown < Renderable
 
-			def initialize title
-				@title = title
-				@items = Array.new
-			end
+      def initialize title
+        @title = title
+        @items = Array.new
+      end
 
-			def link_to text, url, *args
-				@items << ToolbarButton.new(text,1,url,args)
-			end
+      def link_to text, url, *args
+        @items << ToolbarButton.new(text,1,url,args)
+      end
 
-			def info text
-				@items << ToolbarInfo.new(text,1)
-			end
+      def info text
+        @items << ToolbarInfo.new(text,1)
+      end
 
-			def divider
-				@items << ToolbarDivider.new
-			end
+      def divider
+        @items << ToolbarDivider.new
+      end
 
-			def render
-				title = content_tag 'span', @title, class: 'dropdown-accessor'
-				list = content_tag 'ul', compact_render(*@items), class: 'dropdown-inner'
-				content_tag 'li', title+list, class: 'dropdown-outer'
-			end
+      def render
+        title = content_tag 'span', @title, class: 'dropdown-accessor'
+        list = content_tag 'ul', compact_render(*@items), class: 'dropdown-inner'
+        content_tag 'li', title+list, class: 'dropdown-outer'
+      end
 
-		end
+    end
 
-	end
+  end
 
 end

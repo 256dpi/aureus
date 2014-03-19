@@ -1,0 +1,42 @@
+.aureus-navigation {
+  padding: 20px 40px;
+  overflow: hidden;
+  background-color: $color-navigation;
+  h2 {
+    margin: 0;
+    padding: 0;
+    float: left;
+    span {
+      font-weight: normal;
+      color: $color-navigation-title;
+      font-size: 28px;
+      overflow: hidden;
+    }
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    float: right;
+    li {
+      display: inline-block;
+      position: relative;
+      margin: 0;
+      margin-left: 6px;
+      padding: 7px 10px;
+      background-color: $color-navigation-button;
+      a {
+        cursor: pointer;
+        display: inline;
+        color: $color-navigation-button-text;
+        text-decoration: none;
+        font-size: 16px;
+      }
+      &:hover {
+        background-color: $color-navigation-button-hover;
+        a, span {
+          color: $color-navigation-button-text-hover;
+        }
+      }
+    }
+  }
+}
