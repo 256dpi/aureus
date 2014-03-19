@@ -63,10 +63,6 @@ $(function(){
 
 You can now use the aureus framework to rapidly build awesome interfaces!
 
-## Helpers
-
-There are several helper methods available to generate the interface:
-
 ## Generators
 
 Aureus has a bunch of generators built-in to easily generate a complete interface.
