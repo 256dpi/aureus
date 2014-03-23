@@ -17,13 +17,13 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
-  s.add_runtime_dependency 'sass-rails', '~> 0'
-  s.add_runtime_dependency 'jquery-rails', '~> 0'
-  s.add_runtime_dependency 'jquery-ui-rails', '~> 0'
-  s.add_runtime_dependency 'haml-rails', '~> 0'
-  s.add_runtime_dependency 'leaflet-rails', '~> 0'
+  s.add_runtime_dependency 'sass-rails', '~> 4.0.0'
+  s.add_runtime_dependency 'jquery-rails', '~> 3.0.0'
+  s.add_runtime_dependency 'jquery-ui-rails', '~> 4.0.0'
+  s.add_runtime_dependency 'haml-rails', '~> 0.5.3'
+  s.add_runtime_dependency 'leaflet-rails', '~> 0.7.2'
   s.add_runtime_dependency 'formtastic', '2.3.0.rc2'
-  s.add_runtime_dependency 'normalize-rails', '~> 0'
-  s.add_runtime_dependency 'mapbox-rails', '~> 0'
-  s.add_runtime_dependency 'jquery-datatables-rails', '~> 0'
+  s.add_runtime_dependency 'normalize-rails', '~> 3.0'
+  s.add_runtime_dependency 'mapbox-rails', '~> 1.6.1'
+  s.add_runtime_dependency 'jquery-datatables-rails', '~> 1.12.2'
 end
