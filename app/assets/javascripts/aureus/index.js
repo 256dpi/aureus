@@ -9,8 +9,8 @@ var aureus_default_options = {
 };
 
 function aureus(options) {
-  window.aureus = { options: jQuery.extend({}, aureus_default_options, options || {}) };
-  _aureus_remove_messages_after(window.aureus.options.remove_messages_after);
+  window.__aureus = { options: jQuery.extend({}, aureus_default_options, options || {}) };
+  _aureus_remove_messages_after(window.__aureus.options.remove_messages_after);
   _aureus_datatables_decorate();
   _aureus_simple_map();
   _aureus_dropdown();
@@ -66,7 +66,7 @@ function _aureus_simple_map() {
     var el = $(this);
     el.height(el.data('height'));
     var pos = [el.data('latitude'), el.data('longitude')];
-    var lmap = L.mapbox.map(this, window.aureus.options['mapbox_id'],{attributionControl: false}).setView(pos, el.data('zoom'));
+    var lmap = L.mapbox.map(this, window.__aureus.options['mapbox_id'],{attributionControl: false}).setView(pos, el.data('zoom'));
     L.marker(pos).addTo(lmap);
   });
 }
