@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'jquery-ui-rails', '~> 4.0'
   s.add_runtime_dependency 'haml-rails', '~> 0.5'
   s.add_runtime_dependency 'leaflet-rails', '~> 0.7'
-  s.add_runtime_dependency 'formtastic', '2.3.0.rc2'
+  s.add_runtime_dependency 'formtastic', '2.3.0.rc3'
   s.add_runtime_dependency 'normalize-rails', '~> 3.0'
   s.add_runtime_dependency 'mapbox-rails', '~> 1.6'
   s.add_runtime_dependency 'jquery-datatables-rails', '~> 1.12'
