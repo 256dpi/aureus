@@ -29,7 +29,7 @@ form {
     color: $color-form-labels;
     font-size: 14px;
   }
-  input[type="text"], input[type=password], input[type=email], input[type=tel], textarea, select[multiple=multiple] {
+  input[type="text"], input[type=password], input[type=number], input[type=email], input[type=tel], textarea, select[multiple=multiple] {
     border: 1px solid $color-form-field-border;
     box-sizing: border-box;
     font-size: 14px;
