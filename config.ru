@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'bundler'
+require 'bundler/setup'
 require 'combustion'
 
 Combustion.initialize! :active_record, :action_controller, :action_view, :sprockets do
