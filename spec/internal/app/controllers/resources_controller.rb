@@ -2,11 +2,11 @@ class ResourcesController < Aureus::ResourcesController
   before_filter :prepare_aureus
 
   def index
-    aureus Resource.all, navigation_buttons: [['New Resource', new_resource_path]]
+    aureus Resource.all
   end
 
   def new
-    aureus Resource.new, title: 'New Resource'
+    aureus Resource.new
   end
 
   def create
@@ -15,11 +15,11 @@ class ResourcesController < Aureus::ResourcesController
   end
 
   def show
-    aureus Resource.find(params[:id]), navigation_buttons: [['Back', resources_path]]
+    aureus Resource.find(params[:id])
   end
 
   def edit
-    aureus Resource.find(params[:id]), title: 'New Resource'
+    aureus Resource.find(params[:id])
   end
 
   def update
@@ -37,23 +37,10 @@ class ResourcesController < Aureus::ResourcesController
   protected
 
   def prepare_aureus
-    aureus_defaults({
-      navigation_buttons: [['Cancel', resources_path]],
-      form_inputs: [[:title], [:text]],
-      table_cells: [
-        ['ID', lambda{|r| r.id }],
-        ['Title', lambda{|r| r.title }],
-        ['Text', lambda{|r| r.text }]
-      ],
-      row_actions: [
-        lambda{|r| [:show, resource_path(r)] },
-        lambda{|r| [:edit, edit_resource_path(r)] },
-        lambda{|r| [:destroy, resource_path(r), confirm: 'Really?'] },
-      ],
-      item_entries: [
-        ['Title', lambda{|r| r.title }],
-        ['Text', lambda{|r| r.text }]
-      ]
+    aureus_initialize({
+      table_fields: [:id, :title, :text],
+      form_fields: [:title, :text],
+      item_fields: [:title, :text]
     })
   end
 

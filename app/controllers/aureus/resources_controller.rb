@@ -4,43 +4,57 @@ module Aureus
 
     protected
 
-    def aureus_initialize
-      @_aureus = {}
-      @_aureus[:box_title] = 'Attributes'
+    def aureus_defaults(options)
+      apply_options(options)
+    end
+
+    def aureus_initialize(options)
+      apply_options box_title: 'Attributes',
+        form_inputs: options[:form_fields].map{|f| [f] },
+        table_cells: options[:table_fields].map{|f| [f.to_s.capitalize, lambda{|r| r.send(f) }] },
+        row_actions: [
+          lambda{|r| [:show, path_for(:show, r.id)] },
+          lambda{|r| [:edit, path_for(:edit, r.id)] },
+          lambda{|r| [:destroy, path_for(:destroy, r.id), confirm: 'Really?'] },
+        ],
+        item_entries: options[:item_fields].map{|f| [f.to_s.capitalize, lambda{|r| r.send(f) }] }
 
       case params[:action]
         when 'index'
-          @_aureus[:title] = "All #{params[:controller].capitalize}"
-          @_aureus[:box_title] = 'List'
+          apply_options title: "All #{params[:controller].capitalize}",
+            box_title: 'List',
+            navigation_buttons: [["New #{params[:controller].singularize.capitalize}", path_for(:new)]]
         when 'new'
-          @_aureus[:title] = "New #{params[:controller].singularize.capitalize}"
+          apply_options title: "New #{params[:controller].singularize.capitalize}",
+          navigation_buttons: [['Cancel', path_for(:index)]]
         when 'show'
-          @_aureus[:title] = "View #{params[:controller].singularize.capitalize}"
+          apply_options title: "View #{params[:controller].singularize.capitalize}",
+          navigation_buttons: [['Back', path_for(:index)]]
         when 'edit'
-          @_aureus[:title] = "Edit #{params[:controller].singularize.capitalize}"
+          apply_options title: "Edit #{params[:controller].singularize.capitalize}",
+          navigation_buttons: [['Cancel', path_for(:index)]]
       end
     end
 
-    def aureus_defaults(*options)
-      apply_options(options.extract_options!)
-    end
-
-    def aureus(resource_or_collection, *options)
-      apply_options(options.extract_options!)
+    def aureus(resource_or_collection, options={})
+      apply_options(options)
 
       if params[:action] == 'index'
-        @_aureus[:resources] = resource_or_collection
+        apply_options resources: resource_or_collection
       else
-        @_aureus[:resource] = resource_or_collection
+        apply_options resource: resource_or_collection
       end
     end
 
     private
 
-    def apply_options(options)
-      OPTIONS.each do |option|
-        @_aureus[option] = options[option] || @_aureus[option] || nil
-      end
+    def path_for(action, id=nil)
+      url_for(action: action, id: id, only_path: true)
+    end
+
+    def apply_options(hash)
+      @_aureus ||= {}
+      @_aureus.merge!(hash)
     end
   end
 end
