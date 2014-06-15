@@ -2,24 +2,11 @@ class ResourcesController < Aureus::ResourcesController
   before_filter :prepare_aureus
 
   def index
-    aureus Resource.all,
-      buttons: [['New Resource', new_resource_path]],
-      table_cells: [
-        ['ID', lambda{|r| r.id }],
-        ['Title', lambda{|r| r.title }],
-        ['Text', lambda{|r| r.text }]
-      ],
-      row_actions: [
-        lambda{|r| [:show, resource_path(r)] },
-        lambda{|r| [:edit, edit_resource_path(r)] },
-        lambda{|r| [:destroy, resource_path(r), confirm: 'Really?'] },
-      ]
+    aureus Resource.all, buttons: [['New Resource', new_resource_path]]
   end
 
   def new
-    aureus Resource.new,
-      title: 'New Resource',
-      form_inputs: [[:title], [:text]]
+    aureus Resource.new, title: 'New Resource'
   end
 
   def create
@@ -28,17 +15,11 @@ class ResourcesController < Aureus::ResourcesController
   end
 
   def show
-    aureus Resource.find(params[:id]),
-      buttons: [['Back', resources_path]],
-      item_entries: [
-        ['Title', lambda{|r| r.title }],
-        ['Text', lambda{|r| r.text }]
-      ]
+    aureus Resource.find(params[:id]), buttons: [['Back', resources_path]]
   end
 
   def edit
-    aureus Resource.find(params[:id]),
-      title: 'New Resource'
+    aureus Resource.find(params[:id]), title: 'New Resource'
   end
 
   def update
@@ -58,6 +39,21 @@ class ResourcesController < Aureus::ResourcesController
   def prepare_aureus
     aureus_defaults({
       buttons: [['Cancel', resources_path]],
+      form_inputs: [[:title], [:text]],
+      table_cells: [
+        ['ID', lambda{|r| r.id }],
+        ['Title', lambda{|r| r.title }],
+        ['Text', lambda{|r| r.text }]
+      ],
+      row_actions: [
+        lambda{|r| [:show, resource_path(r)] },
+        lambda{|r| [:edit, edit_resource_path(r)] },
+        lambda{|r| [:destroy, resource_path(r), confirm: 'Really?'] },
+      ],
+      item_entries: [
+        ['Title', lambda{|r| r.title }],
+        ['Text', lambda{|r| r.text }]
+      ]
     })
   end
 
