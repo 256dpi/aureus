@@ -1,7 +1,5 @@
 module Aureus
-
   module Components
-
     class DataTable < Renderable
       include ActionView::Helpers::JavaScriptHelper
 
@@ -39,11 +37,9 @@ module Aureus
           compact @head.render, content_tag('tbody',compact_render(*@rows))
         end
       end
-
     end
 
     class DataTableHead < Renderable
-
       def initialize
         @columns = Array.new
       end
@@ -66,11 +62,9 @@ module Aureus
           content_tag 'tr', compact_render(*@columns)
         end
       end
-
     end
 
     class DataTableHeadColumn < Renderable
-
       def initialize name, sorting
         @name = name
         @sorting = sorting
@@ -79,11 +73,9 @@ module Aureus
       def render
         content_tag 'th', @name, class: @sorting
       end
-
     end
 
     class DataTableRow < Renderable
-
       def initialize
         init_haml_helpers
         @cells = Array.new
@@ -96,7 +88,7 @@ module Aureus
       end
 
       def cell data='', &block
-        if block_given?
+        if block
           @cells << DataTableRowCell.new(capture_haml(&block))
         else
           @cells << DataTableRowCell.new(data)
@@ -118,11 +110,9 @@ module Aureus
       def render
         content_tag 'tr', compact_render(*@cells)+content_tag('td',compact_render(*@buttons),class: 'buttons'), id: @identifier
       end
-
     end
 
     class DataTableRowCell < Renderable
-
       def initialize data
         @data = data
       end
@@ -130,11 +120,9 @@ module Aureus
       def render
         content_tag 'td', @data
       end
-
     end
 
     class DataTableRowButton < Renderable
-
       def initialize type, text, url, options
         init options, remote: true, confirm: 'Delete resource?'
         @type = type
@@ -161,9 +149,6 @@ module Aureus
           end
         end
       end
-
     end
-
   end
-
 end

@@ -1,9 +1,6 @@
 module Aureus
-
   module Components
-
     class Messages < Renderable
-
       def initialize flash
         @flash = flash
       end
@@ -19,9 +16,6 @@ module Aureus
           compact *out
         end
       end
-
     end
-
   end
-
 end

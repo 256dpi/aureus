@@ -1,9 +1,6 @@
 module Aureus
-
   module Components
-
     class Listing < Renderable
-
       def initialize
         @entries = Array.new
       end
@@ -20,11 +17,9 @@ module Aureus
       def render
         content_tag 'table', compact_render(*@entries), class: 'simple-table'
       end
-
     end
 
     class ListingEntry < Renderable
-
       def initialize head, body
         @head = head
         @body = body
@@ -35,9 +30,6 @@ module Aureus
           compact content_tag('th',@head), content_tag('td',@body)
         end
       end
-
     end
-
   end
-
 end

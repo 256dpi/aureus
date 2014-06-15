@@ -1,0 +1,11 @@
+= aureus_row do
+  = aureus_box @aureus_box_title do
+    = aureus_datatable @aureus_resources do |t|
+      - t.head do |h|
+        - @aureus_table_cells.each do |cell|
+          - h.text cell[0]
+      - t.row do |r, resource|
+        - @aureus_table_cells.each do |cell|
+          - r.cell cell[1].call(resource)
+        - @aureus_row_actions.each do |action|
+          - r.button *action.call(resource)

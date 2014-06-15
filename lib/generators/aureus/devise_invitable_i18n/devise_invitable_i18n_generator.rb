@@ -1,9 +1,6 @@
 module Aureus
-
   module Generators
-
     class DeviseInvitableI18nGenerator < Rails::Generators::Base
-
       desc 'generates base i18n files for the devise views'
       source_root File.expand_path('../locales', __FILE__)
       argument :language, type: :string, default: 'en'
@@ -17,9 +14,6 @@ module Aureus
           copy_file locale_file, destination
         end
       end
-
     end
-
   end
-
 end

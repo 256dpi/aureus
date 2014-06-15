@@ -1,9 +1,6 @@
 module Aureus
-
   module Components
-
     class SimpleMap < Renderable
-
       def initialize args
         init args, { height: 300, zoom: 13 }
       end
@@ -13,9 +10,6 @@ module Aureus
           content_tag('div',nil, class: 'aureus-simple-map', data: @options )
         end
       end
-
     end
-
   end
-
 end

@@ -1,2 +1,67 @@
-class ResourcesController < ActionController::Base
+class ResourcesController < Aureus::ResourcesController
+  before_filter :prepare_aureus
+
+  def index
+    aureus Resource.all,
+      buttons: [['New Resource', new_resource_path]],
+      table_cells: [
+        ['ID', lambda{|r| r.id }],
+        ['Title', lambda{|r| r.title }],
+        ['Text', lambda{|r| r.text }]
+      ],
+      row_actions: [
+        lambda{|r| [:show, resource_path(r)] },
+        lambda{|r| [:edit, edit_resource_path(r)] },
+        lambda{|r| [:destroy, resource_path(r), confirm: 'Really?'] },
+      ]
+  end
+
+  def new
+    aureus Resource.new,
+      title: 'New Resource',
+      form_inputs: [[:title], [:text]]
+  end
+
+  def create
+    Resource.create!(permitted_params[:resource])
+    redirect_to resources_url
+  end
+
+  def show
+    aureus Resource.find(params[:id]),
+      buttons: [['Back', resources_path]],
+      item_entries: [
+        ['Title', lambda{|r| r.title }],
+        ['Text', lambda{|r| r.text }]
+      ]
+  end
+
+  def edit
+    aureus Resource.find(params[:id]),
+      title: 'New Resource'
+  end
+
+  def update
+    resource = Resource.find(params[:id])
+    resource.update!(permitted_params[:resource])
+    redirect_to resource_url(resource)
+  end
+
+  def destroy
+    resource = Resource.find(params[:id])
+    resource.destroy!
+    redirect_to resources_url
+  end
+
+  protected
+
+  def prepare_aureus
+    aureus_defaults({
+      buttons: [['Cancel', resources_path]],
+    })
+  end
+
+  def permitted_params
+    params.permit(resource: [:title, :text])
+  end
 end

@@ -9,6 +9,8 @@ require 'mapbox-rails'
 require 'jquery-datatables-rails'
 
 module Aureus
+  mattr_accessor :parent_controller
+
   module Components
     autoload :Box, 'aureus/components/box'
     autoload :Content, 'aureus/components/content'

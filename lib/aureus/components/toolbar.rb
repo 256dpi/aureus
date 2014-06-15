@@ -1,9 +1,6 @@
 module Aureus
-
   module Components
-
     class Toolbar < Renderable
-
       def initialize title
         @title = title
         @left = ToolbarSection.new 'left'
@@ -23,11 +20,9 @@ module Aureus
           compact content_tag('h1',@title), @left.render, @right.render
         end
       end
-
     end
 
     class ToolbarSection < Renderable
-
       def initialize position
         @items = Array.new
         @position = position
@@ -50,11 +45,9 @@ module Aureus
       def render
         content_tag 'ul', compact_render(*@items), class: @position
       end
-
     end
 
     class ToolbarButton < Renderable
-
       def initialize text, level, url, args
         @text = text
         @level = level
@@ -65,11 +58,9 @@ module Aureus
       def render
         content_tag 'li', link_to(@text,@url,*@args), class: "level-#{@level}"
       end
-
     end
 
     class ToolbarInfo < Renderable
-
       def initialize text, level
         @text = text
         @level = level
@@ -78,22 +69,18 @@ module Aureus
       def render
         content_tag 'li', content_tag('span', @text, class: :info), class: "level-#{@level}"
       end
-
     end
 
     class ToolbarDivider < Renderable
-
       def initialize
       end
 
       def render
         content_tag 'div', '', class: :line
       end
-
     end
 
     class ToolbarDropdown < Renderable
-
       def initialize title
         @title = title
         @items = Array.new
@@ -116,9 +103,6 @@ module Aureus
         list = content_tag 'ul', compact_render(*@items), class: 'dropdown-inner'
         content_tag 'li', title+list, class: 'dropdown-outer'
       end
-
     end
-
   end
-
 end

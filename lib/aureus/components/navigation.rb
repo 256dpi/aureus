@@ -1,9 +1,6 @@
 module Aureus
-
   module Components
-
     class Navigation < Renderable
-
       def initialize
         @title = ''
         @buttons = Array.new
@@ -28,11 +25,9 @@ module Aureus
           compact content_tag('h2', content_tag('span',@title)), content_tag('ul', compact_render(*@buttons), id: 'quicklinks')
         end
       end
-
     end
 
     class NavigationButton < Renderable
-
       def initialize content
         @content = content
       end
@@ -40,9 +35,6 @@ module Aureus
       def render
         content_tag 'li', @content
       end
-
     end
-
   end
-
 end

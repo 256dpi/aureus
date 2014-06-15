@@ -1,5 +1,4 @@
 class AllController < ActionController::Base
-
   def index
     flash[:notice] = 'Notice'
     flash[:error] = 'Error'
@@ -10,5 +9,4 @@ class AllController < ActionController::Base
   def centered
     render :centered, layout: 'naked'
   end
-
 end

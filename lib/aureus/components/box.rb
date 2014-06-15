@@ -1,9 +1,6 @@
 module Aureus
-
   module Components
-
     class Box < Renderable
-
       def initialize title, options, &block
         init options, for: :text, centered: false
         init_haml_helpers
@@ -38,11 +35,9 @@ module Aureus
           compact title, content_tag('div', @content), footer
         end
       end
-
     end
 
     class BoxButton < Renderable
-
       def initialize content
         @content = content
       end
@@ -50,9 +45,6 @@ module Aureus
       def render
         @content
       end
-
     end
-
   end
-
 end

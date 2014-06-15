@@ -1,5 +1,4 @@
 module Aureus
-
   class Renderable
     include ActionView::Context
     include ActionView::Helpers::TagHelper
@@ -30,7 +29,5 @@ module Aureus
     def render
       @content
     end
-
   end
-
 end

@@ -1,7 +1,5 @@
 module Aureus
-
   module Helper
-
     def aureus_toolbar title
       toolbar = Components::Toolbar.new title
       yield toolbar
@@ -56,7 +54,5 @@ module Aureus
       map = Components::SimpleMap.new args
       map.render
     end
-
   end
-
 end

@@ -1,7 +1,5 @@
 module Aureus
-
   module Generators
-
     class ViewsGenerator < Rails::Generators::Base
       include ActiveSupport::Inflector
 
@@ -71,11 +69,7 @@ module Aureus
           base_i18n = { en: base_i18n }
           create_file i18n_file, base_i18n.deep_stringify_keys.to_yaml
         end
-
       end
-
     end
-
   end
-
 end
