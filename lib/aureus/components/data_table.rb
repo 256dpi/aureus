@@ -21,19 +21,8 @@ module Aureus
         end
       end
 
-      def data
-        {
-          i18n_sSearch: I18n.t('aureus.datatables.search'),
-          i18n_sLengthMenu: I18n.t('aureus.datatables.length_menu'),
-          i18n_sZeroRecords: I18n.t('aureus.datatables.zero_records'),
-          i18n_sInfo: I18n.t('aureus.datatables.info'),
-          i18n_sInfoEmpty: I18n.t('aureus.datatables.info_empty'),
-          i18n_sInfoFiltered: I18n.t('aureus.datatables.info_filtered')
-        }
-      end
-
       def render
-        content_tag 'table', id: @resource.class.name.downcase, class: 'datatable', data: data do
+        content_tag 'table', id: @resource.class.name.downcase, class: 'datatable' do
           compact @head.render, content_tag('tbody',compact_render(*@rows))
         end
       end
@@ -45,19 +34,11 @@ module Aureus
       end
 
       def text name
-        @columns << DataTableHeadColumn.new(name,'text-sorting')
-      end
-
-      def date name
-        @columns << DataTableHeadColumn.new(name,'date-sorting')
-      end
-
-      def raw name
-        @columns << DataTableHeadColumn.new(name,'no-sorting')
+        @columns << DataTableHeadColumn.new(name)
       end
 
       def render
-        raw ''
+        text '' # actions
         content_tag 'thead' do
           content_tag 'tr', compact_render(*@columns)
         end
@@ -65,13 +46,12 @@ module Aureus
     end
 
     class DataTableHeadColumn < Renderable
-      def initialize name, sorting
+      def initialize name
         @name = name
-        @sorting = sorting
       end
 
       def render
-        content_tag 'th', @name, class: @sorting
+        content_tag 'th', @name
       end
     end
 
