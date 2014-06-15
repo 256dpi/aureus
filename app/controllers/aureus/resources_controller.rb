@@ -13,10 +13,10 @@ module Aureus
 
       case params[:action]
         when 'index'
-          @_aureus[:title] = "All #{params[:controller].capitalize}"
+          @_aureus[:title] = "All #{resource_name.pluralize}"
           @_aureus[:box_title] = 'List'
           if options[:actions].include?(:new)
-            @_aureus[:navigation_buttons] = [["New #{params[:controller].singularize.capitalize}", path_for(:new)]]
+            @_aureus[:navigation_buttons] = [["New #{resource_name}", path_for(:new)]]
           end
           @_aureus[:table_cells] = options[:table_fields].map{|f| [f.to_s.capitalize, lambda{|r| r.send(f) }] }
           @_aureus[:row_actions] = []
@@ -30,14 +30,14 @@ module Aureus
             @_aureus[:row_actions] << lambda{|r| [:destroy, path_for(:destroy, r.id), confirm: 'Really?'] }
           end
         when 'new'
-          @_aureus[:title] = "New #{params[:controller].singularize.capitalize}"
+          @_aureus[:title] = "New #{resource_name}"
             @_aureus[:navigation_buttons] = [['Cancel', path_for(:index)]]
         when 'show'
-          @_aureus[:title] = "View #{params[:controller].singularize.capitalize}"
+          @_aureus[:title] = "View #{resource_name}"
           @_aureus[:navigation_buttons] = [['Back', path_for(:index)]]
           @_aureus[:item_entries] = options[:item_fields].map{|f| [f.to_s.capitalize, lambda{|r| r.send(f) }] }
         when 'edit'
-          @_aureus[:title] = "Edit #{params[:controller].singularize.capitalize}"
+          @_aureus[:title] = "Edit #{resource_name}"
           @_aureus[:navigation_buttons] = [['Cancel', path_for(:index)]]
       end
     end
@@ -53,6 +53,10 @@ module Aureus
     end
 
     private
+
+    def resource_name
+      params[:controller].split('/').last.singularize.capitalize
+    end
 
     def path_for(action, id=nil)
       url_for(action: action, id: id, only_path: true)
