@@ -14,10 +14,6 @@ function aureus(options) {
   _aureus_dropdown();
 }
 
-function aureus_trigger_form(selector) {
-  $(selector).submit();
-}
-
 function _aureus_remove_messages_after(seconds) {
   setTimeout(function() {
     $('.aureus-messages p').fadeOut();

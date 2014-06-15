@@ -4,5 +4,5 @@
       = aureus_box @_aureus[:box_title], for: :form do
         - (@_aureus[:form_inputs] || []).each do |input|
           = f.input *input
-        = f.submit
+        = f.action :submit
     - r.space 75
