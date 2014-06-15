@@ -1,5 +1,5 @@
 - content_for :navigation do
   = aureus_navigation do |n|
     - n.title @_aureus[:title]
-    - @_aureus[:navigation_buttons].each do |button|
+    - (@_aureus[:navigation_buttons] || []).each do |button|
       - n.button link_to(*button)

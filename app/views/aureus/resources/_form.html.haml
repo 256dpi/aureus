@@ -2,7 +2,7 @@
   = aureus_row do |r|
     - r.column 25 do
       = aureus_box @_aureus[:box_title], for: :form do
-        - @_aureus[:form_inputs].each do |input|
+        - (@_aureus[:form_inputs] || []).each do |input|
           = f.input *input
         = f.submit
     - r.space 75
