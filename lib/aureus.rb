@@ -9,6 +9,7 @@ require 'mapbox-rails'
 require 'jquery-datatables-rails'
 
 module Aureus
+  mattr_accessor :site_title
   mattr_accessor :parent_controller
   mattr_accessor :skin
   mattr_accessor :mapbox_id

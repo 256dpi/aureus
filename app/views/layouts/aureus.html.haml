@@ -2,9 +2,9 @@
 %html
   %head
     %meta{ charset: 'utf-8' }
-    %title Aureus
-    = stylesheet_link_tag 'aureus/layout'
-    = javascript_include_tag 'aureus/layout'
+    %title= Aureus.site_title
+    = stylesheet_link_tag 'aureus/layout', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'aureus/layout', 'data-turbolinks-track' => true
     = csrf_meta_tag
   %body
     = aureus_toolbar (Aureus.toolbar_title || 'Aureus') do |t|
