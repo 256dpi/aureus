@@ -8,14 +8,14 @@ module Aureus
       def entry head, body = nil, &block
         init_haml_helpers
         if block_given?
-          @entries << ListingEntry.new(head,capture_haml(&block))
+          @entries << ListingEntry.new(head, capture_haml(&block))
         else
-          @entries << ListingEntry.new(head,body)
+          @entries << ListingEntry.new(head, body)
         end
       end
 
       def render
-        content_tag 'table', compact_render(*@entries), class: 'simple-table'
+        content_tag 'table', compact_render(*@entries), class: 'aureus-simple-table'
       end
     end
 
@@ -27,7 +27,7 @@ module Aureus
 
       def render
         content_tag 'tr' do
-          compact content_tag('th',@head), content_tag('td',@body)
+          compact content_tag('th', @head), content_tag('td', @body)
         end
       end
     end

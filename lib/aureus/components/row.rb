@@ -8,7 +8,7 @@ module Aureus
       end
 
       def column width, &block
-        @columns << RowColumn.new(width,capture_haml(&block))
+        @columns << RowColumn.new(width, capture_haml(&block))
       end
 
       def space width

@@ -22,7 +22,7 @@ module Aureus
 
       def render
         content_tag 'div', class: 'aureus-navigation' do
-          compact content_tag('h2', content_tag('span',@title)), content_tag('ul', compact_render(*@buttons), id: 'quicklinks')
+          compact content_tag('h2', content_tag('span', @title)), content_tag('ul', compact_render(*@buttons), id: 'quicklinks')
         end
       end
     end

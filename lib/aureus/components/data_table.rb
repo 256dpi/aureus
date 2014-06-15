@@ -22,7 +22,7 @@ module Aureus
       end
 
       def render
-        content_tag 'table', id: @resource.class.name.downcase, class: 'datatable' do
+        content_tag 'table', id: @resource.class.name.downcase, class: 'aureus-datatable' do
           compact @head.render, content_tag('tbody',compact_render(*@rows))
         end
       end

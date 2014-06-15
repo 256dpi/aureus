@@ -17,7 +17,7 @@ module Aureus
 
       def render
         content_tag 'div', { class: 'aureus-toolbar' } do
-          compact content_tag('h1',@title), @left.render, @right.render
+          compact content_tag('h1', @title), @left.render, @right.render
         end
       end
     end
@@ -29,7 +29,7 @@ module Aureus
       end
 
       def link_to text, url, *args
-        @items << ToolbarButton.new(text,0,url,args)
+        @items << ToolbarButton.new(text, 0, url, args)
       end
 
       def dropdown title
@@ -56,7 +56,7 @@ module Aureus
       end
 
       def render
-        content_tag 'li', link_to(@text,@url,*@args), class: "level-#{@level}"
+        content_tag 'li', link_to(@text, @url, *@args), class: "level-#{@level}"
       end
     end
 
