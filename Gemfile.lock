@@ -124,6 +124,7 @@ DEPENDENCIES
   aureus!
   combustion
   generator_spec
+  rake
   rspec-rails
   sprockets
   sqlite3
