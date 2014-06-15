@@ -38,6 +38,7 @@ class ResourcesController < Aureus::ResourcesController
 
   def prepare_aureus
     aureus_initialize({
+      actions: [:index, :new, :create, :show, :update, :destroy],
       table_fields: [:id, :title, :text],
       form_fields: [:title, :text],
       item_fields: [:title, :text]

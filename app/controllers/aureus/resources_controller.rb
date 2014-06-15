@@ -2,45 +2,53 @@ module Aureus
   class ResourcesController < AureusController
     protected
 
-    def aureus_defaults(options)
-      apply_options(options)
+    def aureus_defaults(hash)
+      @_aureus = (@_aureus || {}).merge(hash)
     end
 
     def aureus_initialize(options)
-      apply_options box_title: 'Attributes',
-        form_inputs: options[:form_fields].map{|f| [f] },
-        table_cells: options[:table_fields].map{|f| [f.to_s.capitalize, lambda{|r| r.send(f) }] },
-        row_actions: [
-          lambda{|r| [:show, path_for(:show, r.id)] },
-          lambda{|r| [:edit, path_for(:edit, r.id)] },
-          lambda{|r| [:destroy, path_for(:destroy, r.id), confirm: 'Really?'] },
-        ],
-        item_entries: options[:item_fields].map{|f| [f.to_s.capitalize, lambda{|r| r.send(f) }] }
+      @_aureus ||= {}
+      @_aureus[:box_title] = 'Attributes'
+      @_aureus[:form_inputs] = options[:form_fields].map{|f| [f] }
 
       case params[:action]
         when 'index'
-          apply_options title: "All #{params[:controller].capitalize}",
-            box_title: 'List',
-            navigation_buttons: [["New #{params[:controller].singularize.capitalize}", path_for(:new)]]
+          @_aureus[:title] = "All #{params[:controller].capitalize}"
+          @_aureus[:box_title] = 'List'
+          if options[:actions].include?(:new)
+            @_aureus[:navigation_buttons] = [["New #{params[:controller].singularize.capitalize}", path_for(:new)]]
+          end
+          @_aureus[:table_cells] = options[:table_fields].map{|f| [f.to_s.capitalize, lambda{|r| r.send(f) }] }
+          @_aureus[:row_actions] = []
+          if options[:actions].include?(:show)
+            @_aureus[:row_actions] << lambda{|r| [:show, path_for(:show, r.id)] }
+          end
+          if options[:actions].include?(:edit)
+            @_aureus[:row_actions] << lambda{|r| [:edit, path_for(:edit, r.id)] }
+          end
+          if options[:actions].include?(:destroy)
+            @_aureus[:row_actions] << lambda{|r| [:destroy, path_for(:destroy, r.id), confirm: 'Really?'] }
+          end
         when 'new'
-          apply_options title: "New #{params[:controller].singularize.capitalize}",
-          navigation_buttons: [['Cancel', path_for(:index)]]
+          @_aureus[:title] = "New #{params[:controller].singularize.capitalize}"
+            @_aureus[:navigation_buttons] = [['Cancel', path_for(:index)]]
         when 'show'
-          apply_options title: "View #{params[:controller].singularize.capitalize}",
-          navigation_buttons: [['Back', path_for(:index)]]
+          @_aureus[:title] = "View #{params[:controller].singularize.capitalize}"
+          @_aureus[:navigation_buttons] = [['Back', path_for(:index)]]
+          @_aureus[:item_entries] = options[:item_fields].map{|f| [f.to_s.capitalize, lambda{|r| r.send(f) }] }
         when 'edit'
-          apply_options title: "Edit #{params[:controller].singularize.capitalize}",
-          navigation_buttons: [['Cancel', path_for(:index)]]
+          @_aureus[:title] = "Edit #{params[:controller].singularize.capitalize}"
+          @_aureus[:navigation_buttons] = [['Cancel', path_for(:index)]]
       end
     end
 
-    def aureus(resource_or_collection, options={})
-      apply_options(options)
+    def aureus(resource_or_collection, hash={})
+      @_aureus = (@_aureus || {}).merge(hash)
 
       if params[:action] == 'index'
-        apply_options resources: resource_or_collection
+        @_aureus[:resources] = resource_or_collection
       else
-        apply_options resource: resource_or_collection
+        @_aureus[:resource] = resource_or_collection
       end
     end
 
@@ -48,11 +56,6 @@ module Aureus
 
     def path_for(action, id=nil)
       url_for(action: action, id: id, only_path: true)
-    end
-
-    def apply_options(hash)
-      @_aureus ||= {}
-      @_aureus.merge!(hash)
     end
   end
 end
