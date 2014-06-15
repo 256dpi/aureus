@@ -14,10 +14,6 @@ module Aureus
       Components::Messages.new(flash).render
     end
 
-    def aureus_content(html, &block)
-      Components::Content.new(html, &block).render
-    end
-
     def aureus_row(&block)
       Components::Row.new(&block).render
     end
