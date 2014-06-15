@@ -2,7 +2,7 @@ module Aureus
   class ResourcesController < AureusController
     before_filter :aureus_initialize
 
-    OPTIONS = [:title, :box_title, :buttons, :form_inputs, :item_entries, :table_cells, :row_actions]
+    OPTIONS = [:title, :box_title, :navigation_buttons, :form_inputs, :item_entries, :table_cells, :row_actions]
 
     protected
 

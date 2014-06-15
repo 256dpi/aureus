@@ -2,7 +2,7 @@ class ResourcesController < Aureus::ResourcesController
   before_filter :prepare_aureus
 
   def index
-    aureus Resource.all, buttons: [['New Resource', new_resource_path]]
+    aureus Resource.all, navigation_buttons: [['New Resource', new_resource_path]]
   end
 
   def new
@@ -15,7 +15,7 @@ class ResourcesController < Aureus::ResourcesController
   end
 
   def show
-    aureus Resource.find(params[:id]), buttons: [['Back', resources_path]]
+    aureus Resource.find(params[:id]), navigation_buttons: [['Back', resources_path]]
   end
 
   def edit
@@ -38,7 +38,7 @@ class ResourcesController < Aureus::ResourcesController
 
   def prepare_aureus
     aureus_defaults({
-      buttons: [['Cancel', resources_path]],
+      navigation_buttons: [['Cancel', resources_path]],
       form_inputs: [[:title], [:text]],
       table_cells: [
         ['ID', lambda{|r| r.id }],
