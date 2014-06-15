@@ -9,47 +9,47 @@ module Aureus
     def aureus_generate
       ensure_dictionary
 
-      @aureus_defaults[:box_title] = 'Attributes'
+      @_aureus[:box_title] = 'Attributes'
 
       case params[:action]
         when 'index'
-          @aureus_defaults[:title] = "All #{params[:controller].capitalize}"
-          @aureus_defaults[:box_title] = 'List'
+          @_aureus[:title] = "All #{params[:controller].capitalize}"
+          @_aureus[:box_title] = 'List'
         when 'new'
-          @aureus_defaults[:title] = "New #{params[:controller].singularize.capitalize}"
+          @_aureus[:title] = "New #{params[:controller].singularize.capitalize}"
         when 'show'
-          @aureus_defaults[:title] = "View #{params[:controller].singularize.capitalize}"
+          @_aureus[:title] = "View #{params[:controller].singularize.capitalize}"
         when 'edit'
-          @aureus_defaults[:title] = "Edit #{params[:controller].singularize.capitalize}"
+          @_aureus[:title] = "Edit #{params[:controller].singularize.capitalize}"
       end
     end
 
-    def aureus_defaults (*options)
+    def aureus_defaults(*options)
       ensure_dictionary
-      options = options.extract_options!
-
-      OPTIONS.each do |option|
-        @aureus_defaults[option] = options[option] || @aureus_defaults[option] || nil
-      end
+      apply_options(options.extract_options!)
     end
 
     def aureus(resource_or_collection, *options)
       ensure_dictionary
-      options = options.extract_options!
-
-      OPTIONS.each do |option|
-        instance_variable_set(:"@aureus_#{option}", options[option] || @aureus_defaults[option]) || nil
-      end
+      apply_options(options.extract_options!)
 
       if params[:action] == 'index'
-        @aureus_resources = resource_or_collection
+        @_aureus[:resources] = resource_or_collection
       else
-        @aureus_resource = resource_or_collection
+        @_aureus[:resource] = resource_or_collection
       end
     end
 
+    private
+
     def ensure_dictionary
-      @aureus_defaults = {} unless @aureus_defaults
+      @_aureus = {} unless @_aureus
+    end
+
+    def apply_options(options)
+      OPTIONS.each do |option|
+        @_aureus[option] = options[option] || @_aureus[option] || nil
+      end
     end
   end
 end
