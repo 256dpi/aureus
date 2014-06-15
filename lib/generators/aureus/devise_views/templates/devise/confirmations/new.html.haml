@@ -1,7 +1,0 @@
-= aureus_box t('devise.ui.confirmations.new.title'), centered: true, for: :form do |b|
-  - b.content do
-    = semantic_form_for resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post } do |f|
-      = f.input :email, label: t('devise.ui.confirmations.new.email')
-      = f.action :submit, label: t('devise.ui.confirmations.new.submit')
-  - b.foot do
-    = render partial: '{{{folder}}}/shared/links'

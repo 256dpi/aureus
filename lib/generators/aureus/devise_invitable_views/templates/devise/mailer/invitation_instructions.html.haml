@@ -1,5 +1,0 @@
-%p= t('devise.mail.invitation_instructions.title', name: @resource.email)
-%p= t('devise.mail.invitation_instructions.info1', website_url: root_url)
-%p= link_to t('devise.mail.invitation_instructions.link'), accept_invitation_url(@resource, invitation_token: @resource.invitation_token)
-%p= t('devise.mail.invitation_instructions.info2')
-%p= t('devise.mail.invitation_instructions.info3')

@@ -1,9 +1,0 @@
-= aureus_box t('devise.ui.invitations.edit.title'), centered: true, for: :form do |b|
-  - b.content do
-    = semantic_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f|
-      = f.hidden_field :invitation_token
-      = f.password_field :password, label: t('devise.ui.invitations.edit.password')
-      = f.password_field :password, label: t('devise.ui.invitations.edit.password_confirmation')
-      = f.action :submit, label: t('devise.ui.invitations.new.submit')
-  - b.foot do
-    = render partial: '{{{folder}}}/shared/links'
