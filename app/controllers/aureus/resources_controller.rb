@@ -1,7 +1,5 @@
 module Aureus
   class ResourcesController < AureusController
-    OPTIONS = [:title, :box_title, :navigation_buttons, :form_inputs, :item_entries, :table_cells, :row_actions]
-
     protected
 
     def aureus_defaults(options)
