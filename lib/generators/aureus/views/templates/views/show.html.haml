@@ -1,7 +1,0 @@
-- content_for :navigation do
-  = aureus_navigation do |n|
-    - n.title t('.title')
-    - n.button link_to(t('.button_edit'), edit_{{{path_singular}}}_url(@{{{name_singular}}})) if can? :update, @{{{name_singular}}}
-    - n.button link_to(t('.button_back'),{{{path_plural}}}_url) if can? :index, {{{model}}}
-
-= render 'item'
