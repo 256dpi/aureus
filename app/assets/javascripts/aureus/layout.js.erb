@@ -1,0 +1,9 @@
+//= require aureus
+//= require_self
+
+$(function(){
+  aureus({
+    remove_messages_after: <%= Aureus.messages_timeout || 3600 %>,
+    mapbox_id: '<%= Aureus.mapbox_id %>'
+  });
+});

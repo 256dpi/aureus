@@ -10,6 +10,13 @@ require 'jquery-datatables-rails'
 
 module Aureus
   mattr_accessor :parent_controller
+  mattr_accessor :skin
+  mattr_accessor :mapbox_id
+  mattr_accessor :messages_timeout
+  mattr_accessor :toolbar_title
+  mattr_accessor :toolbar_builder
+
+  self.toolbar_builder = lambda{ |t| }
 
   module Components
     autoload :Box, 'aureus/components/box'
