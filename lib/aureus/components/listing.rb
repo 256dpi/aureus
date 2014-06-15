@@ -3,9 +3,10 @@ module Aureus
     class Listing < Renderable
       def initialize
         @entries = Array.new
+        yield(self)
       end
 
-      def entry head, body = nil, &block
+      def entry(head, body = nil, &block)
         init_haml_helpers
         if block_given?
           @entries << ListingEntry.new(head, capture_haml(&block))
@@ -20,7 +21,7 @@ module Aureus
     end
 
     class ListingEntry < Renderable
-      def initialize head, body
+      def initialize(head, body)
         @head = head
         @body = body
       end

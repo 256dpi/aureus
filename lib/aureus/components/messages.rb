@@ -1,7 +1,7 @@
 module Aureus
   module Components
     class Messages < Renderable
-      def initialize flash
+      def initialize(flash)
         @flash = flash
       end
 

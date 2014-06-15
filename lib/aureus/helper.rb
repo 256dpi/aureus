@@ -1,58 +1,43 @@
 module Aureus
   module Helper
-    def aureus_toolbar title
-      toolbar = Components::Toolbar.new title
-      yield toolbar
-      toolbar.render
+    include Formtastic::Helpers::FormHelper
+
+    def aureus_toolbar(title, &block)
+      Components::Toolbar.new(title, &block).render
     end
 
-    def aureus_navigation
-      navigation = Components::Navigation.new
-      yield navigation
-      navigation.render
+    def aureus_navigation(&block)
+      Components::Navigation.new(&block).render
     end
 
-    def aureus_messages flash
-      messages = Components::Messages.new flash
-      messages.render
+    def aureus_messages(flash)
+      Components::Messages.new(flash).render
     end
 
-    def aureus_content html
-      content = Components::Content.new html
-      content.render
+    def aureus_content(html, &block)
+      Components::Content.new(html, &block).render
     end
 
-    def aureus_row &block
-      row = Components::Row.new &block
-      row.render
+    def aureus_row(&block)
+      Components::Row.new(&block).render
     end
 
-    def aureus_box title, *args, &block
-      box = Components::Box.new title, args, &block
-      box.render
+    def aureus_box(title, *args, &block)
+      Components::Box.new(title, args, &block).render
     end
 
-    def aureus_datatable resource
-      table = Components::DataTable.new resource
-      yield table
-      table.render
+    def aureus_datatable(resource, &block)
+      Components::DataTable.new(resource, &block).render
     end
 
-    def aureus_form args, &block
-      semantic_form_for args do |f|
-        capture_haml f, &block
-      end
+    alias_method :aureus_form, :semantic_form_for
+
+    def aureus_listing(&block)
+      Components::Listing.new(&block).render
     end
 
-    def aureus_listing
-      listing = Components::Listing.new
-      yield listing
-      listing.render
-    end
-
-    def aureus_simple_map *args
-      map = Components::SimpleMap.new args
-      map.render
+    def aureus_simple_map(*args)
+      Components::SimpleMap.new(args).render
     end
   end
 end

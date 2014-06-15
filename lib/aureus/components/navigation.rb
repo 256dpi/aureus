@@ -4,13 +4,14 @@ module Aureus
       def initialize
         @title = ''
         @buttons = Array.new
+        yield(self)
       end
 
-      def title title
+      def title(title)
         @title = title
       end
 
-      def button content
+      def button(content)
         @buttons << NavigationButton.new(content)
       end
 
@@ -28,7 +29,7 @@ module Aureus
     end
 
     class NavigationButton < Renderable
-      def initialize content
+      def initialize(content)
         @content = content
       end
 

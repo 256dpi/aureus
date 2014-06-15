@@ -3,10 +3,11 @@ module Aureus
     class DataTable < Renderable
       include ActionView::Helpers::JavaScriptHelper
 
-      def initialize resource
+      def initialize(resource, &block)
         @resource = resource
         @head = DataTableHead.new
         @rows = Array.new
+        yield(self)
       end
 
       def head
@@ -33,7 +34,7 @@ module Aureus
         @columns = Array.new
       end
 
-      def text name
+      def text(name)
         @columns << DataTableHeadColumn.new(name)
       end
 
@@ -46,7 +47,7 @@ module Aureus
     end
 
     class DataTableHeadColumn < Renderable
-      def initialize name
+      def initialize(name)
         @name = name
       end
 
@@ -63,11 +64,11 @@ module Aureus
         @identifier = ''
       end
 
-      def identifier value
+      def identifier(value)
         @identifier = value
       end
 
-      def cell data='', &block
+      def cell(data='', &block)
         if block
           @cells << DataTableRowCell.new(capture_haml(&block))
         else
@@ -75,7 +76,7 @@ module Aureus
         end
       end
 
-      def button type_or_title, url, *args
+      def button(type_or_title, url, *args)
         if type_or_title.is_a? Symbol
           @buttons << DataTableRowButton.new(type_or_title,type_or_title.to_s,url,args)
         else
@@ -83,7 +84,7 @@ module Aureus
         end
       end
 
-      def button_raw content
+      def button_raw(content)
         @buttons << Renderable.new(content)
       end
 
@@ -93,7 +94,7 @@ module Aureus
     end
 
     class DataTableRowCell < Renderable
-      def initialize data
+      def initialize(data)
         @data = data
       end
 
@@ -103,7 +104,7 @@ module Aureus
     end
 
     class DataTableRowButton < Renderable
-      def initialize type, text, url, options
+      def initialize(type, text, url, options)
         init options, remote: true, confirm: 'Delete resource?'
         @type = type
         @text = text

@@ -1,13 +1,13 @@
 module Aureus
   module Components
     class Row < Renderable
-      def initialize &block
+      def initialize(&block)
         init_haml_helpers
         @columns = Array.new
         @content = capture_haml self, &block
       end
 
-      def column width, &block
+      def column(width, &block)
         @columns << RowColumn.new(width, capture_haml(&block))
       end
 
@@ -53,7 +53,7 @@ module Aureus
     class RowColumn < Renderable
       attr_reader :width, :content
 
-      def initialize  width, content
+      def initialize(width, content)
         @width = width
         @content = content
       end

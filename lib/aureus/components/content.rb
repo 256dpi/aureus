@@ -1,8 +1,9 @@
 module Aureus
   module Components
     class Content < Renderable
-      def initialize content
-        @content = content
+      def initialize(content, &block)
+        @content = content if content
+        @content = yield if block
       end
 
       def render
