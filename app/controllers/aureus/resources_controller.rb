@@ -1,14 +1,13 @@
 module Aureus
   class ResourcesController < AureusController
-    before_filter :aureus_generate
+    before_filter :aureus_initialize
 
     OPTIONS = [:title, :box_title, :buttons, :form_inputs, :item_entries, :table_cells, :row_actions]
 
     protected
 
-    def aureus_generate
-      ensure_dictionary
-
+    def aureus_initialize
+      @_aureus = {}
       @_aureus[:box_title] = 'Attributes'
 
       case params[:action]
@@ -25,12 +24,10 @@ module Aureus
     end
 
     def aureus_defaults(*options)
-      ensure_dictionary
       apply_options(options.extract_options!)
     end
 
     def aureus(resource_or_collection, *options)
-      ensure_dictionary
       apply_options(options.extract_options!)
 
       if params[:action] == 'index'
@@ -41,10 +38,6 @@ module Aureus
     end
 
     private
-
-    def ensure_dictionary
-      @_aureus = {} unless @_aureus
-    end
 
     def apply_options(options)
       OPTIONS.each do |option|
