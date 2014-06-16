@@ -1,4 +1,4 @@
-= aureus_form @_aureus[:resource] do |f|
+= aureus_form @_aureus[:resource].call do |f|
   = aureus_row do |r|
     - r.column 25 do
       = aureus_box @_aureus[:box_title], for: :form do

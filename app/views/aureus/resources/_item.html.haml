@@ -3,5 +3,5 @@
     = aureus_box @_aureus[:box_title] do
       = aureus_listing do |l|
         - (@_aureus[:item_entries] || []).each do |entry|
-          - l.entry entry[0], entry[1].call(@_aureus[:resource])
+          - l.entry entry[0], entry[1].call(@_aureus[:resource].call)
   - r.space 75

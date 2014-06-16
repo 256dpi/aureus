@@ -1,6 +1,6 @@
 = aureus_row do
   = aureus_box @_aureus[:box_title] do
-    = aureus_datatable @_aureus[:resources] do |t|
+    = aureus_datatable @_aureus[:resources].call do |t|
       - t.head do |h|
         - (@_aureus[:table_cells] || []).each do |cell|
           - h.text cell[0]
