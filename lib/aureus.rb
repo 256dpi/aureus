@@ -16,20 +16,19 @@ module Aureus
   mattr_accessor :toolbar_title
   mattr_accessor :toolbar_builder
 
-  self.toolbar_builder = lambda{ |t| }
-
-  module Components
-    autoload :Box, 'aureus/components/box'
-    autoload :DataTable, 'aureus/components/data_table'
-    autoload :Listing, 'aureus/components/listing'
-    autoload :Messages, 'aureus/components/messages'
-    autoload :Navigation, 'aureus/components/navigation'
-    autoload :Row, 'aureus/components/row'
-    autoload :SimpleMap, 'aureus/components/simple_map'
-    autoload :Toolbar, 'aureus/components/toolbar'
-  end
+  self.toolbar_builder = lambda{|_|}
 end
 
+require 'aureus/draft'
 require 'aureus/renderable'
 require 'aureus/helper'
 require 'aureus/engine'
+
+require 'aureus/components/box'
+require 'aureus/components/data_table'
+require 'aureus/components/listing'
+require 'aureus/components/messages'
+require 'aureus/components/navigation'
+require 'aureus/components/row'
+require 'aureus/components/simple_map'
+require 'aureus/components/toolbar'

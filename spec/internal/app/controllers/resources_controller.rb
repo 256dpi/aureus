@@ -1,12 +1,10 @@
 class ResourcesController < Aureus::ResourcesController
-  before_filter :prepare_aureus
-
   def index
-    aureus Resource.all
+    @resources = Resource.all
   end
 
   def new
-    aureus Resource.new
+    @resource = Resource.new
   end
 
   def create
@@ -15,11 +13,11 @@ class ResourcesController < Aureus::ResourcesController
   end
 
   def show
-    aureus Resource.find(params[:id])
+    @resource = Resource.find(params[:id])
   end
 
   def edit
-    aureus Resource.find(params[:id])
+    @resource = Resource.find(params[:id])
   end
 
   def update
@@ -35,15 +33,6 @@ class ResourcesController < Aureus::ResourcesController
   end
 
   protected
-
-  def prepare_aureus
-    aureus_initialize({
-      actions: [:index, :new, :create, :show, :edit, :update, :destroy],
-      table_fields: [:id, :title, :text],
-      form_fields: [:title, :text],
-      item_fields: [:title, :text]
-    })
-  end
 
   def permitted_params
     params.permit(resource: [:title, :text])
