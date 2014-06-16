@@ -5,65 +5,67 @@
 Aureus is a tool to quickly generate admin interfaces for a rails app.
 It's between scaffolding and tools like ActiveAdmin.
 
-## General Concept
+## Sample Controller
 
-The idea behind aureus is to abstract as much as possible of GUI rendering by still giving enough freedom for customization.
-A typical aureus driven view would look like this:
-
-```haml
-= aureus_row do |r|
-  = aureus_box 'Datatable' do
-    = aureus_datatable Resource.all do |t|
-      - t.head do |h|
-        - h.text 'Title'
-        - h.text 'Text'
-      - t.row do |r,res|
-        - r.identifier res.id
-        - r.cell res.title
-        - r.cell res.text
-        - r.button :show, 'url'
-        - r.button :edit, 'url'
-        - r.button :destroy, 'url', confirm: 'Delete user?'
-```
-
-## Installation
-
-To use **aureus** simply require the gem:
+The following Controller will render a finished interface:
 
 ```ruby
-gem 'aureus'
+class ResourcesController < Aureus::ResourcesController
+  before_filter :prepare_aureus
+
+  def index
+    @resources = Resource.all
+  end
+
+  def new
+    @resource = Resource.new
+  end
+
+  def create
+    Resource.create!(permitted_params[:resource])
+    redirect_to resources_url
+  end
+
+  def show
+    @resource = Resource.find(params[:id])
+  end
+
+  def edit
+    @resource = Resource.find(params[:id])
+  end
+
+  def update
+    resource = Resource.find(params[:id])
+    resource.update!(permitted_params[:resource])
+    redirect_to resource_url(resource)
+  end
+
+  def destroy
+    resource = Resource.find(params[:id])
+    resource.destroy!
+    redirect_to resources_url
+  end
+
+  protected
+
+  def prepare_aureus
+    aureus({
+      actions: [:index, :new, :create, :show, :edit, :update, :destroy],
+      table_fields: [:id, :title, :text],
+      form_fields: [:title, :text],
+      item_fields: [:title, :text]
+    })
+  end
+
+  def permitted_params
+    params.permit(resource: [:title, :text])
+  end
+end
 ```
-
-### Asset Pipeline
-
-Aureus uses the rails asset pipeline to load and override the style and behavior.
-
-Change your `application.scss` to match the following:
-
-```scss
-//= require aureus
-//= require_self
-
-@import 'aureus/skin/default';
-@import 'aureus/theme';
-```
-
-Change your `application.js` to match the following:
-
-```javascript
-//= require aureus
-//= require_self
-
-$(function(){
-  aureus({
-    remove_messages_after: 2
-  });
-});
-```
-
-You can now use the aureus framework to rapidly build awesome interfaces!
 
 ## Generators
+
+The following generators are available:
 
 * Run `rails g aureus:setup` to create the initializer.
 * Run `rails g aureus:copy` to copy the views and layout.
