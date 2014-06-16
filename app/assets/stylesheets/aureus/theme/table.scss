@@ -1,4 +1,4 @@
-.datatable, .simple-table {
+.aureus-datatable, .aureus-simple-table {
   width: 100%;
   border-spacing: 0;
   thead {
@@ -21,21 +21,6 @@
       }
       th:first-child {
         border-left: 0;
-      }
-      th.sorting {
-        background-image: url($icon-sort);
-        background-repeat: no-repeat;
-        background-position: center right;
-      }
-      th.sorting_asc {
-        background-image: url($icon-sort_abc_asc);
-        background-repeat: no-repeat;
-        background-position: center right;
-      }
-      th.sorting_desc {
-        background-image: url($icon-sort_abc_desc);
-        background-repeat: no-repeat;
-        background-position: center right;
       }
       th.center {
         text-align: center;

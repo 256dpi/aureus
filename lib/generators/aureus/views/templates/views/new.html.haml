@@ -1,7 +1,0 @@
-- content_for :navigation do
-  = aureus_navigation do |n|
-    - n.title t('.title')
-    - n.button link_to(t('.button_cancel'), {{{path_plural}}}_url) if can? :index, {{{model}}}
-    - n.submit_form_button @{{{name_singular}}}, t('.button_save') if can? :create, {{{model}}}
-
-= render 'form'

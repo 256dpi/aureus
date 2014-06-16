@@ -1,0 +1,7 @@
+= aureus_row do |r|
+  - r.column 25 do
+    = aureus_box @aureus[:box_title] do
+      = aureus_listing do |l|
+        - (@aureus[:item_entries] || []).each do |entry|
+          - l.entry entry[0], entry[1].call(@aureus[:resource].call)
+  - r.space 75

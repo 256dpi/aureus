@@ -65,16 +65,6 @@ You can now use the aureus framework to rapidly build awesome interfaces!
 
 ## Generators
 
-Aureus has a bunch of generators built-in to easily generate a complete interface.
+* Run `rails g aureus:setup` to create the initializer.
+* Run `rails g aureus:copy` to copy the views and layout.
 
-### Layout & Views
-
-* Run `rails g aureus:layout application` to generate a typical aureus layout.
-* Run `rails g aureus:views Resource ResourcesController` to generate aureus views for a model and controller.
-
-### Devise
-
-* Run `rails g aureus:devise_views devise` to generate views using aureus helpers.
-* Run `rails g aureus:devise_i18n devise` to generate the i18n file used by the views.
-* Run `rails g aureus:devise_invitable_views devise` to generate views using aureus helpers.
-* Run `rails g aureus:devise_invitable_i18n devise` to generate the i18n file used by the views.
