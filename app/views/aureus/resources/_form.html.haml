@@ -1,8 +1,8 @@
-= aureus_form @_aureus[:resource].call do |f|
+= aureus_form @aureus[:resource].call do |f|
   = aureus_row do |r|
     - r.column 25 do
-      = aureus_box @_aureus[:box_title], for: :form do
-        - (@_aureus[:form_inputs] || []).each do |input|
+      = aureus_box @aureus[:box_title], for: :form do
+        - (@aureus[:form_inputs] || []).each do |input|
           = f.input *input
         = f.action :submit
     - r.space 75
