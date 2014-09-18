@@ -43,6 +43,8 @@ class ResourcesController < Aureus::ResourcesController
       form_fields: [:title, :text],
       item_fields: [:title, :text]
     })
+
+    @aureus[:row_actions] << lambda{|r| ['hello', path_for(:show, r.id)] }
   end
 
   def permitted_params

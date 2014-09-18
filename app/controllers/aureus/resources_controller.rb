@@ -3,7 +3,7 @@ module Aureus
     protected
 
     def aureus(options)
-      @aureus ||= {}
+      @aureus ||= { row_actions: [], table_cells: [] }
       @aureus[:box_title] = 'Attributes'
       @aureus[:form_inputs] = (options[:form_fields] || []).map{|f| [f] }
 
