@@ -3,15 +3,12 @@ require 'aureus/version'
 require 'formtastic'
 require 'haml'
 require 'jquery-rails'
-require 'leaflet-rails'
 require 'normalize-rails'
-require 'mapbox-rails'
 
 module Aureus
   mattr_accessor :site_title
   mattr_accessor :parent_controller
   mattr_accessor :skin
-  mattr_accessor :mapbox_id
   mattr_accessor :messages_timeout
   mattr_accessor :toolbar_title
   mattr_accessor :toolbar_builder
@@ -25,7 +22,6 @@ module Aureus
     autoload :Messages, 'aureus/components/messages'
     autoload :Navigation, 'aureus/components/navigation'
     autoload :Row, 'aureus/components/row'
-    autoload :SimpleMap, 'aureus/components/simple_map'
     autoload :Toolbar, 'aureus/components/toolbar'
   end
 end

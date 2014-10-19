@@ -31,9 +31,5 @@ module Aureus
     def aureus_listing(&block)
       Components::Listing.new(&block).render
     end
-
-    def aureus_simple_map(*args)
-      Components::SimpleMap.new(args).render
-    end
   end
 end
