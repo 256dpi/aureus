@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
   s.add_runtime_dependency 'sass-rails', '~> 5.0'
-  s.add_runtime_dependency 'jquery-rails', '~> 3.0'
+  s.add_runtime_dependency 'jquery-rails', '~> 4.0'
   s.add_runtime_dependency 'haml-rails', '~> 0.5'
   s.add_runtime_dependency 'formtastic', '~> 3.0'
   s.add_runtime_dependency 'normalize-rails', '~> 3.0'
