@@ -3,7 +3,7 @@ gemspec
 
 group :development, :test do
   gem 'rake'
-  gem 'rspec-rails', '2.14.2'
+  gem 'rspec-rails'
   gem 'combustion'
   gem 'actionpack'
   gem 'activerecord'
