@@ -2,7 +2,7 @@ require 'spec_helper'
 
 require_relative '../../../lib/generators/aureus/setup/setup_generator'
 
-describe Aureus::Generators::SetupGenerator do
+describe Aureus::Generators::SetupGenerator, type: :generator do
   destination File.expand_path('../../../../tmp/gen', __FILE__)
 
   before do
