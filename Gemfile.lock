@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    aureus (3.0.4)
+    aureus (3.0.5)
       formtastic (~> 3.0)
-      haml-rails (~> 0.5)
+      haml-rails (~> 0.6)
       jquery-rails (~> 4.0)
       normalize-rails (~> 3.0)
       sass-rails (~> 5.0)
