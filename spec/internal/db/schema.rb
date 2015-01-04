@@ -1,7 +1,9 @@
+require_relative '../app/models/resource'
+
 ActiveRecord::Schema.define do
-  create_table 'resources', force: true do |t|
-    t.string 'title'
-    t.string 'text'
+  create_table :resources, force: true do |t|
+    t.string :title
+    t.string :text
   end
 end
 

@@ -2,3 +2,4 @@
 tmp
 spec/internal/tmp
 *.gem
+*.db
