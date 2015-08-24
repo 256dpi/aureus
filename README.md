@@ -1,5 +1,7 @@
 # aureus
 
+_This project is not longer maintained._
+
 **a framework for rails admin interfaces**
 
 Aureus is a tool to quickly generate admin interfaces for a rails app.
